@@ -20,15 +20,12 @@ const setSelectedReport = (report) => {
   window.location.hash = report.slug
 
   document.getElementById('selected-title').textContent = report.title
-  document.getElementById('selected-subtitle').textContent = `${report.subtitle} · ${report.run_name}`
+  document.getElementById('selected-subtitle').textContent = report.subtitle
   document.getElementById('open-report-link').href = report.report_url
-  document.getElementById('open-core-link').href = report.artifacts.core_output_json
   document.getElementById('meta-dataset').textContent = report.dataset
-  document.getElementById('meta-scale').textContent = report.scale
-  document.getElementById('meta-setup').textContent = report.setup
+  document.getElementById('meta-scale').textContent = `Scale ${report.scale}`
+  document.getElementById('meta-setup').textContent = `${report.paraphrases} paraphrases · ${report.seeds} seeds`
   document.getElementById('meta-examples').textContent = report.examples_used
-  document.getElementById('meta-score').textContent = formatMetric(report.metrics.score_stability, 4)
-  document.getElementById('meta-ranking').textContent = formatMetric(report.metrics.ranking_stability, 3)
   document.getElementById('report-frame').src = report.report_url
 
   document.querySelectorAll('.report-button').forEach((button) => {
@@ -42,29 +39,12 @@ const renderReportButton = (report) => {
   button.className = 'report-button'
   button.dataset.slug = report.slug
   button.innerHTML = `
-    <div class="report-button-top">
-      <h3>${report.title}</h3>
-      <span class="chip">${report.setup}</span>
-    </div>
+    <h3>${report.title}</h3>
     <p class="model">${report.subtitle}</p>
-    <div class="chip-row">
-      <span class="chip">${report.dataset}</span>
-      <span class="chip">scale ${report.scale}</span>
-      <span class="chip">${report.examples_used}</span>
-    </div>
-    <div class="metrics-row">
-      <div class="metric-box">
-        <span class="metric-name">Score Stability</span>
-        <span class="metric-value">${formatMetric(report.metrics.score_stability, 4)}</span>
-      </div>
-      <div class="metric-box">
-        <span class="metric-name">Ranking Stability</span>
-        <span class="metric-value">${formatMetric(report.metrics.ranking_stability, 3)}</span>
-      </div>
-      <div class="metric-box">
-        <span class="metric-name">Ties</span>
-        <span class="metric-value">${formatPercent(report.metrics.ties)}</span>
-      </div>
+    <div class="report-button-meta">
+      Score stability ${formatMetric(report.metrics.score_stability, 4)} ·
+      Ranking stability ${formatMetric(report.metrics.ranking_stability, 3)} ·
+      Ties ${formatPercent(report.metrics.ties)}
     </div>
   `
   button.addEventListener('click', () => setSelectedReport(report))

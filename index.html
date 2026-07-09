@@ -9,36 +9,18 @@
 <body>
   <div class="page-shell">
     <header class="hero">
-      <div class="hero-copy">
-        <p class="eyebrow">FAIR-J Demo</p>
-        <h1>Open and compare FAIR-J reports from recent runs.</h1>
-        <p class="hero-text">
-          FAIR-J tests whether small rubric edits change LLM-as-a-judge scores and rankings.
-          This demo site focuses on the reports themselves: pick a run, preview it inline, or open the full report as a separate static page.
-        </p>
-      </div>
-      <div class="hero-panel">
-        <div class="hero-stat">
-          <span class="hero-stat-label">Report format</span>
-          <strong>Static HTML</strong>
-        </div>
-        <div class="hero-stat">
-          <span class="hero-stat-label">Best for</span>
-          <strong>Demo track browsing</strong>
-        </div>
-        <div class="hero-stat">
-          <span class="hero-stat-label">Hosting</span>
-          <strong>GitHub Pages / Netlify / Cloudflare</strong>
-        </div>
-      </div>
+      <p class="eyebrow">FAIR-J Report Viewer</p>
+      <h1>Open a report from the list and view it inline.</h1>
+      <p class="hero-text">
+        FAIR-J tests whether small rubric edits change LLM-as-a-judge scores and rankings.
+      </p>
     </header>
 
     <main class="layout">
       <section class="catalog-panel">
         <div class="section-heading">
-          <p class="section-kicker">Reports</p>
-          <h2>Available runs</h2>
-          <p>Select a run to update the preview and metadata panel.</p>
+          <h2>Reports</h2>
+          <p>Select a run.</p>
         </div>
         <div id="report-list" class="report-list" aria-live="polite"></div>
       </section>
@@ -46,41 +28,19 @@
       <section class="viewer-panel">
         <div class="viewer-topbar">
           <div>
-            <p class="section-kicker">Preview</p>
             <h2 id="selected-title">Loading reports...</h2>
             <p id="selected-subtitle" class="selected-subtitle"></p>
           </div>
           <div class="viewer-actions">
             <a id="open-report-link" class="action-button action-button-primary" href="#" target="_blank" rel="noreferrer">Open Full Report</a>
-            <a id="open-core-link" class="action-button" href="#" target="_blank" rel="noreferrer">Open core_output.json</a>
           </div>
         </div>
 
-        <div class="meta-grid">
-          <article class="meta-card">
-            <p class="meta-label">Dataset</p>
-            <p id="meta-dataset" class="meta-value">-</p>
-          </article>
-          <article class="meta-card">
-            <p class="meta-label">Scale</p>
-            <p id="meta-scale" class="meta-value">-</p>
-          </article>
-          <article class="meta-card">
-            <p class="meta-label">Setup</p>
-            <p id="meta-setup" class="meta-value">-</p>
-          </article>
-          <article class="meta-card">
-            <p class="meta-label">Examples</p>
-            <p id="meta-examples" class="meta-value">-</p>
-          </article>
-          <article class="meta-card">
-            <p class="meta-label">Score Stability</p>
-            <p id="meta-score" class="meta-value">-</p>
-          </article>
-          <article class="meta-card">
-            <p class="meta-label">Ranking Stability</p>
-            <p id="meta-ranking" class="meta-value">-</p>
-          </article>
+        <div class="meta-strip">
+          <span id="meta-dataset" class="meta-pill">-</span>
+          <span id="meta-scale" class="meta-pill">-</span>
+          <span id="meta-setup" class="meta-pill">-</span>
+          <span id="meta-examples" class="meta-pill">-</span>
         </div>
 
         <div class="iframe-shell">
