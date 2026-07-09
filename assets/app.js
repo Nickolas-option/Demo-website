@@ -3,16 +3,23 @@ const state = {
   selectedSlug: null,
 }
 
+const byId = (id) => document.getElementById(id)
+
 const selectedFromHash = () => window.location.hash.replace(/^#/, '')
 
 const setSelectedReport = (report) => {
   state.selectedSlug = report.slug
   window.location.hash = report.slug
 
-  document.getElementById('selected-title').textContent = report.title
-  document.getElementById('selected-subtitle').textContent = report.subtitle
-  document.getElementById('open-report-link').href = report.report_url
-  document.getElementById('report-frame').src = report.report_url
+  const selectedTitle = byId('selected-title')
+  const selectedSubtitle = byId('selected-subtitle')
+  const openReportLink = byId('open-report-link')
+  const reportFrame = byId('report-frame')
+
+  if (selectedTitle) selectedTitle.textContent = report.title
+  if (selectedSubtitle) selectedSubtitle.textContent = report.subtitle
+  if (openReportLink) openReportLink.href = report.report_url
+  if (reportFrame) reportFrame.src = report.report_url
 
   document.querySelectorAll('.report-button').forEach((button) => {
     button.classList.toggle('is-active', button.dataset.slug === report.slug)
@@ -33,7 +40,8 @@ const renderReportButton = (report) => {
 }
 
 const renderReports = () => {
-  const list = document.getElementById('report-list')
+  const list = byId('report-list')
+  if (!list) return
   list.innerHTML = ''
   state.reports.forEach((report) => {
     list.appendChild(renderReportButton(report))
@@ -64,5 +72,8 @@ window.addEventListener('hashchange', () => {
 })
 
 loadReports().catch((error) => {
-  document.getElementById('report-list').innerHTML = `<p>${error.message}</p>`
+  const list = byId('report-list')
+  if (list) {
+    list.innerHTML = `<p>${error.message}</p>`
+  }
 })
