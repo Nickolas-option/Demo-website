@@ -3,16 +3,6 @@ const state = {
   selectedSlug: null,
 }
 
-const formatMetric = (value, digits) => {
-  if (typeof value !== 'number' || Number.isNaN(value)) return '-'
-  return value.toFixed(digits)
-}
-
-const formatPercent = (value) => {
-  if (typeof value !== 'number' || Number.isNaN(value)) return '-'
-  return `${value.toFixed(1)}%`
-}
-
 const selectedFromHash = () => window.location.hash.replace(/^#/, '')
 
 const setSelectedReport = (report) => {
@@ -22,10 +12,6 @@ const setSelectedReport = (report) => {
   document.getElementById('selected-title').textContent = report.title
   document.getElementById('selected-subtitle').textContent = report.subtitle
   document.getElementById('open-report-link').href = report.report_url
-  document.getElementById('meta-dataset').textContent = report.dataset
-  document.getElementById('meta-scale').textContent = `Scale ${report.scale}`
-  document.getElementById('meta-setup').textContent = `${report.paraphrases} paraphrases · ${report.seeds} seeds`
-  document.getElementById('meta-examples').textContent = report.examples_used
   document.getElementById('report-frame').src = report.report_url
 
   document.querySelectorAll('.report-button').forEach((button) => {
@@ -41,11 +27,6 @@ const renderReportButton = (report) => {
   button.innerHTML = `
     <h3>${report.title}</h3>
     <p class="model">${report.subtitle}</p>
-    <div class="report-button-meta">
-      Score stability ${formatMetric(report.metrics.score_stability, 4)} ·
-      Ranking stability ${formatMetric(report.metrics.ranking_stability, 3)} ·
-      Ties ${formatPercent(report.metrics.ties)}
-    </div>
   `
   button.addEventListener('click', () => setSelectedReport(report))
   return button

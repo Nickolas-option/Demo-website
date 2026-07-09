@@ -40,38 +40,25 @@ body {
 .catalog-panel,
 .viewer-panel,
 .report-button,
-.meta-pill,
 .action-button {
   border: 1px solid var(--line);
   background: var(--panel);
 }
 
 .hero {
-  padding: 20px 22px;
+  padding: 16px 18px;
   border-radius: var(--radius-lg);
   box-shadow: var(--shadow);
-}
-
-.eyebrow,
-.meta-label,
-.metric-name {
-  margin: 0;
-  font-size: 12px;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-  color: var(--muted);
-  font-weight: 700;
 }
 
 .hero h1,
 .section-heading h2,
 .viewer-topbar h2 {
-  margin: 8px 0 0;
+  margin: 0;
   font-size: clamp(1.45rem, 2.4vw, 2rem);
   line-height: 1.15;
 }
 
-.hero-text,
 .section-heading p,
 .selected-subtitle {
   margin: 10px 0 0;
@@ -128,15 +115,9 @@ body {
 }
 
 .report-button .model {
-  margin: 6px 0 0;
+  margin: 8px 0 0;
   color: var(--muted);
   font-size: 0.92rem;
-}
-
-.report-button-meta {
-  margin-top: 10px;
-  color: var(--muted);
-  font-size: 0.88rem;
 }
 
 .viewer-topbar {
@@ -169,23 +150,6 @@ body {
   border-color: var(--accent);
   background: var(--accent);
   color: #fff;
-}
-
-.meta-strip {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-  margin-top: 14px;
-}
-
-.meta-pill {
-  display: inline-flex;
-  align-items: center;
-  padding: 8px 10px;
-  border-radius: 999px;
-  background: var(--panel-muted);
-  color: var(--muted);
-  font-size: 0.9rem;
 }
 
 .iframe-shell {

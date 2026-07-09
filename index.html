@@ -9,18 +9,13 @@
 <body>
   <div class="page-shell">
     <header class="hero">
-      <p class="eyebrow">FAIR-J Report Viewer</p>
-      <h1>Open a report from the list and view it inline.</h1>
-      <p class="hero-text">
-        FAIR-J tests whether small rubric edits change LLM-as-a-judge scores and rankings.
-      </p>
+      <h1>FAIR-J Report Viewer</h1>
     </header>
 
     <main class="layout">
       <section class="catalog-panel">
         <div class="section-heading">
           <h2>Reports</h2>
-          <p>Select a run.</p>
         </div>
         <div id="report-list" class="report-list" aria-live="polite"></div>
       </section>
@@ -34,13 +29,6 @@
           <div class="viewer-actions">
             <a id="open-report-link" class="action-button action-button-primary" href="#" target="_blank" rel="noreferrer">Open Full Report</a>
           </div>
-        </div>
-
-        <div class="meta-strip">
-          <span id="meta-dataset" class="meta-pill">-</span>
-          <span id="meta-scale" class="meta-pill">-</span>
-          <span id="meta-setup" class="meta-pill">-</span>
-          <span id="meta-examples" class="meta-pill">-</span>
         </div>
 
         <div class="iframe-shell">
