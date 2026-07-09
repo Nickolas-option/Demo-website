@@ -66,6 +66,10 @@ body {
   line-height: 1.5;
 }
 
+.hero-text a {
+  color: var(--accent);
+}
+
 .layout {
   display: grid;
   grid-template-columns: minmax(300px, 380px) minmax(0, 1fr);
