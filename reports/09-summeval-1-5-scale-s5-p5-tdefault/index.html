@@ -421,10 +421,35 @@
         padding: 10px 12px;
       }
     }
+
+    .example-viewer-card { margin-bottom: 24px; }
+    .example-viewer-controls { display: flex; flex-wrap: wrap; gap: 12px; align-items: end; margin-bottom: 16px; }
+    .example-viewer-controls label { display: grid; gap: 6px; color: var(--muted); font-size: 12px; font-weight: 600; text-transform: uppercase; }
+    .example-viewer-controls select { min-width: 220px; }
+    .example-nav { display: flex; gap: 8px; align-items: center; margin-left: auto; }
+    .example-counter { min-width: 76px; color: var(--muted); text-align: center; font-family: var(--mono); }
+    .example-meta { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 16px; }
+    .example-chip { border: 1px solid var(--line); border-radius: 999px; padding: 5px 9px; background: #f8fafc; color: var(--muted); font-size: 12px; }
+    .score-transition { display: flex; align-items: center; gap: 12px; margin: 4px 0 18px; }
+    .score-box { min-width: 92px; border: 1px solid var(--line); border-radius: 10px; padding: 10px 12px; background: #f8fafc; }
+    .score-box span { display: block; color: var(--muted); font-size: 11px; text-transform: uppercase; }
+    .score-box strong { display: block; margin-top: 3px; font-family: var(--mono); font-size: 22px; }
+    .score-arrow { color: var(--muted); font-size: 22px; }
+    .score-delta { font-family: var(--mono); font-weight: 700; }
+    .criterion-compare { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; margin-bottom: 16px; }
+    .criterion-pane, .example-text-pane { border: 1px solid var(--line); border-radius: 10px; padding: 14px; background: #fff; }
+    .criterion-pane h4, .example-text-pane h4 { margin: 0 0 8px; color: var(--muted); font-size: 12px; text-transform: uppercase; }
+    .criterion-pane p, .example-text-pane p { margin: 0; white-space: pre-wrap; overflow-wrap: anywhere; }
+    .example-text-grid { display: grid; grid-template-columns: minmax(0, 1.35fr) minmax(0, 1fr); gap: 12px; }
+    .example-empty { color: var(--muted); padding: 20px 0; }
+    @media (max-width: 720px) {
+      .criterion-compare, .example-text-grid { grid-template-columns: 1fr; }
+      .example-nav { width: 100%; margin-left: 0; }
+    }
   </style>
 </head>
 <body>
-  
+
   <main>
     <section class="hero">
       <h1>FAIR-J: LLM-as-a-Judge Robustness Report</h1>
@@ -438,54 +463,53 @@
 
       <section>
         <div class="context-grid">
-          
+
           <article class="context-card">
             <h3>Qwen3-235B-A22B-Instruct-2507</h3>
             <dl>
-              
+
               <div>
                 <dt>Judge model</dt>
                 <dd>Qwen/Qwen3-235B-A22B-Instruct-2507</dd>
               </div>
-              
+
               <div>
                 <dt>Paraphrase model</dt>
                 <dd>Qwen/Qwen3-235B-A22B-Instruct-2507</dd>
               </div>
-              
+
               <div>
                 <dt>Examples used</dt>
-                <dd>-</dd>
+                <dd>1581</dd>
               </div>
-              
+
               <div>
                 <dt>Paraphrases per criterion</dt>
                 <dd>5</dd>
               </div>
-              
+
               <div>
                 <dt>Repeated calls</dt>
                 <dd>5</dd>
               </div>
-              
+
               <div>
                 <dt>Score scale</dt>
                 <dd>1 - 5</dd>
               </div>
-              
+
             </dl>
           </article>
-          
+
         </div>
       </section>
 
       <section class="summary-grid">
-        
+
         <article class="summary-card">
           <h2>Qwen3-235B-A22B-Instruct-2507</h2>
-          <div class="summary-verdict warn" title="Usable, but one or more stability signals are only moderate.">Review</div>
           <div class="stat-list">
-            
+
             <div class="stat-item">
               <div class="label"><span class="help-label" data-help="Estimated share of ranking pairs that flip when the same criterion is paraphrased." tabindex="0" aria-label="Estimated share of ranking pairs that flip when the same criterion is paraphrased.">
       <span class="help-text">Flips</span>
@@ -493,15 +517,15 @@
     </span></div>
               <div class="value">0.5%</div>
             </div>
-            
+
             <div class="stat-item">
               <div class="label"><span class="help-label" data-help="Mean absolute score shift when the same criterion is paraphrased, normalized by score scale span. Lower is better." tabindex="0" aria-label="Mean absolute score shift when the same criterion is paraphrased, normalized by score scale span. Lower is better.">
-      <span class="help-text">Score Stability</span>
+      <span class="help-text">Score Instability</span>
       <span class="help-icon">i</span>
     </span></div>
               <div class="value">0.0660</div>
             </div>
-            
+
             <div class="stat-item">
               <div class="label"><span class="help-label" data-help="Average Kendall&#39;s tau-b between baseline ranking and same-criterion paraphrased ranking. Higher is better." tabindex="0" aria-label="Average Kendall&#39;s tau-b between baseline ranking and same-criterion paraphrased ranking. Higher is better.">
       <span class="help-text">Ranking Stability</span>
@@ -509,7 +533,7 @@
     </span></div>
               <div class="value">0.788</div>
             </div>
-            
+
             <div class="stat-item">
               <div class="label"><span class="help-label" data-help="Cross-criterion normalized MAD divided by same-criterion normalized MAD. Lower means paraphrasing stays more isolated to the intended criterion." tabindex="0" aria-label="Cross-criterion normalized MAD divided by same-criterion normalized MAD. Lower means paraphrasing stays more isolated to the intended criterion.">
       <span class="help-text">Spillover</span>
@@ -517,16 +541,16 @@
     </span></div>
               <div class="value">0.349</div>
             </div>
-            
+
           </div>
         </article>
-        
+
       </section>
 
       <section class="summary-card calculator-card">
         <div>
           <h3>Noise Calculator</h3>
-          <p>Estimate how same-criterion score stability shrinks as dataset size grows.</p>
+          <p>Estimate how same-criterion score instability shrinks as dataset size grows.</p>
           <div class="calculator-input-row">
             <label for="calc-n">Dataset Size (N):</label>
             <input type="number" id="calc-n" value="1000" min="1">
@@ -548,45 +572,45 @@
               </tr>
             </thead>
             <tbody>
-              
+
               <tr>
-                <td>Score Stability</td>
+                <td>Score Instability</td>
                 <td>How much the score changes when the same criterion is paraphrased.</td>
                 <td class="value">same-criterion MAD / scale span</td>
               </tr>
-              
+
               <tr>
                 <td>Ranking Stability</td>
                 <td>Whether example ordering stays consistent when the same criterion is paraphrased.</td>
                 <td class="value">mean same-criterion Kendall tau-b</td>
               </tr>
-              
+
               <tr>
                 <td>Flips</td>
                 <td>Estimated share of ranking pairs that reverse order after same-criterion paraphrasing.</td>
                 <td class="value">same-criterion discordant pairs / same-criterion total ranking pairs</td>
               </tr>
-              
+
               <tr>
                 <td>Spillover</td>
                 <td>Whether paraphrasing one criterion changes scores on other criteria.</td>
                 <td class="value">cross MAD / same-criterion MAD</td>
               </tr>
-              
+
             </tbody>
           </table>
         </div>
       </section>
 
-      
+
       <details class="section" open>
-        <summary><span class="help-label" data-help="Are scores stable when the same criterion is paraphrased? Lower score stability values and lower spillover mean cleaner dataset-level comparisons." tabindex="0" aria-label="Are scores stable when the same criterion is paraphrased? Lower score stability values and lower spillover mean cleaner dataset-level comparisons.">
+        <summary><span class="help-label" data-help="Are scores stable when the same criterion is paraphrased? Lower score instability values and lower spillover mean cleaner dataset-level comparisons." tabindex="0" aria-label="Are scores stable when the same criterion is paraphrased? Lower score instability values and lower spillover mean cleaner dataset-level comparisons.">
       <span class="help-text">Dataset Level</span>
       <span class="help-icon">i</span>
     </span></summary>
         <div class="section-body">
           <div class="group-grid">
-            
+
             <section class="group-card">
               <h4>Paraphrased vs Base</h4>
               <div class="table-wrap">
@@ -594,42 +618,42 @@
                   <thead>
                     <tr>
                       <th>Metric</th>
-                      
+
                       <th>Qwen3-235B-A22B-Instruct-2507</th>
-                      
+
                     </tr>
                   </thead>
                   <tbody>
-                    
+
                     <tr>
                       <td><span class="help-label" data-help="Mean absolute score shift when the same criterion is paraphrased, normalized by score scale span. Lower is better." tabindex="0" aria-label="Mean absolute score shift when the same criterion is paraphrased, normalized by score scale span. Lower is better.">
-      <span class="help-text">Score Stability</span>
+      <span class="help-text">Score Instability</span>
       <span class="help-icon">i</span>
     </span></td>
-                      
+
                       <td class="value ">0.0660</td>
-                      
+
                     </tr>
-                    
+
                     <tr>
                       <td><span class="help-label" data-help="Cross-criterion normalized MAD divided by same-criterion normalized MAD. Lower means paraphrasing stays more isolated to the intended criterion." tabindex="0" aria-label="Cross-criterion normalized MAD divided by same-criterion normalized MAD. Lower means paraphrasing stays more isolated to the intended criterion.">
       <span class="help-text">Spillover</span>
       <span class="help-icon">i</span>
     </span></td>
-                      
+
                       <td class="value ">0.3487</td>
-                      
+
                     </tr>
-                    
+
                   </tbody>
                 </table>
               </div>
             </section>
-            
+
           </div>
         </div>
       </details>
-      
+
       <details class="section" open>
         <summary><span class="help-label" data-help="Does the judge preserve example ordering when the same criterion is rewritten? Higher ranking stability and lower flips are better." tabindex="0" aria-label="Does the judge preserve example ordering when the same criterion is rewritten? Higher ranking stability and lower flips are better.">
       <span class="help-text">Ranking Consistency</span>
@@ -637,7 +661,7 @@
     </span></summary>
         <div class="section-body">
           <div class="group-grid">
-            
+
             <section class="group-card">
               <h4>Paraphrased vs Base</h4>
               <div class="table-wrap">
@@ -645,52 +669,52 @@
                   <thead>
                     <tr>
                       <th>Metric</th>
-                      
+
                       <th>Qwen3-235B-A22B-Instruct-2507</th>
-                      
+
                     </tr>
                   </thead>
                   <tbody>
-                    
+
                     <tr>
                       <td><span class="help-label" data-help="Estimated share of ranking pairs that flip when the same criterion is paraphrased." tabindex="0" aria-label="Estimated share of ranking pairs that flip when the same criterion is paraphrased.">
       <span class="help-text">Flips</span>
       <span class="help-icon">i</span>
     </span></td>
-                      
+
                       <td class="value ">0.5%</td>
-                      
+
                     </tr>
-                    
+
                     <tr>
                       <td><span class="help-label" data-help="Average Kendall&#39;s tau-b between baseline ranking and same-criterion paraphrased ranking. Higher is better." tabindex="0" aria-label="Average Kendall&#39;s tau-b between baseline ranking and same-criterion paraphrased ranking. Higher is better.">
       <span class="help-text">Ranking Stability</span>
       <span class="help-icon">i</span>
     </span></td>
-                      
+
                       <td class="value ">0.788</td>
-                      
+
                     </tr>
-                    
+
                     <tr>
                       <td><span class="help-label" data-help="Share of example pairs that receive tied scores when the same criterion is paraphrased." tabindex="0" aria-label="Share of example pairs that receive tied scores when the same criterion is paraphrased.">
       <span class="help-text">Ties</span>
       <span class="help-icon">i</span>
     </span></td>
-                      
+
                       <td class="value ">57.8%</td>
-                      
+
                     </tr>
-                    
+
                   </tbody>
                 </table>
               </div>
             </section>
-            
+
           </div>
         </div>
       </details>
-      
+
 
       <details class="section">
         <summary>Statistical Tests</summary>
@@ -699,24 +723,24 @@
             <div class="control-field">
               <label for="stat-combined-select">Score</label>
               <select id="stat-combined-select" data-stat-combined-select>
-                
+
                 <option value="coherence">coherence</option>
-                
+
                 <option value="consistency">consistency</option>
-                
+
                 <option value="fluency">fluency</option>
-                
+
                 <option value="relevance">relevance</option>
-                
+
                 <option value="__total__">Total Score (All criteria pooled)</option>
-                
+
               </select>
             </div>
           </div>
-          
+
           <div class="stat-scope is-active" data-stat-scope="coherence">
             <div class="group-grid">
-              
+
               <section class="group-card">
                 <h4>Paraphrased vs Base</h4>
                 <div class="table-wrap">
@@ -724,68 +748,68 @@
                     <thead>
                       <tr>
                         <th>Metric</th>
-                        
+
                         <th>Qwen3-235B-A22B-Instruct-2507</th>
-                        
+
                       </tr>
                     </thead>
                     <tbody>
-                      
+
                       <tr>
                         <td><span class="help-label" data-help="Number of paired observations used by the statistical test." tabindex="0" aria-label="Number of paired observations used by the statistical test.">
       <span class="help-text">N</span>
       <span class="help-icon">i</span>
     </span></td>
-                        
+
                         <td class="value ">1581</td>
-                        
+
                       </tr>
-                      
+
                       <tr>
                         <td><span class="help-label" data-help="Average baseline minus perturbation score difference." tabindex="0" aria-label="Average baseline minus perturbation score difference.">
       <span class="help-text">Δ</span>
       <span class="help-icon">i</span>
     </span></td>
-                        
+
                         <td class="value ">-0.073</td>
-                        
+
                       </tr>
-                      
+
                       <tr>
                         <td><span class="help-label" data-help="Paired t-test p-value for baseline versus perturbation differences." tabindex="0" aria-label="Paired t-test p-value for baseline versus perturbation differences.">
       <span class="help-text">Paired t-test p-value</span>
       <span class="help-icon">i</span>
     </span></td>
-                        
+
                         <td class="value good">0.000</td>
-                        
+
                       </tr>
-                      
+
                       <tr>
                         <td><span class="help-label" data-help="Wilcoxon signed-rank p-value for paired differences." tabindex="0" aria-label="Wilcoxon signed-rank p-value for paired differences.">
       <span class="help-text">Wilcoxon p-value</span>
       <span class="help-icon">i</span>
     </span></td>
-                        
+
                         <td class="value good">0.000</td>
-                        
+
                       </tr>
-                      
+
                       <tr>
                         <td><span class="help-label" data-help="Permutation test p-value for paired differences." tabindex="0" aria-label="Permutation test p-value for paired differences.">
       <span class="help-text">Permutation p-value</span>
       <span class="help-icon">i</span>
     </span></td>
-                        
+
                         <td class="value good">0.002</td>
-                        
+
                       </tr>
-                      
+
                     </tbody>
                   </table>
                 </div>
               </section>
-              
+
               <section class="group-card">
                 <h4>Deleted vs Base</h4>
                 <div class="table-wrap">
@@ -793,74 +817,74 @@
                     <thead>
                       <tr>
                         <th>Metric</th>
-                        
+
                         <th>Qwen3-235B-A22B-Instruct-2507</th>
-                        
+
                       </tr>
                     </thead>
                     <tbody>
-                      
+
                       <tr>
                         <td><span class="help-label" data-help="Number of paired observations used by the statistical test." tabindex="0" aria-label="Number of paired observations used by the statistical test.">
       <span class="help-text">N</span>
       <span class="help-icon">i</span>
     </span></td>
-                        
+
                         <td class="value ">1581</td>
-                        
+
                       </tr>
-                      
+
                       <tr>
                         <td><span class="help-label" data-help="Average baseline minus perturbation score difference." tabindex="0" aria-label="Average baseline minus perturbation score difference.">
       <span class="help-text">Δ</span>
       <span class="help-icon">i</span>
     </span></td>
-                        
+
                         <td class="value ">-0.027</td>
-                        
+
                       </tr>
-                      
+
                       <tr>
                         <td><span class="help-label" data-help="Paired t-test p-value for baseline versus perturbation differences." tabindex="0" aria-label="Paired t-test p-value for baseline versus perturbation differences.">
       <span class="help-text">Paired t-test p-value</span>
       <span class="help-icon">i</span>
     </span></td>
-                        
+
                         <td class="value good">0.000</td>
-                        
+
                       </tr>
-                      
+
                       <tr>
                         <td><span class="help-label" data-help="Wilcoxon signed-rank p-value for paired differences." tabindex="0" aria-label="Wilcoxon signed-rank p-value for paired differences.">
       <span class="help-text">Wilcoxon p-value</span>
       <span class="help-icon">i</span>
     </span></td>
-                        
+
                         <td class="value good">0.000</td>
-                        
+
                       </tr>
-                      
+
                       <tr>
                         <td><span class="help-label" data-help="Permutation test p-value for paired differences." tabindex="0" aria-label="Permutation test p-value for paired differences.">
       <span class="help-text">Permutation p-value</span>
       <span class="help-icon">i</span>
     </span></td>
-                        
+
                         <td class="value good">0.002</td>
-                        
+
                       </tr>
-                      
+
                     </tbody>
                   </table>
                 </div>
               </section>
-              
+
             </div>
           </div>
-          
+
           <div class="stat-scope" data-stat-scope="consistency">
             <div class="group-grid">
-              
+
               <section class="group-card">
                 <h4>Paraphrased vs Base</h4>
                 <div class="table-wrap">
@@ -868,68 +892,68 @@
                     <thead>
                       <tr>
                         <th>Metric</th>
-                        
+
                         <th>Qwen3-235B-A22B-Instruct-2507</th>
-                        
+
                       </tr>
                     </thead>
                     <tbody>
-                      
+
                       <tr>
                         <td><span class="help-label" data-help="Number of paired observations used by the statistical test." tabindex="0" aria-label="Number of paired observations used by the statistical test.">
       <span class="help-text">N</span>
       <span class="help-icon">i</span>
     </span></td>
-                        
+
                         <td class="value ">1581</td>
-                        
+
                       </tr>
-                      
+
                       <tr>
                         <td><span class="help-label" data-help="Average baseline minus perturbation score difference." tabindex="0" aria-label="Average baseline minus perturbation score difference.">
       <span class="help-text">Δ</span>
       <span class="help-icon">i</span>
     </span></td>
-                        
+
                         <td class="value ">0.002</td>
-                        
+
                       </tr>
-                      
+
                       <tr>
                         <td><span class="help-label" data-help="Paired t-test p-value for baseline versus perturbation differences." tabindex="0" aria-label="Paired t-test p-value for baseline versus perturbation differences.">
       <span class="help-text">Paired t-test p-value</span>
       <span class="help-icon">i</span>
     </span></td>
-                        
+
                         <td class="value muted">0.637</td>
-                        
+
                       </tr>
-                      
+
                       <tr>
                         <td><span class="help-label" data-help="Wilcoxon signed-rank p-value for paired differences." tabindex="0" aria-label="Wilcoxon signed-rank p-value for paired differences.">
       <span class="help-text">Wilcoxon p-value</span>
       <span class="help-icon">i</span>
     </span></td>
-                        
+
                         <td class="value good">0.020</td>
-                        
+
                       </tr>
-                      
+
                       <tr>
                         <td><span class="help-label" data-help="Permutation test p-value for paired differences." tabindex="0" aria-label="Permutation test p-value for paired differences.">
       <span class="help-text">Permutation p-value</span>
       <span class="help-icon">i</span>
     </span></td>
-                        
+
                         <td class="value muted">0.649</td>
-                        
+
                       </tr>
-                      
+
                     </tbody>
                   </table>
                 </div>
               </section>
-              
+
               <section class="group-card">
                 <h4>Deleted vs Base</h4>
                 <div class="table-wrap">
@@ -937,74 +961,74 @@
                     <thead>
                       <tr>
                         <th>Metric</th>
-                        
+
                         <th>Qwen3-235B-A22B-Instruct-2507</th>
-                        
+
                       </tr>
                     </thead>
                     <tbody>
-                      
+
                       <tr>
                         <td><span class="help-label" data-help="Number of paired observations used by the statistical test." tabindex="0" aria-label="Number of paired observations used by the statistical test.">
       <span class="help-text">N</span>
       <span class="help-icon">i</span>
     </span></td>
-                        
+
                         <td class="value ">1581</td>
-                        
+
                       </tr>
-                      
+
                       <tr>
                         <td><span class="help-label" data-help="Average baseline minus perturbation score difference." tabindex="0" aria-label="Average baseline minus perturbation score difference.">
       <span class="help-text">Δ</span>
       <span class="help-icon">i</span>
     </span></td>
-                        
+
                         <td class="value ">-0.008</td>
-                        
+
                       </tr>
-                      
+
                       <tr>
                         <td><span class="help-label" data-help="Paired t-test p-value for baseline versus perturbation differences." tabindex="0" aria-label="Paired t-test p-value for baseline versus perturbation differences.">
       <span class="help-text">Paired t-test p-value</span>
       <span class="help-icon">i</span>
     </span></td>
-                        
+
                         <td class="value muted">0.163</td>
-                        
+
                       </tr>
-                      
+
                       <tr>
                         <td><span class="help-label" data-help="Wilcoxon signed-rank p-value for paired differences." tabindex="0" aria-label="Wilcoxon signed-rank p-value for paired differences.">
       <span class="help-text">Wilcoxon p-value</span>
       <span class="help-icon">i</span>
     </span></td>
-                        
+
                         <td class="value muted">0.694</td>
-                        
+
                       </tr>
-                      
+
                       <tr>
                         <td><span class="help-label" data-help="Permutation test p-value for paired differences." tabindex="0" aria-label="Permutation test p-value for paired differences.">
       <span class="help-text">Permutation p-value</span>
       <span class="help-icon">i</span>
     </span></td>
-                        
+
                         <td class="value muted">0.202</td>
-                        
+
                       </tr>
-                      
+
                     </tbody>
                   </table>
                 </div>
               </section>
-              
+
             </div>
           </div>
-          
+
           <div class="stat-scope" data-stat-scope="fluency">
             <div class="group-grid">
-              
+
               <section class="group-card">
                 <h4>Paraphrased vs Base</h4>
                 <div class="table-wrap">
@@ -1012,68 +1036,68 @@
                     <thead>
                       <tr>
                         <th>Metric</th>
-                        
+
                         <th>Qwen3-235B-A22B-Instruct-2507</th>
-                        
+
                       </tr>
                     </thead>
                     <tbody>
-                      
+
                       <tr>
                         <td><span class="help-label" data-help="Number of paired observations used by the statistical test." tabindex="0" aria-label="Number of paired observations used by the statistical test.">
       <span class="help-text">N</span>
       <span class="help-icon">i</span>
     </span></td>
-                        
+
                         <td class="value ">1581</td>
-                        
+
                       </tr>
-                      
+
                       <tr>
                         <td><span class="help-label" data-help="Average baseline minus perturbation score difference." tabindex="0" aria-label="Average baseline minus perturbation score difference.">
       <span class="help-text">Δ</span>
       <span class="help-icon">i</span>
     </span></td>
-                        
+
                         <td class="value ">0.107</td>
-                        
+
                       </tr>
-                      
+
                       <tr>
                         <td><span class="help-label" data-help="Paired t-test p-value for baseline versus perturbation differences." tabindex="0" aria-label="Paired t-test p-value for baseline versus perturbation differences.">
       <span class="help-text">Paired t-test p-value</span>
       <span class="help-icon">i</span>
     </span></td>
-                        
+
                         <td class="value good">0.000</td>
-                        
+
                       </tr>
-                      
+
                       <tr>
                         <td><span class="help-label" data-help="Wilcoxon signed-rank p-value for paired differences." tabindex="0" aria-label="Wilcoxon signed-rank p-value for paired differences.">
       <span class="help-text">Wilcoxon p-value</span>
       <span class="help-icon">i</span>
     </span></td>
-                        
+
                         <td class="value good">0.000</td>
-                        
+
                       </tr>
-                      
+
                       <tr>
                         <td><span class="help-label" data-help="Permutation test p-value for paired differences." tabindex="0" aria-label="Permutation test p-value for paired differences.">
       <span class="help-text">Permutation p-value</span>
       <span class="help-icon">i</span>
     </span></td>
-                        
+
                         <td class="value good">0.002</td>
-                        
+
                       </tr>
-                      
+
                     </tbody>
                   </table>
                 </div>
               </section>
-              
+
               <section class="group-card">
                 <h4>Deleted vs Base</h4>
                 <div class="table-wrap">
@@ -1081,74 +1105,74 @@
                     <thead>
                       <tr>
                         <th>Metric</th>
-                        
+
                         <th>Qwen3-235B-A22B-Instruct-2507</th>
-                        
+
                       </tr>
                     </thead>
                     <tbody>
-                      
+
                       <tr>
                         <td><span class="help-label" data-help="Number of paired observations used by the statistical test." tabindex="0" aria-label="Number of paired observations used by the statistical test.">
       <span class="help-text">N</span>
       <span class="help-icon">i</span>
     </span></td>
-                        
+
                         <td class="value ">1581</td>
-                        
+
                       </tr>
-                      
+
                       <tr>
                         <td><span class="help-label" data-help="Average baseline minus perturbation score difference." tabindex="0" aria-label="Average baseline minus perturbation score difference.">
       <span class="help-text">Δ</span>
       <span class="help-icon">i</span>
     </span></td>
-                        
+
                         <td class="value ">-0.027</td>
-                        
+
                       </tr>
-                      
+
                       <tr>
                         <td><span class="help-label" data-help="Paired t-test p-value for baseline versus perturbation differences." tabindex="0" aria-label="Paired t-test p-value for baseline versus perturbation differences.">
       <span class="help-text">Paired t-test p-value</span>
       <span class="help-icon">i</span>
     </span></td>
-                        
+
                         <td class="value good">0.000</td>
-                        
+
                       </tr>
-                      
+
                       <tr>
                         <td><span class="help-label" data-help="Wilcoxon signed-rank p-value for paired differences." tabindex="0" aria-label="Wilcoxon signed-rank p-value for paired differences.">
       <span class="help-text">Wilcoxon p-value</span>
       <span class="help-icon">i</span>
     </span></td>
-                        
+
                         <td class="value good">0.000</td>
-                        
+
                       </tr>
-                      
+
                       <tr>
                         <td><span class="help-label" data-help="Permutation test p-value for paired differences." tabindex="0" aria-label="Permutation test p-value for paired differences.">
       <span class="help-text">Permutation p-value</span>
       <span class="help-icon">i</span>
     </span></td>
-                        
+
                         <td class="value good">0.002</td>
-                        
+
                       </tr>
-                      
+
                     </tbody>
                   </table>
                 </div>
               </section>
-              
+
             </div>
           </div>
-          
+
           <div class="stat-scope" data-stat-scope="relevance">
             <div class="group-grid">
-              
+
               <section class="group-card">
                 <h4>Paraphrased vs Base</h4>
                 <div class="table-wrap">
@@ -1156,68 +1180,68 @@
                     <thead>
                       <tr>
                         <th>Metric</th>
-                        
+
                         <th>Qwen3-235B-A22B-Instruct-2507</th>
-                        
+
                       </tr>
                     </thead>
                     <tbody>
-                      
+
                       <tr>
                         <td><span class="help-label" data-help="Number of paired observations used by the statistical test." tabindex="0" aria-label="Number of paired observations used by the statistical test.">
       <span class="help-text">N</span>
       <span class="help-icon">i</span>
     </span></td>
-                        
+
                         <td class="value ">1581</td>
-                        
+
                       </tr>
-                      
+
                       <tr>
                         <td><span class="help-label" data-help="Average baseline minus perturbation score difference." tabindex="0" aria-label="Average baseline minus perturbation score difference.">
       <span class="help-text">Δ</span>
       <span class="help-icon">i</span>
     </span></td>
-                        
+
                         <td class="value ">-0.107</td>
-                        
+
                       </tr>
-                      
+
                       <tr>
                         <td><span class="help-label" data-help="Paired t-test p-value for baseline versus perturbation differences." tabindex="0" aria-label="Paired t-test p-value for baseline versus perturbation differences.">
       <span class="help-text">Paired t-test p-value</span>
       <span class="help-icon">i</span>
     </span></td>
-                        
+
                         <td class="value good">0.000</td>
-                        
+
                       </tr>
-                      
+
                       <tr>
                         <td><span class="help-label" data-help="Wilcoxon signed-rank p-value for paired differences." tabindex="0" aria-label="Wilcoxon signed-rank p-value for paired differences.">
       <span class="help-text">Wilcoxon p-value</span>
       <span class="help-icon">i</span>
     </span></td>
-                        
+
                         <td class="value good">0.000</td>
-                        
+
                       </tr>
-                      
+
                       <tr>
                         <td><span class="help-label" data-help="Permutation test p-value for paired differences." tabindex="0" aria-label="Permutation test p-value for paired differences.">
       <span class="help-text">Permutation p-value</span>
       <span class="help-icon">i</span>
     </span></td>
-                        
+
                         <td class="value good">0.002</td>
-                        
+
                       </tr>
-                      
+
                     </tbody>
                   </table>
                 </div>
               </section>
-              
+
               <section class="group-card">
                 <h4>Deleted vs Base</h4>
                 <div class="table-wrap">
@@ -1225,74 +1249,74 @@
                     <thead>
                       <tr>
                         <th>Metric</th>
-                        
+
                         <th>Qwen3-235B-A22B-Instruct-2507</th>
-                        
+
                       </tr>
                     </thead>
                     <tbody>
-                      
+
                       <tr>
                         <td><span class="help-label" data-help="Number of paired observations used by the statistical test." tabindex="0" aria-label="Number of paired observations used by the statistical test.">
       <span class="help-text">N</span>
       <span class="help-icon">i</span>
     </span></td>
-                        
+
                         <td class="value ">1581</td>
-                        
+
                       </tr>
-                      
+
                       <tr>
                         <td><span class="help-label" data-help="Average baseline minus perturbation score difference." tabindex="0" aria-label="Average baseline minus perturbation score difference.">
       <span class="help-text">Δ</span>
       <span class="help-icon">i</span>
     </span></td>
-                        
+
                         <td class="value ">-0.172</td>
-                        
+
                       </tr>
-                      
+
                       <tr>
                         <td><span class="help-label" data-help="Paired t-test p-value for baseline versus perturbation differences." tabindex="0" aria-label="Paired t-test p-value for baseline versus perturbation differences.">
       <span class="help-text">Paired t-test p-value</span>
       <span class="help-icon">i</span>
     </span></td>
-                        
+
                         <td class="value good">0.000</td>
-                        
+
                       </tr>
-                      
+
                       <tr>
                         <td><span class="help-label" data-help="Wilcoxon signed-rank p-value for paired differences." tabindex="0" aria-label="Wilcoxon signed-rank p-value for paired differences.">
       <span class="help-text">Wilcoxon p-value</span>
       <span class="help-icon">i</span>
     </span></td>
-                        
+
                         <td class="value good">0.000</td>
-                        
+
                       </tr>
-                      
+
                       <tr>
                         <td><span class="help-label" data-help="Permutation test p-value for paired differences." tabindex="0" aria-label="Permutation test p-value for paired differences.">
       <span class="help-text">Permutation p-value</span>
       <span class="help-icon">i</span>
     </span></td>
-                        
+
                         <td class="value good">0.002</td>
-                        
+
                       </tr>
-                      
+
                     </tbody>
                   </table>
                 </div>
               </section>
-              
+
             </div>
           </div>
-          
+
           <div class="stat-scope" data-stat-scope="__total__">
             <div class="group-grid">
-              
+
               <section class="group-card">
                 <h4>Paraphrased vs Base</h4>
                 <div class="table-wrap">
@@ -1300,68 +1324,68 @@
                     <thead>
                       <tr>
                         <th>Metric</th>
-                        
+
                         <th>Qwen3-235B-A22B-Instruct-2507</th>
-                        
+
                       </tr>
                     </thead>
                     <tbody>
-                      
+
                       <tr>
                         <td><span class="help-label" data-help="Number of paired observations used by the statistical test." tabindex="0" aria-label="Number of paired observations used by the statistical test.">
       <span class="help-text">N</span>
       <span class="help-icon">i</span>
     </span></td>
-                        
+
                         <td class="value ">1581</td>
-                        
+
                       </tr>
-                      
+
                       <tr>
                         <td><span class="help-label" data-help="Average baseline minus perturbation score difference." tabindex="0" aria-label="Average baseline minus perturbation score difference.">
       <span class="help-text">Δ</span>
       <span class="help-icon">i</span>
     </span></td>
-                        
+
                         <td class="value ">-0.071</td>
-                        
+
                       </tr>
-                      
+
                       <tr>
                         <td><span class="help-label" data-help="Paired t-test p-value for baseline versus perturbation differences." tabindex="0" aria-label="Paired t-test p-value for baseline versus perturbation differences.">
       <span class="help-text">Paired t-test p-value</span>
       <span class="help-icon">i</span>
     </span></td>
-                        
+
                         <td class="value good">0.000</td>
-                        
+
                       </tr>
-                      
+
                       <tr>
                         <td><span class="help-label" data-help="Wilcoxon signed-rank p-value for paired differences." tabindex="0" aria-label="Wilcoxon signed-rank p-value for paired differences.">
       <span class="help-text">Wilcoxon p-value</span>
       <span class="help-icon">i</span>
     </span></td>
-                        
+
                         <td class="value good">0.000</td>
-                        
+
                       </tr>
-                      
+
                       <tr>
                         <td><span class="help-label" data-help="Permutation test p-value for paired differences." tabindex="0" aria-label="Permutation test p-value for paired differences.">
       <span class="help-text">Permutation p-value</span>
       <span class="help-icon">i</span>
     </span></td>
-                        
+
                         <td class="value good">0.002</td>
-                        
+
                       </tr>
-                      
+
                     </tbody>
                   </table>
                 </div>
               </section>
-              
+
               <section class="group-card">
                 <h4>Deleted vs Base</h4>
                 <div class="table-wrap">
@@ -1369,71 +1393,89 @@
                     <thead>
                       <tr>
                         <th>Metric</th>
-                        
+
                         <th>Qwen3-235B-A22B-Instruct-2507</th>
-                        
+
                       </tr>
                     </thead>
                     <tbody>
-                      
+
                       <tr>
                         <td><span class="help-label" data-help="Number of paired observations used by the statistical test." tabindex="0" aria-label="Number of paired observations used by the statistical test.">
       <span class="help-text">N</span>
       <span class="help-icon">i</span>
     </span></td>
-                        
+
                         <td class="value ">1581</td>
-                        
+
                       </tr>
-                      
+
                       <tr>
                         <td><span class="help-label" data-help="Average baseline minus perturbation score difference." tabindex="0" aria-label="Average baseline minus perturbation score difference.">
       <span class="help-text">Δ</span>
       <span class="help-icon">i</span>
     </span></td>
-                        
+
                         <td class="value ">-0.175</td>
-                        
+
                       </tr>
-                      
+
                       <tr>
                         <td><span class="help-label" data-help="Paired t-test p-value for baseline versus perturbation differences." tabindex="0" aria-label="Paired t-test p-value for baseline versus perturbation differences.">
       <span class="help-text">Paired t-test p-value</span>
       <span class="help-icon">i</span>
     </span></td>
-                        
+
                         <td class="value good">0.000</td>
-                        
+
                       </tr>
-                      
+
                       <tr>
                         <td><span class="help-label" data-help="Wilcoxon signed-rank p-value for paired differences." tabindex="0" aria-label="Wilcoxon signed-rank p-value for paired differences.">
       <span class="help-text">Wilcoxon p-value</span>
       <span class="help-icon">i</span>
     </span></td>
-                        
+
                         <td class="value good">0.000</td>
-                        
+
                       </tr>
-                      
+
                       <tr>
                         <td><span class="help-label" data-help="Permutation test p-value for paired differences." tabindex="0" aria-label="Permutation test p-value for paired differences.">
       <span class="help-text">Permutation p-value</span>
       <span class="help-icon">i</span>
     </span></td>
-                        
+
                         <td class="value good">0.002</td>
-                        
+
                       </tr>
-                      
+
                     </tbody>
                   </table>
                 </div>
               </section>
-              
+
             </div>
           </div>
-          
+
+        </div>
+      </details>
+
+
+      <details class="section example-viewer-card" open>
+        <summary>Example Viewer</summary>
+        <div class="section-body">
+          <p class="section-explainer">Compare real examples where the judge score changed after paraphrasing the evaluated criterion.</p>
+          <div class="example-viewer-controls">
+            <label>Model<select data-example-model></select></label>
+            <label>Criterion<select data-example-criterion></select></label>
+            <div class="example-nav">
+              <button type="button" data-example-prev aria-label="Previous example">Previous</button>
+              <span class="example-counter" data-example-counter></span>
+              <button type="button" data-example-next aria-label="Next example">Next</button>
+            </div>
+          </div>
+          <div data-example-content></div>
         </div>
       </details>
 
@@ -1443,12 +1485,12 @@
     </section>
 
     <section class="report-page" data-page="criteria">
-      
+
       <details class="section">
         <summary>coherence</summary>
         <div class="section-body">
           <div class="group-grid">
-            
+
             <section class="group-card">
               <h4>Scoring Stability</h4>
               <div class="table-wrap">
@@ -1456,38 +1498,38 @@
                   <thead>
                     <tr>
                       <th>Metric</th>
-                      
+
                       <th>Qwen3-235B-A22B-Instruct-2507</th>
-                      
+
                     </tr>
                   </thead>
                   <tbody>
-                    
+
                     <tr>
                       <td><span class="help-label" data-help="Mean absolute score shift when the same criterion is paraphrased, normalized by score scale span. Lower is better." tabindex="0" aria-label="Mean absolute score shift when the same criterion is paraphrased, normalized by score scale span. Lower is better.">
-      <span class="help-text">Score Stability</span>
+      <span class="help-text">Score Instability</span>
       <span class="help-icon">i</span>
     </span></td>
-                      
+
                       <td class="value ">0.0993</td>
-                      
+
                     </tr>
-                    
+
                     <tr>
                       <td><span class="help-label" data-help="Cross-criterion normalized MAD divided by same-criterion normalized MAD. Lower means paraphrasing stays more isolated to the intended criterion." tabindex="0" aria-label="Cross-criterion normalized MAD divided by same-criterion normalized MAD. Lower means paraphrasing stays more isolated to the intended criterion.">
       <span class="help-text">Spillover</span>
       <span class="help-icon">i</span>
     </span></td>
-                      
+
                       <td class="value ">0.1728</td>
-                      
+
                     </tr>
-                    
+
                   </tbody>
                 </table>
               </div>
             </section>
-            
+
             <section class="group-card">
               <h4>Ranking Consistency</h4>
               <div class="table-wrap">
@@ -1495,57 +1537,57 @@
                   <thead>
                     <tr>
                       <th>Metric</th>
-                      
+
                       <th>Qwen3-235B-A22B-Instruct-2507</th>
-                      
+
                     </tr>
                   </thead>
                   <tbody>
-                    
+
                     <tr>
                       <td><span class="help-label" data-help="Estimated share of ranking pairs that flip when the same criterion is paraphrased." tabindex="0" aria-label="Estimated share of ranking pairs that flip when the same criterion is paraphrased.">
       <span class="help-text">Flips</span>
       <span class="help-icon">i</span>
     </span></td>
-                      
+
                       <td class="value ">0.4%</td>
-                      
+
                     </tr>
-                    
+
                     <tr>
                       <td><span class="help-label" data-help="Average Kendall&#39;s tau-b between baseline ranking and same-criterion paraphrased ranking. Higher is better." tabindex="0" aria-label="Average Kendall&#39;s tau-b between baseline ranking and same-criterion paraphrased ranking. Higher is better.">
       <span class="help-text">Ranking Stability</span>
       <span class="help-icon">i</span>
     </span></td>
-                      
+
                       <td class="value ">0.735</td>
-                      
+
                     </tr>
-                    
+
                     <tr>
                       <td><span class="help-label" data-help="Share of example pairs that receive tied scores when the same criterion is paraphrased." tabindex="0" aria-label="Share of example pairs that receive tied scores when the same criterion is paraphrased.">
       <span class="help-text">Ties</span>
       <span class="help-icon">i</span>
     </span></td>
-                      
+
                       <td class="value ">53.8%</td>
-                      
+
                     </tr>
-                    
+
                   </tbody>
                 </table>
               </div>
             </section>
-            
+
           </div>
         </div>
       </details>
-      
+
       <details class="section">
         <summary>consistency</summary>
         <div class="section-body">
           <div class="group-grid">
-            
+
             <section class="group-card">
               <h4>Scoring Stability</h4>
               <div class="table-wrap">
@@ -1553,38 +1595,38 @@
                   <thead>
                     <tr>
                       <th>Metric</th>
-                      
+
                       <th>Qwen3-235B-A22B-Instruct-2507</th>
-                      
+
                     </tr>
                   </thead>
                   <tbody>
-                    
+
                     <tr>
                       <td><span class="help-label" data-help="Mean absolute score shift when the same criterion is paraphrased, normalized by score scale span. Lower is better." tabindex="0" aria-label="Mean absolute score shift when the same criterion is paraphrased, normalized by score scale span. Lower is better.">
-      <span class="help-text">Score Stability</span>
+      <span class="help-text">Score Instability</span>
       <span class="help-icon">i</span>
     </span></td>
-                      
+
                       <td class="value ">0.0182</td>
-                      
+
                     </tr>
-                    
+
                     <tr>
                       <td><span class="help-label" data-help="Cross-criterion normalized MAD divided by same-criterion normalized MAD. Lower means paraphrasing stays more isolated to the intended criterion." tabindex="0" aria-label="Cross-criterion normalized MAD divided by same-criterion normalized MAD. Lower means paraphrasing stays more isolated to the intended criterion.">
       <span class="help-text">Spillover</span>
       <span class="help-icon">i</span>
     </span></td>
-                      
+
                       <td class="value ">0.7487</td>
-                      
+
                     </tr>
-                    
+
                   </tbody>
                 </table>
               </div>
             </section>
-            
+
             <section class="group-card">
               <h4>Ranking Consistency</h4>
               <div class="table-wrap">
@@ -1592,57 +1634,57 @@
                   <thead>
                     <tr>
                       <th>Metric</th>
-                      
+
                       <th>Qwen3-235B-A22B-Instruct-2507</th>
-                      
+
                     </tr>
                   </thead>
                   <tbody>
-                    
+
                     <tr>
                       <td><span class="help-label" data-help="Estimated share of ranking pairs that flip when the same criterion is paraphrased." tabindex="0" aria-label="Estimated share of ranking pairs that flip when the same criterion is paraphrased.">
       <span class="help-text">Flips</span>
       <span class="help-icon">i</span>
     </span></td>
-                      
+
                       <td class="value ">0.1%</td>
-                      
+
                     </tr>
-                    
+
                     <tr>
                       <td><span class="help-label" data-help="Average Kendall&#39;s tau-b between baseline ranking and same-criterion paraphrased ranking. Higher is better." tabindex="0" aria-label="Average Kendall&#39;s tau-b between baseline ranking and same-criterion paraphrased ranking. Higher is better.">
       <span class="help-text">Ranking Stability</span>
       <span class="help-icon">i</span>
     </span></td>
-                      
+
                       <td class="value ">0.910</td>
-                      
+
                     </tr>
-                    
+
                     <tr>
                       <td><span class="help-label" data-help="Share of example pairs that receive tied scores when the same criterion is paraphrased." tabindex="0" aria-label="Share of example pairs that receive tied scores when the same criterion is paraphrased.">
       <span class="help-text">Ties</span>
       <span class="help-icon">i</span>
     </span></td>
-                      
+
                       <td class="value ">65.7%</td>
-                      
+
                     </tr>
-                    
+
                   </tbody>
                 </table>
               </div>
             </section>
-            
+
           </div>
         </div>
       </details>
-      
+
       <details class="section">
         <summary>fluency</summary>
         <div class="section-body">
           <div class="group-grid">
-            
+
             <section class="group-card">
               <h4>Scoring Stability</h4>
               <div class="table-wrap">
@@ -1650,38 +1692,38 @@
                   <thead>
                     <tr>
                       <th>Metric</th>
-                      
+
                       <th>Qwen3-235B-A22B-Instruct-2507</th>
-                      
+
                     </tr>
                   </thead>
                   <tbody>
-                    
+
                     <tr>
                       <td><span class="help-label" data-help="Mean absolute score shift when the same criterion is paraphrased, normalized by score scale span. Lower is better." tabindex="0" aria-label="Mean absolute score shift when the same criterion is paraphrased, normalized by score scale span. Lower is better.">
-      <span class="help-text">Score Stability</span>
+      <span class="help-text">Score Instability</span>
       <span class="help-icon">i</span>
     </span></td>
-                      
+
                       <td class="value ">0.1028</td>
-                      
+
                     </tr>
-                    
+
                     <tr>
                       <td><span class="help-label" data-help="Cross-criterion normalized MAD divided by same-criterion normalized MAD. Lower means paraphrasing stays more isolated to the intended criterion." tabindex="0" aria-label="Cross-criterion normalized MAD divided by same-criterion normalized MAD. Lower means paraphrasing stays more isolated to the intended criterion.">
       <span class="help-text">Spillover</span>
       <span class="help-icon">i</span>
     </span></td>
-                      
+
                       <td class="value ">0.2616</td>
-                      
+
                     </tr>
-                    
+
                   </tbody>
                 </table>
               </div>
             </section>
-            
+
             <section class="group-card">
               <h4>Ranking Consistency</h4>
               <div class="table-wrap">
@@ -1689,57 +1731,57 @@
                   <thead>
                     <tr>
                       <th>Metric</th>
-                      
+
                       <th>Qwen3-235B-A22B-Instruct-2507</th>
-                      
+
                     </tr>
                   </thead>
                   <tbody>
-                    
+
                     <tr>
                       <td><span class="help-label" data-help="Estimated share of ranking pairs that flip when the same criterion is paraphrased." tabindex="0" aria-label="Estimated share of ranking pairs that flip when the same criterion is paraphrased.">
       <span class="help-text">Flips</span>
       <span class="help-icon">i</span>
     </span></td>
-                      
+
                       <td class="value ">1.3%</td>
-                      
+
                     </tr>
-                    
+
                     <tr>
                       <td><span class="help-label" data-help="Average Kendall&#39;s tau-b between baseline ranking and same-criterion paraphrased ranking. Higher is better." tabindex="0" aria-label="Average Kendall&#39;s tau-b between baseline ranking and same-criterion paraphrased ranking. Higher is better.">
       <span class="help-text">Ranking Stability</span>
       <span class="help-icon">i</span>
     </span></td>
-                      
+
                       <td class="value ">0.731</td>
-                      
+
                     </tr>
-                    
+
                     <tr>
                       <td><span class="help-label" data-help="Share of example pairs that receive tied scores when the same criterion is paraphrased." tabindex="0" aria-label="Share of example pairs that receive tied scores when the same criterion is paraphrased.">
       <span class="help-text">Ties</span>
       <span class="help-icon">i</span>
     </span></td>
-                      
+
                       <td class="value ">51.4%</td>
-                      
+
                     </tr>
-                    
+
                   </tbody>
                 </table>
               </div>
             </section>
-            
+
           </div>
         </div>
       </details>
-      
+
       <details class="section">
         <summary>relevance</summary>
         <div class="section-body">
           <div class="group-grid">
-            
+
             <section class="group-card">
               <h4>Scoring Stability</h4>
               <div class="table-wrap">
@@ -1747,38 +1789,38 @@
                   <thead>
                     <tr>
                       <th>Metric</th>
-                      
+
                       <th>Qwen3-235B-A22B-Instruct-2507</th>
-                      
+
                     </tr>
                   </thead>
                   <tbody>
-                    
+
                     <tr>
                       <td><span class="help-label" data-help="Mean absolute score shift when the same criterion is paraphrased, normalized by score scale span. Lower is better." tabindex="0" aria-label="Mean absolute score shift when the same criterion is paraphrased, normalized by score scale span. Lower is better.">
-      <span class="help-text">Score Stability</span>
+      <span class="help-text">Score Instability</span>
       <span class="help-icon">i</span>
     </span></td>
-                      
+
                       <td class="value ">0.0435</td>
-                      
+
                     </tr>
-                    
+
                     <tr>
                       <td><span class="help-label" data-help="Cross-criterion normalized MAD divided by same-criterion normalized MAD. Lower means paraphrasing stays more isolated to the intended criterion." tabindex="0" aria-label="Cross-criterion normalized MAD divided by same-criterion normalized MAD. Lower means paraphrasing stays more isolated to the intended criterion.">
       <span class="help-text">Spillover</span>
       <span class="help-icon">i</span>
     </span></td>
-                      
+
                       <td class="value ">0.7883</td>
-                      
+
                     </tr>
-                    
+
                   </tbody>
                 </table>
               </div>
             </section>
-            
+
             <section class="group-card">
               <h4>Ranking Consistency</h4>
               <div class="table-wrap">
@@ -1786,52 +1828,52 @@
                   <thead>
                     <tr>
                       <th>Metric</th>
-                      
+
                       <th>Qwen3-235B-A22B-Instruct-2507</th>
-                      
+
                     </tr>
                   </thead>
                   <tbody>
-                    
+
                     <tr>
                       <td><span class="help-label" data-help="Estimated share of ranking pairs that flip when the same criterion is paraphrased." tabindex="0" aria-label="Estimated share of ranking pairs that flip when the same criterion is paraphrased.">
       <span class="help-text">Flips</span>
       <span class="help-icon">i</span>
     </span></td>
-                      
+
                       <td class="value ">0.2%</td>
-                      
+
                     </tr>
-                    
+
                     <tr>
                       <td><span class="help-label" data-help="Average Kendall&#39;s tau-b between baseline ranking and same-criterion paraphrased ranking. Higher is better." tabindex="0" aria-label="Average Kendall&#39;s tau-b between baseline ranking and same-criterion paraphrased ranking. Higher is better.">
       <span class="help-text">Ranking Stability</span>
       <span class="help-icon">i</span>
     </span></td>
-                      
+
                       <td class="value ">0.778</td>
-                      
+
                     </tr>
-                    
+
                     <tr>
                       <td><span class="help-label" data-help="Share of example pairs that receive tied scores when the same criterion is paraphrased." tabindex="0" aria-label="Share of example pairs that receive tied scores when the same criterion is paraphrased.">
       <span class="help-text">Ties</span>
       <span class="help-icon">i</span>
     </span></td>
-                      
+
                       <td class="value ">60.5%</td>
-                      
+
                     </tr>
-                    
+
                   </tbody>
                 </table>
               </div>
             </section>
-            
+
           </div>
         </div>
       </details>
-      
+
 
       <div class="page-nav">
         <button type="button" class="page-toggle" data-page-target="overview" aria-label="Back to overview">←</button>
@@ -1922,6 +1964,87 @@
       node.addEventListener('focus', function() { showTooltip(node); });
       node.addEventListener('blur', hideTooltip);
     });
+  </script>
+  <script>window.__FAIR_J_EXAMPLES__ = [{"model":"Qwen3-235B-A22B-Instruct-2507","example_id":"cnn-test-a02e362c5b8f049848ce718b37b96117485461cf__M20","criterion_id":"coherence","seed":0,"original_criterion":"The summary should be well-structured and well-organized. The summary should not just be a heap of related information, but should build from sentence to sentence to a coherent body of information about a topic.","paraphrased_criterion":"The summary must be logically structured and clearly organized, with sentences that connect smoothly to form a unified and coherent narrative about the topic, rather than presenting disconnected or randomly assembled details.","baseline_score":1,"paraphrased_score":5,"delta":4,"context":"(CNN)A fiery sunset greeted people in Washington Sunday. The deep reddish color caught Seattle native Tim Durkan's eye. He photographed a handful of aerial shots of the sunset warming the city's skyline and shared them on CNN iReport. The stunning sunsets were the result of raging wildfires in parts of Siberia. \"The dramatic sunsets began showing up over the weekend and had Seattle locals wondering where the amber-colored haze was originating from,\" Durken said. The fires were started in southeastern Siberia, by farmers burning grass in their fields. But on April 14, it is believed that the flames quickly grew out of control because of strong winds and spread throughout the region, according to CNN affiliate KOMO-TV. As a result, the fires have destroyed dozens of villages in the region. Rescue crews were able to put out the flames. However, the lingering smoke from the widespread fires were picked up by atmospheric winds. The winds carried the smoke from Siberia across the Pacific Ocean and brought it to the Pacific Northwest. Parts of Oregon, Washington and British Columbia are seeing the results of the smoke, wind and solar light combination. The reason people are seeing an intense red sunset is a result of smoke particles filtering out the shorter wavelength colors from the sunlight like greens, blues, yellows and purples, KOMO-TV said. That means colors like red and orange are able to penetrate the air unfiltered. The colors are especially intense during sunrises and sunsets because there is more atmosphere for the light to travel through to get to a person's eye. As the smoke starts to dissipate, air quality will get better and these fiery sunsets will lose their reddish hue.","candidate":"A fiery sunset greeted people in Washington Sunday."},{"model":"Qwen3-235B-A22B-Instruct-2507","example_id":"cnn-test-a02e362c5b8f049848ce718b37b96117485461cf__M20","criterion_id":"coherence","seed":0,"original_criterion":"The summary should be well-structured and well-organized. The summary should not just be a heap of related information, but should build from sentence to sentence to a coherent body of information about a topic.","paraphrased_criterion":"The summary must be logically structured and clearly organized, with sentences that connect smoothly to form a unified and coherent narrative about the topic, rather than presenting disjointed or randomly assembled details.","baseline_score":1,"paraphrased_score":5,"delta":4,"context":"(CNN)A fiery sunset greeted people in Washington Sunday. The deep reddish color caught Seattle native Tim Durkan's eye. He photographed a handful of aerial shots of the sunset warming the city's skyline and shared them on CNN iReport. The stunning sunsets were the result of raging wildfires in parts of Siberia. \"The dramatic sunsets began showing up over the weekend and had Seattle locals wondering where the amber-colored haze was originating from,\" Durken said. The fires were started in southeastern Siberia, by farmers burning grass in their fields. But on April 14, it is believed that the flames quickly grew out of control because of strong winds and spread throughout the region, according to CNN affiliate KOMO-TV. As a result, the fires have destroyed dozens of villages in the region. Rescue crews were able to put out the flames. However, the lingering smoke from the widespread fires were picked up by atmospheric winds. The winds carried the smoke from Siberia across the Pacific Ocean and brought it to the Pacific Northwest. Parts of Oregon, Washington and British Columbia are seeing the results of the smoke, wind and solar light combination. The reason people are seeing an intense red sunset is a result of smoke particles filtering out the shorter wavelength colors from the sunlight like greens, blues, yellows and purples, KOMO-TV said. That means colors like red and orange are able to penetrate the air unfiltered. The colors are especially intense during sunrises and sunsets because there is more atmosphere for the light to travel through to get to a person's eye. As the smoke starts to dissipate, air quality will get better and these fiery sunsets will lose their reddish hue.","candidate":"A fiery sunset greeted people in Washington Sunday."},{"model":"Qwen3-235B-A22B-Instruct-2507","example_id":"cnn-test-a02e362c5b8f049848ce718b37b96117485461cf__M20","criterion_id":"coherence","seed":1,"original_criterion":"The summary should be well-structured and well-organized. The summary should not just be a heap of related information, but should build from sentence to sentence to a coherent body of information about a topic.","paraphrased_criterion":"The summary must have a clear structure and logical flow, with sentences that connect progressively to form a unified and coherent discussion of the topic.","baseline_score":1,"paraphrased_score":5,"delta":4,"context":"(CNN)A fiery sunset greeted people in Washington Sunday. The deep reddish color caught Seattle native Tim Durkan's eye. He photographed a handful of aerial shots of the sunset warming the city's skyline and shared them on CNN iReport. The stunning sunsets were the result of raging wildfires in parts of Siberia. \"The dramatic sunsets began showing up over the weekend and had Seattle locals wondering where the amber-colored haze was originating from,\" Durken said. The fires were started in southeastern Siberia, by farmers burning grass in their fields. But on April 14, it is believed that the flames quickly grew out of control because of strong winds and spread throughout the region, according to CNN affiliate KOMO-TV. As a result, the fires have destroyed dozens of villages in the region. Rescue crews were able to put out the flames. However, the lingering smoke from the widespread fires were picked up by atmospheric winds. The winds carried the smoke from Siberia across the Pacific Ocean and brought it to the Pacific Northwest. Parts of Oregon, Washington and British Columbia are seeing the results of the smoke, wind and solar light combination. The reason people are seeing an intense red sunset is a result of smoke particles filtering out the shorter wavelength colors from the sunlight like greens, blues, yellows and purples, KOMO-TV said. That means colors like red and orange are able to penetrate the air unfiltered. The colors are especially intense during sunrises and sunsets because there is more atmosphere for the light to travel through to get to a person's eye. As the smoke starts to dissipate, air quality will get better and these fiery sunsets will lose their reddish hue.","candidate":"A fiery sunset greeted people in Washington Sunday."},{"model":"Qwen3-235B-A22B-Instruct-2507","example_id":"cnn-test-a02e362c5b8f049848ce718b37b96117485461cf__M20","criterion_id":"coherence","seed":0,"original_criterion":"The summary should be well-structured and well-organized. The summary should not just be a heap of related information, but should build from sentence to sentence to a coherent body of information about a topic.","paraphrased_criterion":"The summary must have a clear structure and logical flow, with sentences that connect smoothly to form a unified and coherent narrative about the topic, rather than presenting disconnected or randomly assembled details.","baseline_score":1,"paraphrased_score":5,"delta":4,"context":"(CNN)A fiery sunset greeted people in Washington Sunday. The deep reddish color caught Seattle native Tim Durkan's eye. He photographed a handful of aerial shots of the sunset warming the city's skyline and shared them on CNN iReport. The stunning sunsets were the result of raging wildfires in parts of Siberia. \"The dramatic sunsets began showing up over the weekend and had Seattle locals wondering where the amber-colored haze was originating from,\" Durken said. The fires were started in southeastern Siberia, by farmers burning grass in their fields. But on April 14, it is believed that the flames quickly grew out of control because of strong winds and spread throughout the region, according to CNN affiliate KOMO-TV. As a result, the fires have destroyed dozens of villages in the region. Rescue crews were able to put out the flames. However, the lingering smoke from the widespread fires were picked up by atmospheric winds. The winds carried the smoke from Siberia across the Pacific Ocean and brought it to the Pacific Northwest. Parts of Oregon, Washington and British Columbia are seeing the results of the smoke, wind and solar light combination. The reason people are seeing an intense red sunset is a result of smoke particles filtering out the shorter wavelength colors from the sunlight like greens, blues, yellows and purples, KOMO-TV said. That means colors like red and orange are able to penetrate the air unfiltered. The colors are especially intense during sunrises and sunsets because there is more atmosphere for the light to travel through to get to a person's eye. As the smoke starts to dissipate, air quality will get better and these fiery sunsets will lose their reddish hue.","candidate":"A fiery sunset greeted people in Washington Sunday."},{"model":"Qwen3-235B-A22B-Instruct-2507","example_id":"cnn-test-a02e362c5b8f049848ce718b37b96117485461cf__M20","criterion_id":"coherence","seed":0,"original_criterion":"The summary should be well-structured and well-organized. The summary should not just be a heap of related information, but should build from sentence to sentence to a coherent body of information about a topic.","paraphrased_criterion":"The summary must have a clear structure and logical flow, with sentences that connect smoothly to form a unified and coherent presentation of the topic.","baseline_score":1,"paraphrased_score":5,"delta":4,"context":"(CNN)A fiery sunset greeted people in Washington Sunday. The deep reddish color caught Seattle native Tim Durkan's eye. He photographed a handful of aerial shots of the sunset warming the city's skyline and shared them on CNN iReport. The stunning sunsets were the result of raging wildfires in parts of Siberia. \"The dramatic sunsets began showing up over the weekend and had Seattle locals wondering where the amber-colored haze was originating from,\" Durken said. The fires were started in southeastern Siberia, by farmers burning grass in their fields. But on April 14, it is believed that the flames quickly grew out of control because of strong winds and spread throughout the region, according to CNN affiliate KOMO-TV. As a result, the fires have destroyed dozens of villages in the region. Rescue crews were able to put out the flames. However, the lingering smoke from the widespread fires were picked up by atmospheric winds. The winds carried the smoke from Siberia across the Pacific Ocean and brought it to the Pacific Northwest. Parts of Oregon, Washington and British Columbia are seeing the results of the smoke, wind and solar light combination. The reason people are seeing an intense red sunset is a result of smoke particles filtering out the shorter wavelength colors from the sunlight like greens, blues, yellows and purples, KOMO-TV said. That means colors like red and orange are able to penetrate the air unfiltered. The colors are especially intense during sunrises and sunsets because there is more atmosphere for the light to travel through to get to a person's eye. As the smoke starts to dissipate, air quality will get better and these fiery sunsets will lose their reddish hue.","candidate":"A fiery sunset greeted people in Washington Sunday."},{"model":"Qwen3-235B-A22B-Instruct-2507","example_id":"dm-test-0783c68a744df6afa009d16e72709f2b4d90dea1__M13","criterion_id":"fluency","seed":1,"original_criterion":"The quality of individual sentences. Sentences in the summary should have no formatting problems, capitalization errors or obviously ungrammatical sentences that make the text difficult to read.","paraphrased_criterion":"The clarity and correctness of each sentence in the summary, ensuring proper grammar, accurate capitalization, and absence of structural errors that could hinder readability.","baseline_score":5,"paraphrased_score":2,"delta":-3,"context":"Usain Bolt will compete at the IAAF/BTC World Relays in the Bahamas next month, the Jamaica Athletics Administrative Association has announced. The six-time Olympic gold medallist will compete at the relay championship on May 2 and 3 as part of the Jamaican team. 'I'm happy to be part of the Jamaican team for the IAAF / BTC World Relays in the Bahamas. I am fit, healthy and ready to run,' said Bolt. Usain Bolt has confirmed he will be part of Jamaica's team at the World Relays in the Bahamas . Bolt reacts as he wins 4x100m gold at the London Olympic Games in 2012 . 'I hear the meet was a lot of fun last year and there was a great atmosphere. Jamaica has a long and successful tradition in relays and when we put on the national colours we always do our best to make the country proud,' he added. JAAA General Secretary Garth Gayle commented, 'We were extremely pleased that Usain was available for selection and that the world's fastest man will be running for Jamaica. We can expect some sprint magic on the track in the Bahamas on 2nd and 3rd May.' The full Jamaican team list for the competition will be announced shortly. Bolt insists he always does 'his best to make his country proud' while wearing Jamaica colours .","candidate":"usain bolt will compete at the iaaf/btc world relays in the bahamas . the six-time olympic gold medallist will compete at the relay championship on may 2 and 3 as part of the jamaican team . bolt reacts as he wins 4x100m gold at the london olympic games in 2012 ."},{"model":"Qwen3-235B-A22B-Instruct-2507","example_id":"dm-test-0783c68a744df6afa009d16e72709f2b4d90dea1__M13","criterion_id":"fluency","seed":0,"original_criterion":"The quality of individual sentences. Sentences in the summary should have no formatting problems, capitalization errors or obviously ungrammatical sentences that make the text difficult to read.","paraphrased_criterion":"The clarity and correctness of each sentence in the summary, ensuring proper grammar, accurate capitalization, and absence of structural or formatting issues that could hinder readability.","baseline_score":5,"paraphrased_score":2,"delta":-3,"context":"Usain Bolt will compete at the IAAF/BTC World Relays in the Bahamas next month, the Jamaica Athletics Administrative Association has announced. The six-time Olympic gold medallist will compete at the relay championship on May 2 and 3 as part of the Jamaican team. 'I'm happy to be part of the Jamaican team for the IAAF / BTC World Relays in the Bahamas. I am fit, healthy and ready to run,' said Bolt. Usain Bolt has confirmed he will be part of Jamaica's team at the World Relays in the Bahamas . Bolt reacts as he wins 4x100m gold at the London Olympic Games in 2012 . 'I hear the meet was a lot of fun last year and there was a great atmosphere. Jamaica has a long and successful tradition in relays and when we put on the national colours we always do our best to make the country proud,' he added. JAAA General Secretary Garth Gayle commented, 'We were extremely pleased that Usain was available for selection and that the world's fastest man will be running for Jamaica. We can expect some sprint magic on the track in the Bahamas on 2nd and 3rd May.' The full Jamaican team list for the competition will be announced shortly. Bolt insists he always does 'his best to make his country proud' while wearing Jamaica colours .","candidate":"usain bolt will compete at the iaaf/btc world relays in the bahamas . the six-time olympic gold medallist will compete at the relay championship on may 2 and 3 as part of the jamaican team . bolt reacts as he wins 4x100m gold at the london olympic games in 2012 ."},{"model":"Qwen3-235B-A22B-Instruct-2507","example_id":"cnn-test-c05bda9b387ec8ae43803170b6f59b4b82505db9__M20","criterion_id":"coherence","seed":3,"original_criterion":"The summary should be well-structured and well-organized. The summary should not just be a heap of related information, but should build from sentence to sentence to a coherent body of information about a topic.","paraphrased_criterion":"The summary must be logically structured and clearly organized, with sentences that connect smoothly to form a unified and coherent narrative about the topic, rather than presenting disconnected or randomly assembled details.","baseline_score":3,"paraphrased_score":5,"delta":2,"context":"(CNN)ISIS on Wednesday released more than 200 Yazidis, a minority group whose members were killed, captured and displaced when the Islamist terror organization overtook their towns in northern Iraq last summer, officials said. Most of those released were women and children; the rest were ill or elderly, said Rassol Omar, a commander in the Peshmerga force that defends  northern Iraq's semi-autonomous Kurdish region. Omar didn't say what led to the release, other than asserting that Arab tribal leaders helped to coordinate it. The freed Yazidis were received by Peshmerga, who sent them to the Kurdish regional capital, Irbil, said Nuri Osman, an official with Iraq's Kurdistan Regional Government. It wasn't immediately clear what motivated Wednesday's release, Osman said. Osman said 217 Yazidis were released. Omar, the Peshmerga commander, had a higher count: 228. ISIS previously released scores of other Yazidis -- largely children and the elderly -- since attacking the group's towns last year. The Sunni Islamist militant group steamrolled into Iraq's north last summer, forcing hundreds of thousands of minorities -- Yazidis among them -- from their homes. Yazidis are of Kurdish descent, and their religion is considered a pre-Islamic sect that draws from Christianity, Judaism and Zoroastrianism. One of the oldest religious communities in the world, the Yazidis have long suffered persecution, with many Muslims referring to them as devil worshipers. ISIS' cruelty to them has been extraordinary. ISIS' conquest of the town of Sinjar, in particular, provoked a major humanitarian crisis as some Yazidis fled into the mountains -- where many became trapped for a time without food and water -- and others fled by foot into neighboring Syria. ISIS slaughtered Yazidis by the hundreds, Yian Dakhil, the only lawmaker representing the Yazidis in Iraq's Parliament, told CNN last year. Reports emerged from some Yazidi survivors that ISIS raped and enslaved female Yazidi captives. An international coalition responded, first by airdropping supplies in the mountains. Rescues came next. And then, starting in August, the United States and other nations conducted airstrikes targeting ISIS in Iraq and Syria. The U.S. State Department estimates that 500,000 Yazidis live in northern Iraq, accounting for less than 1% of the country's population. CNN's Raja Razek reported from Beirut. CNN's Jason Hanna wrote from Atlanta. CNN's Hamdi Alkshali, Faith Karimi and Yousuf Basil contributed to this report.","candidate":"ISIS released over 200 Yazidis on Wednesday."},{"model":"Qwen3-235B-A22B-Instruct-2507","example_id":"cnn-test-c05bda9b387ec8ae43803170b6f59b4b82505db9__M20","criterion_id":"coherence","seed":3,"original_criterion":"The summary should be well-structured and well-organized. The summary should not just be a heap of related information, but should build from sentence to sentence to a coherent body of information about a topic.","paraphrased_criterion":"The summary must be logically structured and clearly organized, with sentences that connect smoothly to form a unified and coherent narrative about the topic, rather than presenting disjointed or randomly assembled details.","baseline_score":3,"paraphrased_score":5,"delta":2,"context":"(CNN)ISIS on Wednesday released more than 200 Yazidis, a minority group whose members were killed, captured and displaced when the Islamist terror organization overtook their towns in northern Iraq last summer, officials said. Most of those released were women and children; the rest were ill or elderly, said Rassol Omar, a commander in the Peshmerga force that defends  northern Iraq's semi-autonomous Kurdish region. Omar didn't say what led to the release, other than asserting that Arab tribal leaders helped to coordinate it. The freed Yazidis were received by Peshmerga, who sent them to the Kurdish regional capital, Irbil, said Nuri Osman, an official with Iraq's Kurdistan Regional Government. It wasn't immediately clear what motivated Wednesday's release, Osman said. Osman said 217 Yazidis were released. Omar, the Peshmerga commander, had a higher count: 228. ISIS previously released scores of other Yazidis -- largely children and the elderly -- since attacking the group's towns last year. The Sunni Islamist militant group steamrolled into Iraq's north last summer, forcing hundreds of thousands of minorities -- Yazidis among them -- from their homes. Yazidis are of Kurdish descent, and their religion is considered a pre-Islamic sect that draws from Christianity, Judaism and Zoroastrianism. One of the oldest religious communities in the world, the Yazidis have long suffered persecution, with many Muslims referring to them as devil worshipers. ISIS' cruelty to them has been extraordinary. ISIS' conquest of the town of Sinjar, in particular, provoked a major humanitarian crisis as some Yazidis fled into the mountains -- where many became trapped for a time without food and water -- and others fled by foot into neighboring Syria. ISIS slaughtered Yazidis by the hundreds, Yian Dakhil, the only lawmaker representing the Yazidis in Iraq's Parliament, told CNN last year. Reports emerged from some Yazidi survivors that ISIS raped and enslaved female Yazidi captives. An international coalition responded, first by airdropping supplies in the mountains. Rescues came next. And then, starting in August, the United States and other nations conducted airstrikes targeting ISIS in Iraq and Syria. The U.S. State Department estimates that 500,000 Yazidis live in northern Iraq, accounting for less than 1% of the country's population. CNN's Raja Razek reported from Beirut. CNN's Jason Hanna wrote from Atlanta. CNN's Hamdi Alkshali, Faith Karimi and Yousuf Basil contributed to this report.","candidate":"ISIS released over 200 Yazidis on Wednesday."},{"model":"Qwen3-235B-A22B-Instruct-2507","example_id":"cnn-test-c05bda9b387ec8ae43803170b6f59b4b82505db9__M20","criterion_id":"coherence","seed":3,"original_criterion":"The summary should be well-structured and well-organized. The summary should not just be a heap of related information, but should build from sentence to sentence to a coherent body of information about a topic.","paraphrased_criterion":"The summary must have a clear structure and logical flow, with sentences that connect progressively to form a unified and coherent discussion of the topic.","baseline_score":3,"paraphrased_score":5,"delta":2,"context":"(CNN)ISIS on Wednesday released more than 200 Yazidis, a minority group whose members were killed, captured and displaced when the Islamist terror organization overtook their towns in northern Iraq last summer, officials said. Most of those released were women and children; the rest were ill or elderly, said Rassol Omar, a commander in the Peshmerga force that defends  northern Iraq's semi-autonomous Kurdish region. Omar didn't say what led to the release, other than asserting that Arab tribal leaders helped to coordinate it. The freed Yazidis were received by Peshmerga, who sent them to the Kurdish regional capital, Irbil, said Nuri Osman, an official with Iraq's Kurdistan Regional Government. It wasn't immediately clear what motivated Wednesday's release, Osman said. Osman said 217 Yazidis were released. Omar, the Peshmerga commander, had a higher count: 228. ISIS previously released scores of other Yazidis -- largely children and the elderly -- since attacking the group's towns last year. The Sunni Islamist militant group steamrolled into Iraq's north last summer, forcing hundreds of thousands of minorities -- Yazidis among them -- from their homes. Yazidis are of Kurdish descent, and their religion is considered a pre-Islamic sect that draws from Christianity, Judaism and Zoroastrianism. One of the oldest religious communities in the world, the Yazidis have long suffered persecution, with many Muslims referring to them as devil worshipers. ISIS' cruelty to them has been extraordinary. ISIS' conquest of the town of Sinjar, in particular, provoked a major humanitarian crisis as some Yazidis fled into the mountains -- where many became trapped for a time without food and water -- and others fled by foot into neighboring Syria. ISIS slaughtered Yazidis by the hundreds, Yian Dakhil, the only lawmaker representing the Yazidis in Iraq's Parliament, told CNN last year. Reports emerged from some Yazidi survivors that ISIS raped and enslaved female Yazidi captives. An international coalition responded, first by airdropping supplies in the mountains. Rescues came next. And then, starting in August, the United States and other nations conducted airstrikes targeting ISIS in Iraq and Syria. The U.S. State Department estimates that 500,000 Yazidis live in northern Iraq, accounting for less than 1% of the country's population. CNN's Raja Razek reported from Beirut. CNN's Jason Hanna wrote from Atlanta. CNN's Hamdi Alkshali, Faith Karimi and Yousuf Basil contributed to this report.","candidate":"ISIS released over 200 Yazidis on Wednesday."},{"model":"Qwen3-235B-A22B-Instruct-2507","example_id":"cnn-test-c05bda9b387ec8ae43803170b6f59b4b82505db9__M20","criterion_id":"coherence","seed":3,"original_criterion":"The summary should be well-structured and well-organized. The summary should not just be a heap of related information, but should build from sentence to sentence to a coherent body of information about a topic.","paraphrased_criterion":"The summary must have a clear structure and logical flow, with sentences that connect smoothly to form a unified and coherent narrative about the topic, rather than presenting disconnected or randomly assembled details.","baseline_score":3,"paraphrased_score":5,"delta":2,"context":"(CNN)ISIS on Wednesday released more than 200 Yazidis, a minority group whose members were killed, captured and displaced when the Islamist terror organization overtook their towns in northern Iraq last summer, officials said. Most of those released were women and children; the rest were ill or elderly, said Rassol Omar, a commander in the Peshmerga force that defends  northern Iraq's semi-autonomous Kurdish region. Omar didn't say what led to the release, other than asserting that Arab tribal leaders helped to coordinate it. The freed Yazidis were received by Peshmerga, who sent them to the Kurdish regional capital, Irbil, said Nuri Osman, an official with Iraq's Kurdistan Regional Government. It wasn't immediately clear what motivated Wednesday's release, Osman said. Osman said 217 Yazidis were released. Omar, the Peshmerga commander, had a higher count: 228. ISIS previously released scores of other Yazidis -- largely children and the elderly -- since attacking the group's towns last year. The Sunni Islamist militant group steamrolled into Iraq's north last summer, forcing hundreds of thousands of minorities -- Yazidis among them -- from their homes. Yazidis are of Kurdish descent, and their religion is considered a pre-Islamic sect that draws from Christianity, Judaism and Zoroastrianism. One of the oldest religious communities in the world, the Yazidis have long suffered persecution, with many Muslims referring to them as devil worshipers. ISIS' cruelty to them has been extraordinary. ISIS' conquest of the town of Sinjar, in particular, provoked a major humanitarian crisis as some Yazidis fled into the mountains -- where many became trapped for a time without food and water -- and others fled by foot into neighboring Syria. ISIS slaughtered Yazidis by the hundreds, Yian Dakhil, the only lawmaker representing the Yazidis in Iraq's Parliament, told CNN last year. Reports emerged from some Yazidi survivors that ISIS raped and enslaved female Yazidi captives. An international coalition responded, first by airdropping supplies in the mountains. Rescues came next. And then, starting in August, the United States and other nations conducted airstrikes targeting ISIS in Iraq and Syria. The U.S. State Department estimates that 500,000 Yazidis live in northern Iraq, accounting for less than 1% of the country's population. CNN's Raja Razek reported from Beirut. CNN's Jason Hanna wrote from Atlanta. CNN's Hamdi Alkshali, Faith Karimi and Yousuf Basil contributed to this report.","candidate":"ISIS released over 200 Yazidis on Wednesday."},{"model":"Qwen3-235B-A22B-Instruct-2507","example_id":"cnn-test-c05bda9b387ec8ae43803170b6f59b4b82505db9__M20","criterion_id":"coherence","seed":3,"original_criterion":"The summary should be well-structured and well-organized. The summary should not just be a heap of related information, but should build from sentence to sentence to a coherent body of information about a topic.","paraphrased_criterion":"The summary must have a clear structure and logical flow, with sentences that connect smoothly to form a unified and coherent presentation of the topic.","baseline_score":3,"paraphrased_score":5,"delta":2,"context":"(CNN)ISIS on Wednesday released more than 200 Yazidis, a minority group whose members were killed, captured and displaced when the Islamist terror organization overtook their towns in northern Iraq last summer, officials said. Most of those released were women and children; the rest were ill or elderly, said Rassol Omar, a commander in the Peshmerga force that defends  northern Iraq's semi-autonomous Kurdish region. Omar didn't say what led to the release, other than asserting that Arab tribal leaders helped to coordinate it. The freed Yazidis were received by Peshmerga, who sent them to the Kurdish regional capital, Irbil, said Nuri Osman, an official with Iraq's Kurdistan Regional Government. It wasn't immediately clear what motivated Wednesday's release, Osman said. Osman said 217 Yazidis were released. Omar, the Peshmerga commander, had a higher count: 228. ISIS previously released scores of other Yazidis -- largely children and the elderly -- since attacking the group's towns last year. The Sunni Islamist militant group steamrolled into Iraq's north last summer, forcing hundreds of thousands of minorities -- Yazidis among them -- from their homes. Yazidis are of Kurdish descent, and their religion is considered a pre-Islamic sect that draws from Christianity, Judaism and Zoroastrianism. One of the oldest religious communities in the world, the Yazidis have long suffered persecution, with many Muslims referring to them as devil worshipers. ISIS' cruelty to them has been extraordinary. ISIS' conquest of the town of Sinjar, in particular, provoked a major humanitarian crisis as some Yazidis fled into the mountains -- where many became trapped for a time without food and water -- and others fled by foot into neighboring Syria. ISIS slaughtered Yazidis by the hundreds, Yian Dakhil, the only lawmaker representing the Yazidis in Iraq's Parliament, told CNN last year. Reports emerged from some Yazidi survivors that ISIS raped and enslaved female Yazidi captives. An international coalition responded, first by airdropping supplies in the mountains. Rescues came next. And then, starting in August, the United States and other nations conducted airstrikes targeting ISIS in Iraq and Syria. The U.S. State Department estimates that 500,000 Yazidis live in northern Iraq, accounting for less than 1% of the country's population. CNN's Raja Razek reported from Beirut. CNN's Jason Hanna wrote from Atlanta. CNN's Hamdi Alkshali, Faith Karimi and Yousuf Basil contributed to this report.","candidate":"ISIS released over 200 Yazidis on Wednesday."},{"model":"Qwen3-235B-A22B-Instruct-2507","example_id":"dm-test-1747dcd6a007ee97954b6b10cde549bf82f6a4eb__M23","criterion_id":"coherence","seed":4,"original_criterion":"The summary should be well-structured and well-organized. The summary should not just be a heap of related information, but should build from sentence to sentence to a coherent body of information about a topic.","paraphrased_criterion":"The summary must be logically structured and clearly organized, with sentences that connect smoothly to form a unified and coherent narrative about the topic, rather than presenting disconnected or randomly assembled details.","baseline_score":3,"paraphrased_score":5,"delta":2,"context":"Mexican restaurant Chipotle has decided to tap into the $70 billion food delivery market by teaming up with an app to bring burritos straight to customers' doors. The fast-casual chain will work with the Postmates app to begin offering delivery for online and mobile orders in 67 cities, according to a report in Nation's Restaurant News. But Mexican food fans should know that the restaurant plans to add a nine per cent service charge - with the delivery fees for Postmates beginning at $5 and up, depending on distance and demand. New venture: Mexican restaurant Chipotle has decided to tap into the $70 billion food delivery market by teaming up with an app to bring burritos straight to customers' doors . Chipotle is thought to have turned down previous offers of collaboration with third-party delivery services - but has now given Postmates the green light, New York Daily News reports. The app hires independent contractors who drive their own cars in a similar model to Uber taxis. Chipotle has gone from strength to strength in recent years and this month two presidential candidates have been spotted in their restaurants. Republican contender Marco Rubio is a regular in the outlets and recently told MailOnline that he always tips staff. Cashing on delivery market: The fast-casual chain will work with the Postmates app to begin offering delivery for online and mobile orders in 67 cities . And just one day into her presidential campaign, Hillary Clinton was seen in a Chipotle in Maumee, Ohio where she ordered a chicken dish with guacamole, a chicken salad and fruit juice. Chipotle is not the only franchise hoping to cash in on the lucrative delivery market. Starbucks, which will deliver cups of coffee in parts of Seattle and New York by the end of the year, has also partnered with Postmates. Taco Bell recently announced plans to test a delivery service this year, McDonald's 'McDelivery' program is in the planning process and Burger King has launched a pilot program in select markets, including parts of New York City, through bkdelivers.com. Celebrity customers: Hillary Clinton was spotted ordering a meal at Chipotle in Ohio earlier this month - one day into her presidential campaign . Another candidate: Security camera footage obtained by conservative news publication IJ Review released online this month shows Florida senator Marco Rubio visiting a Washington, D.C. Chipotle .","candidate":"the fast-casual chain will work with the postmates app to begin offering delivery for online and mobile orders in 67 cities ."},{"model":"Qwen3-235B-A22B-Instruct-2507","example_id":"dm-test-1747dcd6a007ee97954b6b10cde549bf82f6a4eb__M23","criterion_id":"coherence","seed":0,"original_criterion":"The summary should be well-structured and well-organized. The summary should not just be a heap of related information, but should build from sentence to sentence to a coherent body of information about a topic.","paraphrased_criterion":"The summary must be logically structured and clearly organized, with sentences that connect smoothly to form a unified and coherent narrative about the topic, rather than presenting disjointed or randomly assembled details.","baseline_score":3,"paraphrased_score":5,"delta":2,"context":"Mexican restaurant Chipotle has decided to tap into the $70 billion food delivery market by teaming up with an app to bring burritos straight to customers' doors. The fast-casual chain will work with the Postmates app to begin offering delivery for online and mobile orders in 67 cities, according to a report in Nation's Restaurant News. But Mexican food fans should know that the restaurant plans to add a nine per cent service charge - with the delivery fees for Postmates beginning at $5 and up, depending on distance and demand. New venture: Mexican restaurant Chipotle has decided to tap into the $70 billion food delivery market by teaming up with an app to bring burritos straight to customers' doors . Chipotle is thought to have turned down previous offers of collaboration with third-party delivery services - but has now given Postmates the green light, New York Daily News reports. The app hires independent contractors who drive their own cars in a similar model to Uber taxis. Chipotle has gone from strength to strength in recent years and this month two presidential candidates have been spotted in their restaurants. Republican contender Marco Rubio is a regular in the outlets and recently told MailOnline that he always tips staff. Cashing on delivery market: The fast-casual chain will work with the Postmates app to begin offering delivery for online and mobile orders in 67 cities . And just one day into her presidential campaign, Hillary Clinton was seen in a Chipotle in Maumee, Ohio where she ordered a chicken dish with guacamole, a chicken salad and fruit juice. Chipotle is not the only franchise hoping to cash in on the lucrative delivery market. Starbucks, which will deliver cups of coffee in parts of Seattle and New York by the end of the year, has also partnered with Postmates. Taco Bell recently announced plans to test a delivery service this year, McDonald's 'McDelivery' program is in the planning process and Burger King has launched a pilot program in select markets, including parts of New York City, through bkdelivers.com. Celebrity customers: Hillary Clinton was spotted ordering a meal at Chipotle in Ohio earlier this month - one day into her presidential campaign . Another candidate: Security camera footage obtained by conservative news publication IJ Review released online this month shows Florida senator Marco Rubio visiting a Washington, D.C. Chipotle .","candidate":"the fast-casual chain will work with the postmates app to begin offering delivery for online and mobile orders in 67 cities ."},{"model":"Qwen3-235B-A22B-Instruct-2507","example_id":"dm-test-1747dcd6a007ee97954b6b10cde549bf82f6a4eb__M23","criterion_id":"coherence","seed":4,"original_criterion":"The summary should be well-structured and well-organized. The summary should not just be a heap of related information, but should build from sentence to sentence to a coherent body of information about a topic.","paraphrased_criterion":"The summary must have a clear structure and logical flow, with sentences that connect smoothly to form a unified and coherent presentation of the topic.","baseline_score":3,"paraphrased_score":5,"delta":2,"context":"Mexican restaurant Chipotle has decided to tap into the $70 billion food delivery market by teaming up with an app to bring burritos straight to customers' doors. The fast-casual chain will work with the Postmates app to begin offering delivery for online and mobile orders in 67 cities, according to a report in Nation's Restaurant News. But Mexican food fans should know that the restaurant plans to add a nine per cent service charge - with the delivery fees for Postmates beginning at $5 and up, depending on distance and demand. New venture: Mexican restaurant Chipotle has decided to tap into the $70 billion food delivery market by teaming up with an app to bring burritos straight to customers' doors . Chipotle is thought to have turned down previous offers of collaboration with third-party delivery services - but has now given Postmates the green light, New York Daily News reports. The app hires independent contractors who drive their own cars in a similar model to Uber taxis. Chipotle has gone from strength to strength in recent years and this month two presidential candidates have been spotted in their restaurants. Republican contender Marco Rubio is a regular in the outlets and recently told MailOnline that he always tips staff. Cashing on delivery market: The fast-casual chain will work with the Postmates app to begin offering delivery for online and mobile orders in 67 cities . And just one day into her presidential campaign, Hillary Clinton was seen in a Chipotle in Maumee, Ohio where she ordered a chicken dish with guacamole, a chicken salad and fruit juice. Chipotle is not the only franchise hoping to cash in on the lucrative delivery market. Starbucks, which will deliver cups of coffee in parts of Seattle and New York by the end of the year, has also partnered with Postmates. Taco Bell recently announced plans to test a delivery service this year, McDonald's 'McDelivery' program is in the planning process and Burger King has launched a pilot program in select markets, including parts of New York City, through bkdelivers.com. Celebrity customers: Hillary Clinton was spotted ordering a meal at Chipotle in Ohio earlier this month - one day into her presidential campaign . Another candidate: Security camera footage obtained by conservative news publication IJ Review released online this month shows Florida senator Marco Rubio visiting a Washington, D.C. Chipotle .","candidate":"the fast-casual chain will work with the postmates app to begin offering delivery for online and mobile orders in 67 cities ."},{"model":"Qwen3-235B-A22B-Instruct-2507","example_id":"dm-test-2feca9acf532e33f1ab7442c442c8e19787d8d7b__M13","criterion_id":"coherence","seed":1,"original_criterion":"The summary should be well-structured and well-organized. The summary should not just be a heap of related information, but should build from sentence to sentence to a coherent body of information about a topic.","paraphrased_criterion":"The summary must be logically structured and clearly organized, with sentences that connect smoothly to form a unified and coherent narrative about the topic, rather than presenting disconnected or randomly assembled details.","baseline_score":2,"paraphrased_score":4,"delta":2,"context":"Cats and dogs have the advantage over marine pets in that they can interact with humans through the sense of touch. But that doesn’t prevent one man from dipping his hand in the fish tank and giving his blood parrot cichlid  a stroke. Capturing his remarkable relationship on camera, Roland Giroux gently cups the fish with his hand from within side the tank and then treats it to a massage. The fish begins relaxing in the man's hand and stays very still as the owner begins to stroke it with his finger . The fish initially moves away before swimming in a full circle and returning to rest in between the man’s fingers. The man then begins massaging the pet by running his finger along it and the fish stays completely still as if enjoying the sensation. Repeating the process, the fish swims off once more before immediately returning to the man’s hand to be stroked again. Later in the video the fish interacts further with the man by swimming up his arm and circling his fingers. The man places his hand into the tank and gently cups the blood parrot cichlid with his fingers . Before burying its face into his hand and remaining very still once more. The video concludes with the man removing his hand from the tank and the fish, clearly saddened by this, following it up to the surface of the water. According to Mr Giroux, who uploads many videos of his fish to his Youtube channel, the blood parrot cichlid used to share its tank with two other fish. The fish swims away from the man's hand a few times in the video but returns to be massaged . But he was forced to remove the other two from the tank when he noticed that they were bullying his prized pet. He then set about interacting with the fish by feeding it frozen blood worms by hand and eventually he noticed it becoming more sociable. After a while the fish enjoyed being stroked and Mr Giroux noted that it would become frustrated if he didn’t play with it on a daily basis. The fish begins swimming around the man's fingers and towards the surface as he removes his hand . The man massages and plays with his fish for at least 15 minutes each day. The blood parrot cichlid is a hybrid of the midas and the redhead cichlid and was first bred in Taiwan around 1986.","candidate":"roland giroux gently cups the fish with his hand from within side the tank and then treats it to a massage . the fish begins relaxing in the man 's hand and stays very still as the owner begins to stroke it with his finger ."},{"model":"Qwen3-235B-A22B-Instruct-2507","example_id":"dm-test-2feca9acf532e33f1ab7442c442c8e19787d8d7b__M13","criterion_id":"coherence","seed":1,"original_criterion":"The summary should be well-structured and well-organized. The summary should not just be a heap of related information, but should build from sentence to sentence to a coherent body of information about a topic.","paraphrased_criterion":"The summary must be logically structured and clearly organized, with sentences that connect smoothly to form a unified and coherent narrative about the topic, rather than presenting disjointed or randomly assembled details.","baseline_score":2,"paraphrased_score":4,"delta":2,"context":"Cats and dogs have the advantage over marine pets in that they can interact with humans through the sense of touch. But that doesn’t prevent one man from dipping his hand in the fish tank and giving his blood parrot cichlid  a stroke. Capturing his remarkable relationship on camera, Roland Giroux gently cups the fish with his hand from within side the tank and then treats it to a massage. The fish begins relaxing in the man's hand and stays very still as the owner begins to stroke it with his finger . The fish initially moves away before swimming in a full circle and returning to rest in between the man’s fingers. The man then begins massaging the pet by running his finger along it and the fish stays completely still as if enjoying the sensation. Repeating the process, the fish swims off once more before immediately returning to the man’s hand to be stroked again. Later in the video the fish interacts further with the man by swimming up his arm and circling his fingers. The man places his hand into the tank and gently cups the blood parrot cichlid with his fingers . Before burying its face into his hand and remaining very still once more. The video concludes with the man removing his hand from the tank and the fish, clearly saddened by this, following it up to the surface of the water. According to Mr Giroux, who uploads many videos of his fish to his Youtube channel, the blood parrot cichlid used to share its tank with two other fish. The fish swims away from the man's hand a few times in the video but returns to be massaged . But he was forced to remove the other two from the tank when he noticed that they were bullying his prized pet. He then set about interacting with the fish by feeding it frozen blood worms by hand and eventually he noticed it becoming more sociable. After a while the fish enjoyed being stroked and Mr Giroux noted that it would become frustrated if he didn’t play with it on a daily basis. The fish begins swimming around the man's fingers and towards the surface as he removes his hand . The man massages and plays with his fish for at least 15 minutes each day. The blood parrot cichlid is a hybrid of the midas and the redhead cichlid and was first bred in Taiwan around 1986.","candidate":"roland giroux gently cups the fish with his hand from within side the tank and then treats it to a massage . the fish begins relaxing in the man 's hand and stays very still as the owner begins to stroke it with his finger ."},{"model":"Qwen3-235B-A22B-Instruct-2507","example_id":"dm-test-2feca9acf532e33f1ab7442c442c8e19787d8d7b__M13","criterion_id":"coherence","seed":1,"original_criterion":"The summary should be well-structured and well-organized. The summary should not just be a heap of related information, but should build from sentence to sentence to a coherent body of information about a topic.","paraphrased_criterion":"The summary must have a clear structure and logical flow, with sentences that connect smoothly to form a unified and coherent narrative about the topic, rather than presenting disconnected or randomly assembled details.","baseline_score":2,"paraphrased_score":4,"delta":2,"context":"Cats and dogs have the advantage over marine pets in that they can interact with humans through the sense of touch. But that doesn’t prevent one man from dipping his hand in the fish tank and giving his blood parrot cichlid  a stroke. Capturing his remarkable relationship on camera, Roland Giroux gently cups the fish with his hand from within side the tank and then treats it to a massage. The fish begins relaxing in the man's hand and stays very still as the owner begins to stroke it with his finger . The fish initially moves away before swimming in a full circle and returning to rest in between the man’s fingers. The man then begins massaging the pet by running his finger along it and the fish stays completely still as if enjoying the sensation. Repeating the process, the fish swims off once more before immediately returning to the man’s hand to be stroked again. Later in the video the fish interacts further with the man by swimming up his arm and circling his fingers. The man places his hand into the tank and gently cups the blood parrot cichlid with his fingers . Before burying its face into his hand and remaining very still once more. The video concludes with the man removing his hand from the tank and the fish, clearly saddened by this, following it up to the surface of the water. According to Mr Giroux, who uploads many videos of his fish to his Youtube channel, the blood parrot cichlid used to share its tank with two other fish. The fish swims away from the man's hand a few times in the video but returns to be massaged . But he was forced to remove the other two from the tank when he noticed that they were bullying his prized pet. He then set about interacting with the fish by feeding it frozen blood worms by hand and eventually he noticed it becoming more sociable. After a while the fish enjoyed being stroked and Mr Giroux noted that it would become frustrated if he didn’t play with it on a daily basis. The fish begins swimming around the man's fingers and towards the surface as he removes his hand . The man massages and plays with his fish for at least 15 minutes each day. The blood parrot cichlid is a hybrid of the midas and the redhead cichlid and was first bred in Taiwan around 1986.","candidate":"roland giroux gently cups the fish with his hand from within side the tank and then treats it to a massage . the fish begins relaxing in the man 's hand and stays very still as the owner begins to stroke it with his finger ."},{"model":"Qwen3-235B-A22B-Instruct-2507","example_id":"dm-test-2feca9acf532e33f1ab7442c442c8e19787d8d7b__M13","criterion_id":"coherence","seed":1,"original_criterion":"The summary should be well-structured and well-organized. The summary should not just be a heap of related information, but should build from sentence to sentence to a coherent body of information about a topic.","paraphrased_criterion":"The summary must have a clear structure and logical flow, with sentences that connect smoothly to form a unified and coherent presentation of the topic.","baseline_score":2,"paraphrased_score":4,"delta":2,"context":"Cats and dogs have the advantage over marine pets in that they can interact with humans through the sense of touch. But that doesn’t prevent one man from dipping his hand in the fish tank and giving his blood parrot cichlid  a stroke. Capturing his remarkable relationship on camera, Roland Giroux gently cups the fish with his hand from within side the tank and then treats it to a massage. The fish begins relaxing in the man's hand and stays very still as the owner begins to stroke it with his finger . The fish initially moves away before swimming in a full circle and returning to rest in between the man’s fingers. The man then begins massaging the pet by running his finger along it and the fish stays completely still as if enjoying the sensation. Repeating the process, the fish swims off once more before immediately returning to the man’s hand to be stroked again. Later in the video the fish interacts further with the man by swimming up his arm and circling his fingers. The man places his hand into the tank and gently cups the blood parrot cichlid with his fingers . Before burying its face into his hand and remaining very still once more. The video concludes with the man removing his hand from the tank and the fish, clearly saddened by this, following it up to the surface of the water. According to Mr Giroux, who uploads many videos of his fish to his Youtube channel, the blood parrot cichlid used to share its tank with two other fish. The fish swims away from the man's hand a few times in the video but returns to be massaged . But he was forced to remove the other two from the tank when he noticed that they were bullying his prized pet. He then set about interacting with the fish by feeding it frozen blood worms by hand and eventually he noticed it becoming more sociable. After a while the fish enjoyed being stroked and Mr Giroux noted that it would become frustrated if he didn’t play with it on a daily basis. The fish begins swimming around the man's fingers and towards the surface as he removes his hand . The man massages and plays with his fish for at least 15 minutes each day. The blood parrot cichlid is a hybrid of the midas and the redhead cichlid and was first bred in Taiwan around 1986.","candidate":"roland giroux gently cups the fish with his hand from within side the tank and then treats it to a massage . the fish begins relaxing in the man 's hand and stays very still as the owner begins to stroke it with his finger ."},{"model":"Qwen3-235B-A22B-Instruct-2507","example_id":"dm-test-2feca9acf532e33f1ab7442c442c8e19787d8d7b__M8","criterion_id":"coherence","seed":0,"original_criterion":"The summary should be well-structured and well-organized. The summary should not just be a heap of related information, but should build from sentence to sentence to a coherent body of information about a topic.","paraphrased_criterion":"The summary must be logically structured and clearly organized, with sentences that connect smoothly to form a unified and coherent narrative about the topic, rather than presenting disconnected or randomly assembled details.","baseline_score":2,"paraphrased_score":4,"delta":2,"context":"Cats and dogs have the advantage over marine pets in that they can interact with humans through the sense of touch. But that doesn’t prevent one man from dipping his hand in the fish tank and giving his blood parrot cichlid  a stroke. Capturing his remarkable relationship on camera, Roland Giroux gently cups the fish with his hand from within side the tank and then treats it to a massage. The fish begins relaxing in the man's hand and stays very still as the owner begins to stroke it with his finger . The fish initially moves away before swimming in a full circle and returning to rest in between the man’s fingers. The man then begins massaging the pet by running his finger along it and the fish stays completely still as if enjoying the sensation. Repeating the process, the fish swims off once more before immediately returning to the man’s hand to be stroked again. Later in the video the fish interacts further with the man by swimming up his arm and circling his fingers. The man places his hand into the tank and gently cups the blood parrot cichlid with his fingers . Before burying its face into his hand and remaining very still once more. The video concludes with the man removing his hand from the tank and the fish, clearly saddened by this, following it up to the surface of the water. According to Mr Giroux, who uploads many videos of his fish to his Youtube channel, the blood parrot cichlid used to share its tank with two other fish. The fish swims away from the man's hand a few times in the video but returns to be massaged . But he was forced to remove the other two from the tank when he noticed that they were bullying his prized pet. He then set about interacting with the fish by feeding it frozen blood worms by hand and eventually he noticed it becoming more sociable. After a while the fish enjoyed being stroked and Mr Giroux noted that it would become frustrated if he didn’t play with it on a daily basis. The fish begins swimming around the man's fingers and towards the surface as he removes his hand . The man massages and plays with his fish for at least 15 minutes each day. The blood parrot cichlid is a hybrid of the midas and the redhead cichlid and was first bred in Taiwan around 1986.","candidate":"roland giroux gently cups the fish with his hand from within side the tank and then treats it to a massage . the fish begins relaxing in the man 's hand and stays very still as the owner begins to stroke it with his finger ."},{"model":"Qwen3-235B-A22B-Instruct-2507","example_id":"dm-test-2feca9acf532e33f1ab7442c442c8e19787d8d7b__M8","criterion_id":"coherence","seed":0,"original_criterion":"The summary should be well-structured and well-organized. The summary should not just be a heap of related information, but should build from sentence to sentence to a coherent body of information about a topic.","paraphrased_criterion":"The summary must be logically structured and clearly organized, with sentences that connect smoothly to form a unified and coherent narrative about the topic, rather than presenting disjointed or randomly assembled details.","baseline_score":2,"paraphrased_score":4,"delta":2,"context":"Cats and dogs have the advantage over marine pets in that they can interact with humans through the sense of touch. But that doesn’t prevent one man from dipping his hand in the fish tank and giving his blood parrot cichlid  a stroke. Capturing his remarkable relationship on camera, Roland Giroux gently cups the fish with his hand from within side the tank and then treats it to a massage. The fish begins relaxing in the man's hand and stays very still as the owner begins to stroke it with his finger . The fish initially moves away before swimming in a full circle and returning to rest in between the man’s fingers. The man then begins massaging the pet by running his finger along it and the fish stays completely still as if enjoying the sensation. Repeating the process, the fish swims off once more before immediately returning to the man’s hand to be stroked again. Later in the video the fish interacts further with the man by swimming up his arm and circling his fingers. The man places his hand into the tank and gently cups the blood parrot cichlid with his fingers . Before burying its face into his hand and remaining very still once more. The video concludes with the man removing his hand from the tank and the fish, clearly saddened by this, following it up to the surface of the water. According to Mr Giroux, who uploads many videos of his fish to his Youtube channel, the blood parrot cichlid used to share its tank with two other fish. The fish swims away from the man's hand a few times in the video but returns to be massaged . But he was forced to remove the other two from the tank when he noticed that they were bullying his prized pet. He then set about interacting with the fish by feeding it frozen blood worms by hand and eventually he noticed it becoming more sociable. After a while the fish enjoyed being stroked and Mr Giroux noted that it would become frustrated if he didn’t play with it on a daily basis. The fish begins swimming around the man's fingers and towards the surface as he removes his hand . The man massages and plays with his fish for at least 15 minutes each day. The blood parrot cichlid is a hybrid of the midas and the redhead cichlid and was first bred in Taiwan around 1986.","candidate":"roland giroux gently cups the fish with his hand from within side the tank and then treats it to a massage . the fish begins relaxing in the man 's hand and stays very still as the owner begins to stroke it with his finger ."},{"model":"Qwen3-235B-A22B-Instruct-2507","example_id":"dm-test-2feca9acf532e33f1ab7442c442c8e19787d8d7b__M8","criterion_id":"coherence","seed":1,"original_criterion":"The summary should be well-structured and well-organized. The summary should not just be a heap of related information, but should build from sentence to sentence to a coherent body of information about a topic.","paraphrased_criterion":"The summary must have a clear structure and logical flow, with sentences that connect smoothly to form a unified and coherent narrative about the topic, rather than presenting disconnected or randomly assembled details.","baseline_score":2,"paraphrased_score":4,"delta":2,"context":"Cats and dogs have the advantage over marine pets in that they can interact with humans through the sense of touch. But that doesn’t prevent one man from dipping his hand in the fish tank and giving his blood parrot cichlid  a stroke. Capturing his remarkable relationship on camera, Roland Giroux gently cups the fish with his hand from within side the tank and then treats it to a massage. The fish begins relaxing in the man's hand and stays very still as the owner begins to stroke it with his finger . The fish initially moves away before swimming in a full circle and returning to rest in between the man’s fingers. The man then begins massaging the pet by running his finger along it and the fish stays completely still as if enjoying the sensation. Repeating the process, the fish swims off once more before immediately returning to the man’s hand to be stroked again. Later in the video the fish interacts further with the man by swimming up his arm and circling his fingers. The man places his hand into the tank and gently cups the blood parrot cichlid with his fingers . Before burying its face into his hand and remaining very still once more. The video concludes with the man removing his hand from the tank and the fish, clearly saddened by this, following it up to the surface of the water. According to Mr Giroux, who uploads many videos of his fish to his Youtube channel, the blood parrot cichlid used to share its tank with two other fish. The fish swims away from the man's hand a few times in the video but returns to be massaged . But he was forced to remove the other two from the tank when he noticed that they were bullying his prized pet. He then set about interacting with the fish by feeding it frozen blood worms by hand and eventually he noticed it becoming more sociable. After a while the fish enjoyed being stroked and Mr Giroux noted that it would become frustrated if he didn’t play with it on a daily basis. The fish begins swimming around the man's fingers and towards the surface as he removes his hand . The man massages and plays with his fish for at least 15 minutes each day. The blood parrot cichlid is a hybrid of the midas and the redhead cichlid and was first bred in Taiwan around 1986.","candidate":"roland giroux gently cups the fish with his hand from within side the tank and then treats it to a massage . the fish begins relaxing in the man 's hand and stays very still as the owner begins to stroke it with his finger ."},{"model":"Qwen3-235B-A22B-Instruct-2507","example_id":"dm-test-2feca9acf532e33f1ab7442c442c8e19787d8d7b__M8","criterion_id":"coherence","seed":0,"original_criterion":"The summary should be well-structured and well-organized. The summary should not just be a heap of related information, but should build from sentence to sentence to a coherent body of information about a topic.","paraphrased_criterion":"The summary must have a clear structure and logical flow, with sentences that connect smoothly to form a unified and coherent presentation of the topic.","baseline_score":2,"paraphrased_score":4,"delta":2,"context":"Cats and dogs have the advantage over marine pets in that they can interact with humans through the sense of touch. But that doesn’t prevent one man from dipping his hand in the fish tank and giving his blood parrot cichlid  a stroke. Capturing his remarkable relationship on camera, Roland Giroux gently cups the fish with his hand from within side the tank and then treats it to a massage. The fish begins relaxing in the man's hand and stays very still as the owner begins to stroke it with his finger . The fish initially moves away before swimming in a full circle and returning to rest in between the man’s fingers. The man then begins massaging the pet by running his finger along it and the fish stays completely still as if enjoying the sensation. Repeating the process, the fish swims off once more before immediately returning to the man’s hand to be stroked again. Later in the video the fish interacts further with the man by swimming up his arm and circling his fingers. The man places his hand into the tank and gently cups the blood parrot cichlid with his fingers . Before burying its face into his hand and remaining very still once more. The video concludes with the man removing his hand from the tank and the fish, clearly saddened by this, following it up to the surface of the water. According to Mr Giroux, who uploads many videos of his fish to his Youtube channel, the blood parrot cichlid used to share its tank with two other fish. The fish swims away from the man's hand a few times in the video but returns to be massaged . But he was forced to remove the other two from the tank when he noticed that they were bullying his prized pet. He then set about interacting with the fish by feeding it frozen blood worms by hand and eventually he noticed it becoming more sociable. After a while the fish enjoyed being stroked and Mr Giroux noted that it would become frustrated if he didn’t play with it on a daily basis. The fish begins swimming around the man's fingers and towards the surface as he removes his hand . The man massages and plays with his fish for at least 15 minutes each day. The blood parrot cichlid is a hybrid of the midas and the redhead cichlid and was first bred in Taiwan around 1986.","candidate":"roland giroux gently cups the fish with his hand from within side the tank and then treats it to a massage . the fish begins relaxing in the man 's hand and stays very still as the owner begins to stroke it with his finger ."},{"model":"Qwen3-235B-A22B-Instruct-2507","example_id":"dm-test-36352fd1c61fd0c593ee7b84cbe213aa9b444439__M5","criterion_id":"coherence","seed":0,"original_criterion":"The summary should be well-structured and well-organized. The summary should not just be a heap of related information, but should build from sentence to sentence to a coherent body of information about a topic.","paraphrased_criterion":"The summary must have a clear structure and logical flow, with sentences that connect smoothly to form a unified and coherent presentation of the topic.","baseline_score":3,"paraphrased_score":5,"delta":2,"context":"A man has been arrested in connection with the death of a transgender escort  who was found strangled and beaten last month. Vanessa Santillan's body was found in a £400,000 flat in Fulham, south west London, at the end of March. The 33-year-old Mexican national, who worked as a transgender escort, died as a result of injuries to the head and neck. Vanessa Santillan, 33, was killed at the end of March. Her body was found in a flat in Fulham having been strangled and beaten to death . A 23-year-old man was arrested in connection with her death but has been bailed. He has been told to return to a London police station for further questioning at a later date. Meanwhile Scotland Yard is appealing to anyone who may have had contact with Miss Santillan in the hours before her death. According to her website Miss Santillan worked in London, Paris and Miami as an escort. Police did not confirm whether her profession was central to the investigation but insisted they would do 'everything' to solve the case. London Ambulance Service was called to a flat in Romily Court, Fulham, on March 28 at around 9.30pm. Miss Santillan was pronounced dead at the scene having suffered injuries to her head and neck. The woman had been working as a transgender escort, her website revealed. Miss Santillan is understood to have moved to London from Mexico . The woman, who described herself as visiting London from Miami, was pronounced dead at the scene last month . Miss Santillan spoke of her love for London and Paris online in the weeks before her death. Police are urging anyone who had contact with her in the hours before her death to come forward . Detective Chief Inspector Rebecca Reeves, who leads the investigation, said: 'We want to speak to anyone who saw Vanessa on Friday or Saturday. 'We need to know why this has happened and we want help from anyone who knew her while she was in London.' In the weeks before her death Miss Santillan took to social media to talk of her love for London. On her website she described herself as visiting from Miami in search of 'upscale' gentlemen. Miss Santillan's body was found when London Ambulance Service was called to an address in Fulham, south west London . Sorry we are not currently accepting comments on this article.","candidate":"vanessa santillan 's body was found in a £ 400,000 flat in fulham , south west london , at the end of march . the 33 - year - old mexican national , who worked as a transgender escort , died as a result of injuries to the head and neck . vanessa santillan , 33 , was killed at the end of march ."},{"model":"Qwen3-235B-A22B-Instruct-2507","example_id":"dm-test-46609841ffd23e9c22d1507edf7b176ecc4d834f__M20","criterion_id":"coherence","seed":0,"original_criterion":"The summary should be well-structured and well-organized. The summary should not just be a heap of related information, but should build from sentence to sentence to a coherent body of information about a topic.","paraphrased_criterion":"The summary must be logically structured and clearly organized, with sentences that connect smoothly to form a unified and coherent narrative about the topic, rather than presenting disconnected or randomly assembled details.","baseline_score":3,"paraphrased_score":5,"delta":2,"context":"Former Holland forward and assistant coach Patrick Kluivert has made a winning start in World Cup qualifying as coach of Curacao. The Caribbean island team advanced to the second qualifying round in CONCACAF for the 2018 tournament late Tuesday. Curacao drew 2-2 in a second-leg match at Montserrat to win 4-3 on aggregate. Kluivert's team won 2-1 on Saturday in Willemstad. Patrick Kluivert has helped Curacao progress to the next stage of 2018 World Cup qualification . Former Holland assistant Kluivert (far right) worked with Louis van Gaal (centre) at the 2014 World Cup . The first-round encounter was headed to extra time on Tuesday until former Holland Under 21 international Charlton Vicento scored in the 87th minute, five minutes after coming on as a substitute. Curacao face Cuba in the next round, on June 8 and 16. Kluivert, whose mother is from Curacao, was a World Cup losing semi-finalist in 1998 as a player, and last year as assistant to coach Louis van Gaal.","candidate":"Kluivert's side won 2-1 on Saturday in Willemstad."},{"model":"Qwen3-235B-A22B-Instruct-2507","example_id":"dm-test-46609841ffd23e9c22d1507edf7b176ecc4d834f__M20","criterion_id":"coherence","seed":0,"original_criterion":"The summary should be well-structured and well-organized. The summary should not just be a heap of related information, but should build from sentence to sentence to a coherent body of information about a topic.","paraphrased_criterion":"The summary must be logically structured and clearly organized, with sentences that connect smoothly to form a unified and coherent narrative about the topic, rather than presenting disjointed or randomly assembled details.","baseline_score":3,"paraphrased_score":5,"delta":2,"context":"Former Holland forward and assistant coach Patrick Kluivert has made a winning start in World Cup qualifying as coach of Curacao. The Caribbean island team advanced to the second qualifying round in CONCACAF for the 2018 tournament late Tuesday. Curacao drew 2-2 in a second-leg match at Montserrat to win 4-3 on aggregate. Kluivert's team won 2-1 on Saturday in Willemstad. Patrick Kluivert has helped Curacao progress to the next stage of 2018 World Cup qualification . Former Holland assistant Kluivert (far right) worked with Louis van Gaal (centre) at the 2014 World Cup . The first-round encounter was headed to extra time on Tuesday until former Holland Under 21 international Charlton Vicento scored in the 87th minute, five minutes after coming on as a substitute. Curacao face Cuba in the next round, on June 8 and 16. Kluivert, whose mother is from Curacao, was a World Cup losing semi-finalist in 1998 as a player, and last year as assistant to coach Louis van Gaal.","candidate":"Kluivert's side won 2-1 on Saturday in Willemstad."},{"model":"Qwen3-235B-A22B-Instruct-2507","example_id":"dm-test-46609841ffd23e9c22d1507edf7b176ecc4d834f__M20","criterion_id":"coherence","seed":0,"original_criterion":"The summary should be well-structured and well-organized. The summary should not just be a heap of related information, but should build from sentence to sentence to a coherent body of information about a topic.","paraphrased_criterion":"The summary must have a clear structure and logical flow, with sentences that connect progressively to form a unified and coherent discussion of the topic.","baseline_score":3,"paraphrased_score":5,"delta":2,"context":"Former Holland forward and assistant coach Patrick Kluivert has made a winning start in World Cup qualifying as coach of Curacao. The Caribbean island team advanced to the second qualifying round in CONCACAF for the 2018 tournament late Tuesday. Curacao drew 2-2 in a second-leg match at Montserrat to win 4-3 on aggregate. Kluivert's team won 2-1 on Saturday in Willemstad. Patrick Kluivert has helped Curacao progress to the next stage of 2018 World Cup qualification . Former Holland assistant Kluivert (far right) worked with Louis van Gaal (centre) at the 2014 World Cup . The first-round encounter was headed to extra time on Tuesday until former Holland Under 21 international Charlton Vicento scored in the 87th minute, five minutes after coming on as a substitute. Curacao face Cuba in the next round, on June 8 and 16. Kluivert, whose mother is from Curacao, was a World Cup losing semi-finalist in 1998 as a player, and last year as assistant to coach Louis van Gaal.","candidate":"Kluivert's side won 2-1 on Saturday in Willemstad."},{"model":"Qwen3-235B-A22B-Instruct-2507","example_id":"dm-test-46609841ffd23e9c22d1507edf7b176ecc4d834f__M20","criterion_id":"coherence","seed":0,"original_criterion":"The summary should be well-structured and well-organized. The summary should not just be a heap of related information, but should build from sentence to sentence to a coherent body of information about a topic.","paraphrased_criterion":"The summary must have a clear structure and logical flow, with sentences that connect smoothly to form a unified and coherent narrative about the topic, rather than presenting disconnected or randomly assembled details.","baseline_score":3,"paraphrased_score":5,"delta":2,"context":"Former Holland forward and assistant coach Patrick Kluivert has made a winning start in World Cup qualifying as coach of Curacao. The Caribbean island team advanced to the second qualifying round in CONCACAF for the 2018 tournament late Tuesday. Curacao drew 2-2 in a second-leg match at Montserrat to win 4-3 on aggregate. Kluivert's team won 2-1 on Saturday in Willemstad. Patrick Kluivert has helped Curacao progress to the next stage of 2018 World Cup qualification . Former Holland assistant Kluivert (far right) worked with Louis van Gaal (centre) at the 2014 World Cup . The first-round encounter was headed to extra time on Tuesday until former Holland Under 21 international Charlton Vicento scored in the 87th minute, five minutes after coming on as a substitute. Curacao face Cuba in the next round, on June 8 and 16. Kluivert, whose mother is from Curacao, was a World Cup losing semi-finalist in 1998 as a player, and last year as assistant to coach Louis van Gaal.","candidate":"Kluivert's side won 2-1 on Saturday in Willemstad."},{"model":"Qwen3-235B-A22B-Instruct-2507","example_id":"dm-test-46609841ffd23e9c22d1507edf7b176ecc4d834f__M20","criterion_id":"coherence","seed":0,"original_criterion":"The summary should be well-structured and well-organized. The summary should not just be a heap of related information, but should build from sentence to sentence to a coherent body of information about a topic.","paraphrased_criterion":"The summary must have a clear structure and logical flow, with sentences that connect smoothly to form a unified and coherent presentation of the topic.","baseline_score":3,"paraphrased_score":5,"delta":2,"context":"Former Holland forward and assistant coach Patrick Kluivert has made a winning start in World Cup qualifying as coach of Curacao. The Caribbean island team advanced to the second qualifying round in CONCACAF for the 2018 tournament late Tuesday. Curacao drew 2-2 in a second-leg match at Montserrat to win 4-3 on aggregate. Kluivert's team won 2-1 on Saturday in Willemstad. Patrick Kluivert has helped Curacao progress to the next stage of 2018 World Cup qualification . Former Holland assistant Kluivert (far right) worked with Louis van Gaal (centre) at the 2014 World Cup . The first-round encounter was headed to extra time on Tuesday until former Holland Under 21 international Charlton Vicento scored in the 87th minute, five minutes after coming on as a substitute. Curacao face Cuba in the next round, on June 8 and 16. Kluivert, whose mother is from Curacao, was a World Cup losing semi-finalist in 1998 as a player, and last year as assistant to coach Louis van Gaal.","candidate":"Kluivert's side won 2-1 on Saturday in Willemstad."},{"model":"Qwen3-235B-A22B-Instruct-2507","example_id":"dm-test-632cfdb03aacd90a34a470f6a70b47eee62ec5f0__M20","criterion_id":"coherence","seed":0,"original_criterion":"The summary should be well-structured and well-organized. The summary should not just be a heap of related information, but should build from sentence to sentence to a coherent body of information about a topic.","paraphrased_criterion":"The summary must be logically structured and clearly organized, with sentences that connect smoothly to form a unified and coherent narrative about the topic, rather than presenting disjointed or randomly assembled details.","baseline_score":3,"paraphrased_score":5,"delta":2,"context":"Serge Gnabry says he is feeling 'better and better' all the time as the Arsenal teenager prepares to return after more than a year out. The 19-year-old midfielder impressed for the Gunners last season, but his progress has been stunted by a serious knee injury. Gnabry, as a result, has not featured since the Champions League last-16 second leg against Bayern Munich in March 2014, although he is at last closing in on a return. Serge Gnabry played 90 minutes for Arsenal Under 21s against Reading on Monday . The 19-year-old has not featured for the first team since March last year after suffering serious knee injury . Gnabry impressed for the Gunners last season before his progress was curtailed due to injury . The Germany Under-21 international played for Arsenal's development squad as they lost 1-0 to Reading on Monday and is now over his injury worries. 'I am feeling good, I'm feeling better and better,' Gnabry told Arsenal Media. 'It is my second 90 minutes [in the space of a week], I am playing and over my injury so it is all good and I am looking forward to the next game.'","candidate":"Gnabry has not featured for the first team since March last year after suffering serious knee injury"},{"model":"Qwen3-235B-A22B-Instruct-2507","example_id":"dm-test-632cfdb03aacd90a34a470f6a70b47eee62ec5f0__M20","criterion_id":"coherence","seed":1,"original_criterion":"The summary should be well-structured and well-organized. The summary should not just be a heap of related information, but should build from sentence to sentence to a coherent body of information about a topic.","paraphrased_criterion":"The summary must have a clear structure and logical flow, with sentences that connect progressively to form a unified and coherent discussion of the topic.","baseline_score":3,"paraphrased_score":5,"delta":2,"context":"Serge Gnabry says he is feeling 'better and better' all the time as the Arsenal teenager prepares to return after more than a year out. The 19-year-old midfielder impressed for the Gunners last season, but his progress has been stunted by a serious knee injury. Gnabry, as a result, has not featured since the Champions League last-16 second leg against Bayern Munich in March 2014, although he is at last closing in on a return. Serge Gnabry played 90 minutes for Arsenal Under 21s against Reading on Monday . The 19-year-old has not featured for the first team since March last year after suffering serious knee injury . Gnabry impressed for the Gunners last season before his progress was curtailed due to injury . The Germany Under-21 international played for Arsenal's development squad as they lost 1-0 to Reading on Monday and is now over his injury worries. 'I am feeling good, I'm feeling better and better,' Gnabry told Arsenal Media. 'It is my second 90 minutes [in the space of a week], I am playing and over my injury so it is all good and I am looking forward to the next game.'","candidate":"Gnabry has not featured for the first team since March last year after suffering serious knee injury"},{"model":"Qwen3-235B-A22B-Instruct-2507","example_id":"dm-test-632cfdb03aacd90a34a470f6a70b47eee62ec5f0__M20","criterion_id":"coherence","seed":1,"original_criterion":"The summary should be well-structured and well-organized. The summary should not just be a heap of related information, but should build from sentence to sentence to a coherent body of information about a topic.","paraphrased_criterion":"The summary must have a clear structure and logical flow, with sentences that connect smoothly to form a unified and coherent presentation of the topic.","baseline_score":3,"paraphrased_score":5,"delta":2,"context":"Serge Gnabry says he is feeling 'better and better' all the time as the Arsenal teenager prepares to return after more than a year out. The 19-year-old midfielder impressed for the Gunners last season, but his progress has been stunted by a serious knee injury. Gnabry, as a result, has not featured since the Champions League last-16 second leg against Bayern Munich in March 2014, although he is at last closing in on a return. Serge Gnabry played 90 minutes for Arsenal Under 21s against Reading on Monday . The 19-year-old has not featured for the first team since March last year after suffering serious knee injury . Gnabry impressed for the Gunners last season before his progress was curtailed due to injury . The Germany Under-21 international played for Arsenal's development squad as they lost 1-0 to Reading on Monday and is now over his injury worries. 'I am feeling good, I'm feeling better and better,' Gnabry told Arsenal Media. 'It is my second 90 minutes [in the space of a week], I am playing and over my injury so it is all good and I am looking forward to the next game.'","candidate":"Gnabry has not featured for the first team since March last year after suffering serious knee injury"},{"model":"Qwen3-235B-A22B-Instruct-2507","example_id":"dm-test-97bbda7ec22a736cd174b51513c72a6372d13d35__M20","criterion_id":"coherence","seed":4,"original_criterion":"The summary should be well-structured and well-organized. The summary should not just be a heap of related information, but should build from sentence to sentence to a coherent body of information about a topic.","paraphrased_criterion":"The summary must have a clear structure and logical flow, with sentences that connect smoothly to form a unified and coherent presentation of the topic.","baseline_score":2,"paraphrased_score":4,"delta":2,"context":"The glowing blue letters that once lit the Bronx from above Yankee Stadium failed to find a buyer at an auction at Sotheby's on Wednesday. While the 13 letters were expected to bring in anywhere from $300,000 to $600,000, the only person who raised a paddle - for $260,000 - was a Sotheby's employee trying to jump start the bidding. The current owner of the signage is Yankee Hall of Famer Reggie Jackson, who purchased the 10-feet-tall letters for an undisclosed amount after the stadium saw its final game in 2008. No love: 13 letters that hung over Yankee Stadium were estimated to bring in anywhere from $300,000 to $600,000, but received no bids at a Sotheby's auction Wednesday . The 68-year-old Yankee said he wanted 'a new generation to own and enjoy this icon of the Yankees and of New York City.' The letters had beamed from atop Yankee Stadium near Grand Concourse in the Bronx since 1976, the year before Jackson joined the team. ESPN reports Jackson, who attended the auction, bought the letters 'on a lark.' Jackson joked that once he saw the size of the letters, some of which are also 10-feet-wide, he realized he might have gotten ahead of himself. He promised before the auction that if the letters were bought by a bidder in the United States, he would fly out to see the signage himself at the winner's home. Yankee Stadium: The letters at the stadium, which was built in 1923, were installed in 1976 and taken down in 2008 . In addition to the letters, Sotheby's was auctioning off a New York Mets bullpen car from the late 60s. Despite the Mets memorabilia being estimated at only $20,000 to $30,000, it raked in a winning bid of $112,500 at auction.","candidate":"The Yankees' iconic stadium in New York City was sold at a Sotheby's auction Wednesday. The letters that were once lit from atop Yankee Stadium were expected to bring in anywhere from $300,000 to $600,000."},{"model":"Qwen3-235B-A22B-Instruct-2507","example_id":"dm-test-cf4ba8f94f2dd5604eb8f8a4e655c10cf0996365__M20","criterion_id":"coherence","seed":1,"original_criterion":"The summary should be well-structured and well-organized. The summary should not just be a heap of related information, but should build from sentence to sentence to a coherent body of information about a topic.","paraphrased_criterion":"The summary must be logically structured and clearly organized, with sentences that connect smoothly to form a unified and coherent narrative about the topic, rather than presenting disconnected or randomly assembled details.","baseline_score":3,"paraphrased_score":5,"delta":2,"context":"New Zealand police are appealing to the public to help identify a man who robbed a Christchurch dairy wearing a 'distinctive' cartoon mask. The offender, snapped on security footage in a fluoro orange sweatshirt and oversized  mask, is described as being 'very tall'. He made off with the dairy's till and about $1500 in cash on Saturday, Stuff.co.nz reports. A man in a 'distinctive' cartoon mask demanded cash from owner's daughter on Saturday . Police were reportedly called to the Union St dairy, in east Christchurch at about 12.30pm, after receiving reports of a masked man demanding cash from the dairy owner's daughter. Christina Chen told reporters her 30-year-old daughter ran out of the shop screaming 'robber!'. The masked man threw the cash register to the ground and took off with the till drawer and up to $1,500. 'Normally they just rob cigarettes and some more things, it's not a big issue,' Chen told Stuff.co.nz. 'But this time they were scary because they wore a mask, and we don't know who it is.' Police say there were no signs of any weapons used but that the robber remained at large. They are asking anyone with information that may help to identify this person to call Crimestoppers on 0800 555 111 or to message police online.","candidate":"New Zealand police are appealing to the public to help identify a man who robbed a Christchurch dairy wearing a 'distinctive' cartoon mask."},{"model":"Qwen3-235B-A22B-Instruct-2507","example_id":"dm-test-cf4ba8f94f2dd5604eb8f8a4e655c10cf0996365__M20","criterion_id":"coherence","seed":0,"original_criterion":"The summary should be well-structured and well-organized. The summary should not just be a heap of related information, but should build from sentence to sentence to a coherent body of information about a topic.","paraphrased_criterion":"The summary must be logically structured and clearly organized, with sentences that connect smoothly to form a unified and coherent narrative about the topic, rather than presenting disjointed or randomly assembled details.","baseline_score":3,"paraphrased_score":5,"delta":2,"context":"New Zealand police are appealing to the public to help identify a man who robbed a Christchurch dairy wearing a 'distinctive' cartoon mask. The offender, snapped on security footage in a fluoro orange sweatshirt and oversized  mask, is described as being 'very tall'. He made off with the dairy's till and about $1500 in cash on Saturday, Stuff.co.nz reports. A man in a 'distinctive' cartoon mask demanded cash from owner's daughter on Saturday . Police were reportedly called to the Union St dairy, in east Christchurch at about 12.30pm, after receiving reports of a masked man demanding cash from the dairy owner's daughter. Christina Chen told reporters her 30-year-old daughter ran out of the shop screaming 'robber!'. The masked man threw the cash register to the ground and took off with the till drawer and up to $1,500. 'Normally they just rob cigarettes and some more things, it's not a big issue,' Chen told Stuff.co.nz. 'But this time they were scary because they wore a mask, and we don't know who it is.' Police say there were no signs of any weapons used but that the robber remained at large. They are asking anyone with information that may help to identify this person to call Crimestoppers on 0800 555 111 or to message police online.","candidate":"New Zealand police are appealing to the public to help identify a man who robbed a Christchurch dairy wearing a 'distinctive' cartoon mask."},{"model":"Qwen3-235B-A22B-Instruct-2507","example_id":"dm-test-cf4ba8f94f2dd5604eb8f8a4e655c10cf0996365__M20","criterion_id":"coherence","seed":0,"original_criterion":"The summary should be well-structured and well-organized. The summary should not just be a heap of related information, but should build from sentence to sentence to a coherent body of information about a topic.","paraphrased_criterion":"The summary must have a clear structure and logical flow, with sentences that connect progressively to form a unified and coherent discussion of the topic.","baseline_score":3,"paraphrased_score":5,"delta":2,"context":"New Zealand police are appealing to the public to help identify a man who robbed a Christchurch dairy wearing a 'distinctive' cartoon mask. The offender, snapped on security footage in a fluoro orange sweatshirt and oversized  mask, is described as being 'very tall'. He made off with the dairy's till and about $1500 in cash on Saturday, Stuff.co.nz reports. A man in a 'distinctive' cartoon mask demanded cash from owner's daughter on Saturday . Police were reportedly called to the Union St dairy, in east Christchurch at about 12.30pm, after receiving reports of a masked man demanding cash from the dairy owner's daughter. Christina Chen told reporters her 30-year-old daughter ran out of the shop screaming 'robber!'. The masked man threw the cash register to the ground and took off with the till drawer and up to $1,500. 'Normally they just rob cigarettes and some more things, it's not a big issue,' Chen told Stuff.co.nz. 'But this time they were scary because they wore a mask, and we don't know who it is.' Police say there were no signs of any weapons used but that the robber remained at large. They are asking anyone with information that may help to identify this person to call Crimestoppers on 0800 555 111 or to message police online.","candidate":"New Zealand police are appealing to the public to help identify a man who robbed a Christchurch dairy wearing a 'distinctive' cartoon mask."},{"model":"Qwen3-235B-A22B-Instruct-2507","example_id":"dm-test-cf4ba8f94f2dd5604eb8f8a4e655c10cf0996365__M20","criterion_id":"coherence","seed":0,"original_criterion":"The summary should be well-structured and well-organized. The summary should not just be a heap of related information, but should build from sentence to sentence to a coherent body of information about a topic.","paraphrased_criterion":"The summary must have a clear structure and logical flow, with sentences that connect smoothly to form a unified and coherent narrative about the topic, rather than presenting disconnected or randomly assembled details.","baseline_score":3,"paraphrased_score":5,"delta":2,"context":"New Zealand police are appealing to the public to help identify a man who robbed a Christchurch dairy wearing a 'distinctive' cartoon mask. The offender, snapped on security footage in a fluoro orange sweatshirt and oversized  mask, is described as being 'very tall'. He made off with the dairy's till and about $1500 in cash on Saturday, Stuff.co.nz reports. A man in a 'distinctive' cartoon mask demanded cash from owner's daughter on Saturday . Police were reportedly called to the Union St dairy, in east Christchurch at about 12.30pm, after receiving reports of a masked man demanding cash from the dairy owner's daughter. Christina Chen told reporters her 30-year-old daughter ran out of the shop screaming 'robber!'. The masked man threw the cash register to the ground and took off with the till drawer and up to $1,500. 'Normally they just rob cigarettes and some more things, it's not a big issue,' Chen told Stuff.co.nz. 'But this time they were scary because they wore a mask, and we don't know who it is.' Police say there were no signs of any weapons used but that the robber remained at large. They are asking anyone with information that may help to identify this person to call Crimestoppers on 0800 555 111 or to message police online.","candidate":"New Zealand police are appealing to the public to help identify a man who robbed a Christchurch dairy wearing a 'distinctive' cartoon mask."},{"model":"Qwen3-235B-A22B-Instruct-2507","example_id":"dm-test-cf4ba8f94f2dd5604eb8f8a4e655c10cf0996365__M20","criterion_id":"coherence","seed":0,"original_criterion":"The summary should be well-structured and well-organized. The summary should not just be a heap of related information, but should build from sentence to sentence to a coherent body of information about a topic.","paraphrased_criterion":"The summary must have a clear structure and logical flow, with sentences that connect smoothly to form a unified and coherent presentation of the topic.","baseline_score":3,"paraphrased_score":5,"delta":2,"context":"New Zealand police are appealing to the public to help identify a man who robbed a Christchurch dairy wearing a 'distinctive' cartoon mask. The offender, snapped on security footage in a fluoro orange sweatshirt and oversized  mask, is described as being 'very tall'. He made off with the dairy's till and about $1500 in cash on Saturday, Stuff.co.nz reports. A man in a 'distinctive' cartoon mask demanded cash from owner's daughter on Saturday . Police were reportedly called to the Union St dairy, in east Christchurch at about 12.30pm, after receiving reports of a masked man demanding cash from the dairy owner's daughter. Christina Chen told reporters her 30-year-old daughter ran out of the shop screaming 'robber!'. The masked man threw the cash register to the ground and took off with the till drawer and up to $1,500. 'Normally they just rob cigarettes and some more things, it's not a big issue,' Chen told Stuff.co.nz. 'But this time they were scary because they wore a mask, and we don't know who it is.' Police say there were no signs of any weapons used but that the robber remained at large. They are asking anyone with information that may help to identify this person to call Crimestoppers on 0800 555 111 or to message police online.","candidate":"New Zealand police are appealing to the public to help identify a man who robbed a Christchurch dairy wearing a 'distinctive' cartoon mask."},{"model":"Qwen3-235B-A22B-Instruct-2507","example_id":"dm-test-e470f0a87d7513bf880412524332047020422c3f__M14","criterion_id":"coherence","seed":1,"original_criterion":"The summary should be well-structured and well-organized. The summary should not just be a heap of related information, but should build from sentence to sentence to a coherent body of information about a topic.","paraphrased_criterion":"The summary must be logically structured and clearly organized, with sentences that connect smoothly to form a unified and coherent narrative about the topic, rather than presenting disconnected or randomly assembled details.","baseline_score":3,"paraphrased_score":5,"delta":2,"context":"A dress worn by Vivien Leigh when she played Scarlett O'Hara in the classic 1939 film Gone With the Wind has fetched $137,000 at auction. Heritage Auctions offered the gray jacket and skirt, featuring a black zigzag applique, plus more than 150 other items from the Academy Award-winning film at auction on Saturday in Beverly Hills, California. The dress - a jacket and full skirt ensemble - was worn in several key scenes in the 1939 movie, including when Scarlett O'Hara encounters Rhett Butler, played by Clark Gable, and when she gets attacked in the shanty town. Scroll down for video . An outfit worn in several scenes of the 1939 film Gone With The Wind by Vivien Leigh as she played Scarlett O'Hara sold for $137,000 at auction on Saturday . The dress - a jacket and full skirt ensemble - was worn in several key scenes in the 1939 movie but has suffered a little with age and has faded to light gray from original slate blue-gray color . The outfit has suffered a little with age, however. When Leigh wore it in the movie, it was slate blue-gray but over the years it has faded to light gray. It was one of more than 150 items that were part of the private collection of James Tumblin, formerly in charge of the hair and makeup department at Universal Studios. Tumblin began collecting onscreen costumes, props and behind-the-scenes artifacts from the film in the 1960s, amassing a collection of more than 300,000 pieces of memorabilia. During a visit to the Western Costume Company he spotted the Scarlett O'Hara dress on the floor. He learned that the dress was about to be thrown away and negotiated a deal to buy it for $20. Tumblin has 'devoted his life and efforts to promoting Hollywood and this film, touring his items throughout the United States,' said Kathleen Guzman, managing director of Heritage Auctions. Gone With The Wind, which celebrated its 75th anniversary last year, was based on Margaret Mitchell's 1936 best-selling book about a spoiled Old South socialite, played by Vivien Leigh, and co-starred Clark gable as Rhett Butler . Hattie McDaniel (left), Olivia DeHavilland (middle), and Vivien Leigh: McDaniel famously became the first African-American actor to be nominated for and win an Academy Award . Other top selling items from the auction were a straw hat worn by Leigh that sold for $52,500; the trousers and jacket from a suit worn by Clark Gable as Rhett Butler, selling for $55,000; and a black bonnet worn by both Leigh and Olivia De Havilland as Melanie Wilkes, which fetched $30,000. Gone With The Wind, which celebrated its 75th anniversary last year, was based on Margaret Mitchell's 1936 best-selling book about a spoiled Old South socialite. Actress Hattie McDaniel, who played Scarlett's devoted nanny Mammy, a slave, famously became the first African-American actor to be nominated for and win an Academy Award.","candidate":"the dress - a jacket and full skirt ensemble - was worn in several key scenes in the 1939 movie , including when scarlett o'hara encounters rhett butler , played by clark gable ."},{"model":"Qwen3-235B-A22B-Instruct-2507","example_id":"dm-test-e470f0a87d7513bf880412524332047020422c3f__M14","criterion_id":"coherence","seed":1,"original_criterion":"The summary should be well-structured and well-organized. The summary should not just be a heap of related information, but should build from sentence to sentence to a coherent body of information about a topic.","paraphrased_criterion":"The summary must be logically structured and clearly organized, with sentences that connect smoothly to form a unified and coherent narrative about the topic, rather than presenting disjointed or randomly assembled details.","baseline_score":3,"paraphrased_score":5,"delta":2,"context":"A dress worn by Vivien Leigh when she played Scarlett O'Hara in the classic 1939 film Gone With the Wind has fetched $137,000 at auction. Heritage Auctions offered the gray jacket and skirt, featuring a black zigzag applique, plus more than 150 other items from the Academy Award-winning film at auction on Saturday in Beverly Hills, California. The dress - a jacket and full skirt ensemble - was worn in several key scenes in the 1939 movie, including when Scarlett O'Hara encounters Rhett Butler, played by Clark Gable, and when she gets attacked in the shanty town. Scroll down for video . An outfit worn in several scenes of the 1939 film Gone With The Wind by Vivien Leigh as she played Scarlett O'Hara sold for $137,000 at auction on Saturday . The dress - a jacket and full skirt ensemble - was worn in several key scenes in the 1939 movie but has suffered a little with age and has faded to light gray from original slate blue-gray color . The outfit has suffered a little with age, however. When Leigh wore it in the movie, it was slate blue-gray but over the years it has faded to light gray. It was one of more than 150 items that were part of the private collection of James Tumblin, formerly in charge of the hair and makeup department at Universal Studios. Tumblin began collecting onscreen costumes, props and behind-the-scenes artifacts from the film in the 1960s, amassing a collection of more than 300,000 pieces of memorabilia. During a visit to the Western Costume Company he spotted the Scarlett O'Hara dress on the floor. He learned that the dress was about to be thrown away and negotiated a deal to buy it for $20. Tumblin has 'devoted his life and efforts to promoting Hollywood and this film, touring his items throughout the United States,' said Kathleen Guzman, managing director of Heritage Auctions. Gone With The Wind, which celebrated its 75th anniversary last year, was based on Margaret Mitchell's 1936 best-selling book about a spoiled Old South socialite, played by Vivien Leigh, and co-starred Clark gable as Rhett Butler . Hattie McDaniel (left), Olivia DeHavilland (middle), and Vivien Leigh: McDaniel famously became the first African-American actor to be nominated for and win an Academy Award . Other top selling items from the auction were a straw hat worn by Leigh that sold for $52,500; the trousers and jacket from a suit worn by Clark Gable as Rhett Butler, selling for $55,000; and a black bonnet worn by both Leigh and Olivia De Havilland as Melanie Wilkes, which fetched $30,000. Gone With The Wind, which celebrated its 75th anniversary last year, was based on Margaret Mitchell's 1936 best-selling book about a spoiled Old South socialite. Actress Hattie McDaniel, who played Scarlett's devoted nanny Mammy, a slave, famously became the first African-American actor to be nominated for and win an Academy Award.","candidate":"the dress - a jacket and full skirt ensemble - was worn in several key scenes in the 1939 movie , including when scarlett o'hara encounters rhett butler , played by clark gable ."}];</script>
+
+  <script>
+    (function() {
+      var records = window.__FAIR_J_EXAMPLES__ || [];
+      var modelSelect = document.querySelector('[data-example-model]');
+      var criterionSelect = document.querySelector('[data-example-criterion]');
+      var content = document.querySelector('[data-example-content]');
+      var counter = document.querySelector('[data-example-counter]');
+      var currentIndex = 0;
+
+      function escapeHtml(value) {
+        return String(value).replace(/[&<>"']/g, function(character) {
+          return {'&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#039;'}[character];
+        });
+      }
+
+      function uniqueValues(key) {
+        return Array.from(new Set(records.map(function(item) { return item[key]; })));
+      }
+
+      function setOptions(select, values, includeAll) {
+        var options = includeAll ? ['All'].concat(values) : values;
+        select.innerHTML = options.map(function(value) {
+          return '<option value="' + escapeHtml(value) + '">' + escapeHtml(value) + '</option>';
+        }).join('');
+      }
+
+      function filteredRecords() {
+        return records.filter(function(item) {
+          var modelMatches = !modelSelect.value || item.model === modelSelect.value;
+          var criterionMatches = criterionSelect.value === 'All' || item.criterion_id === criterionSelect.value;
+          return modelMatches && criterionMatches;
+        });
+      }
+
+      function render() {
+        var filtered = filteredRecords();
+        if (!filtered.length) {
+          counter.textContent = '0 / 0';
+          content.innerHTML = '<p class="example-empty">No changed-score examples match these filters.</p>';
+          return;
+        }
+        currentIndex = (currentIndex + filtered.length) % filtered.length;
+        var item = filtered[currentIndex];
+        var delta = Number(item.delta);
+        var signedDelta = (delta > 0 ? '+' : '') + delta;
+        counter.textContent = (currentIndex + 1) + ' / ' + filtered.length;
+        content.innerHTML =
+          '<div class="example-meta">' +
+            '<span class="example-chip">' + escapeHtml(item.model) + '</span>' +
+            '<span class="example-chip">' + escapeHtml(item.criterion_id) + '</span>' +
+            '<span class="example-chip">' + escapeHtml(item.example_id) + '</span>' +
+            '<span class="example-chip">seed ' + escapeHtml(item.seed) + '</span>' +
+          '</div>' +
+          '<div class="score-transition">' +
+            '<div class="score-box"><span>Baseline</span><strong>' + escapeHtml(item.baseline_score) + '</strong></div>' +
+            '<span class="score-arrow">→</span>' +
+            '<div class="score-box"><span>Paraphrase</span><strong>' + escapeHtml(item.paraphrased_score) + '</strong></div>' +
+            '<span class="score-delta">(' + escapeHtml(signedDelta) + ')</span>' +
+          '</div>' +
+          '<div class="criterion-compare">' +
+            '<div class="criterion-pane"><h4>Original criterion</h4><p>' + escapeHtml(item.original_criterion) + '</p></div>' +
+            '<div class="criterion-pane"><h4>Paraphrased criterion</h4><p>' + escapeHtml(item.paraphrased_criterion) + '</p></div>' +
+          '</div>' +
+          '<div class="example-text-grid">' +
+            '<div class="example-text-pane"><h4>Context</h4><p>' + escapeHtml(item.context) + '</p></div>' +
+            '<div class="example-text-pane"><h4>Evaluated response</h4><p>' + escapeHtml(item.candidate) + '</p></div>' +
+          '</div>';
+      }
+
+      if (!modelSelect || !criterionSelect || !content || !counter) return;
+      setOptions(modelSelect, uniqueValues('model'), false);
+      setOptions(criterionSelect, uniqueValues('criterion_id'), true);
+      modelSelect.addEventListener('change', function() { currentIndex = 0; render(); });
+      criterionSelect.addEventListener('change', function() { currentIndex = 0; render(); });
+      document.querySelector('[data-example-prev]').addEventListener('click', function() { currentIndex -= 1; render(); });
+      document.querySelector('[data-example-next]').addEventListener('click', function() { currentIndex += 1; render(); });
+      render();
+    })();
   </script>
 </body>
 </html>

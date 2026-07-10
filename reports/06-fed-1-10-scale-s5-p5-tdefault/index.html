@@ -421,10 +421,35 @@
         padding: 10px 12px;
       }
     }
+
+    .example-viewer-card { margin-bottom: 24px; }
+    .example-viewer-controls { display: flex; flex-wrap: wrap; gap: 12px; align-items: end; margin-bottom: 16px; }
+    .example-viewer-controls label { display: grid; gap: 6px; color: var(--muted); font-size: 12px; font-weight: 600; text-transform: uppercase; }
+    .example-viewer-controls select { min-width: 220px; }
+    .example-nav { display: flex; gap: 8px; align-items: center; margin-left: auto; }
+    .example-counter { min-width: 76px; color: var(--muted); text-align: center; font-family: var(--mono); }
+    .example-meta { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 16px; }
+    .example-chip { border: 1px solid var(--line); border-radius: 999px; padding: 5px 9px; background: #f8fafc; color: var(--muted); font-size: 12px; }
+    .score-transition { display: flex; align-items: center; gap: 12px; margin: 4px 0 18px; }
+    .score-box { min-width: 92px; border: 1px solid var(--line); border-radius: 10px; padding: 10px 12px; background: #f8fafc; }
+    .score-box span { display: block; color: var(--muted); font-size: 11px; text-transform: uppercase; }
+    .score-box strong { display: block; margin-top: 3px; font-family: var(--mono); font-size: 22px; }
+    .score-arrow { color: var(--muted); font-size: 22px; }
+    .score-delta { font-family: var(--mono); font-weight: 700; }
+    .criterion-compare { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; margin-bottom: 16px; }
+    .criterion-pane, .example-text-pane { border: 1px solid var(--line); border-radius: 10px; padding: 14px; background: #fff; }
+    .criterion-pane h4, .example-text-pane h4 { margin: 0 0 8px; color: var(--muted); font-size: 12px; text-transform: uppercase; }
+    .criterion-pane p, .example-text-pane p { margin: 0; white-space: pre-wrap; overflow-wrap: anywhere; }
+    .example-text-grid { display: grid; grid-template-columns: minmax(0, 1.35fr) minmax(0, 1fr); gap: 12px; }
+    .example-empty { color: var(--muted); padding: 20px 0; }
+    @media (max-width: 720px) {
+      .criterion-compare, .example-text-grid { grid-template-columns: 1fr; }
+      .example-nav { width: 100%; margin-left: 0; }
+    }
   </style>
 </head>
 <body>
-  
+
   <main>
     <section class="hero">
       <h1>FAIR-J: LLM-as-a-Judge Robustness Report</h1>
@@ -438,54 +463,53 @@
 
       <section>
         <div class="context-grid">
-          
+
           <article class="context-card">
             <h3>Qwen3-235B-A22B-Instruct-2507</h3>
             <dl>
-              
+
               <div>
                 <dt>Judge model</dt>
                 <dd>Qwen/Qwen3-235B-A22B-Instruct-2507</dd>
               </div>
-              
+
               <div>
                 <dt>Paraphrase model</dt>
                 <dd>Qwen/Qwen3-235B-A22B-Instruct-2507</dd>
               </div>
-              
+
               <div>
                 <dt>Examples used</dt>
-                <dd>-</dd>
+                <dd>375</dd>
               </div>
-              
+
               <div>
                 <dt>Paraphrases per criterion</dt>
                 <dd>5</dd>
               </div>
-              
+
               <div>
                 <dt>Repeated calls</dt>
                 <dd>5</dd>
               </div>
-              
+
               <div>
                 <dt>Score scale</dt>
                 <dd>1 - 10</dd>
               </div>
-              
+
             </dl>
           </article>
-          
+
         </div>
       </section>
 
       <section class="summary-grid">
-        
+
         <article class="summary-card">
           <h2>Qwen3-235B-A22B-Instruct-2507</h2>
-          <div class="summary-verdict warn" title="Usable, but one or more stability signals are only moderate.">Review</div>
           <div class="stat-list">
-            
+
             <div class="stat-item">
               <div class="label"><span class="help-label" data-help="Estimated share of ranking pairs that flip when the same criterion is paraphrased." tabindex="0" aria-label="Estimated share of ranking pairs that flip when the same criterion is paraphrased.">
       <span class="help-text">Flips</span>
@@ -493,15 +517,15 @@
     </span></div>
               <div class="value">4.1%</div>
             </div>
-            
+
             <div class="stat-item">
               <div class="label"><span class="help-label" data-help="Mean absolute score shift when the same criterion is paraphrased, normalized by score scale span. Lower is better." tabindex="0" aria-label="Mean absolute score shift when the same criterion is paraphrased, normalized by score scale span. Lower is better.">
-      <span class="help-text">Score Stability</span>
+      <span class="help-text">Score Instability</span>
       <span class="help-icon">i</span>
     </span></div>
               <div class="value">0.0810</div>
             </div>
-            
+
             <div class="stat-item">
               <div class="label"><span class="help-label" data-help="Average Kendall&#39;s tau-b between baseline ranking and same-criterion paraphrased ranking. Higher is better." tabindex="0" aria-label="Average Kendall&#39;s tau-b between baseline ranking and same-criterion paraphrased ranking. Higher is better.">
       <span class="help-text">Ranking Stability</span>
@@ -509,7 +533,7 @@
     </span></div>
               <div class="value">0.748</div>
             </div>
-            
+
             <div class="stat-item">
               <div class="label"><span class="help-label" data-help="Cross-criterion normalized MAD divided by same-criterion normalized MAD. Lower means paraphrasing stays more isolated to the intended criterion." tabindex="0" aria-label="Cross-criterion normalized MAD divided by same-criterion normalized MAD. Lower means paraphrasing stays more isolated to the intended criterion.">
       <span class="help-text">Spillover</span>
@@ -517,16 +541,16 @@
     </span></div>
               <div class="value">0.657</div>
             </div>
-            
+
           </div>
         </article>
-        
+
       </section>
 
       <section class="summary-card calculator-card">
         <div>
           <h3>Noise Calculator</h3>
-          <p>Estimate how same-criterion score stability shrinks as dataset size grows.</p>
+          <p>Estimate how same-criterion score instability shrinks as dataset size grows.</p>
           <div class="calculator-input-row">
             <label for="calc-n">Dataset Size (N):</label>
             <input type="number" id="calc-n" value="1000" min="1">
@@ -548,45 +572,45 @@
               </tr>
             </thead>
             <tbody>
-              
+
               <tr>
-                <td>Score Stability</td>
+                <td>Score Instability</td>
                 <td>How much the score changes when the same criterion is paraphrased.</td>
                 <td class="value">same-criterion MAD / scale span</td>
               </tr>
-              
+
               <tr>
                 <td>Ranking Stability</td>
                 <td>Whether example ordering stays consistent when the same criterion is paraphrased.</td>
                 <td class="value">mean same-criterion Kendall tau-b</td>
               </tr>
-              
+
               <tr>
                 <td>Flips</td>
                 <td>Estimated share of ranking pairs that reverse order after same-criterion paraphrasing.</td>
                 <td class="value">same-criterion discordant pairs / same-criterion total ranking pairs</td>
               </tr>
-              
+
               <tr>
                 <td>Spillover</td>
                 <td>Whether paraphrasing one criterion changes scores on other criteria.</td>
                 <td class="value">cross MAD / same-criterion MAD</td>
               </tr>
-              
+
             </tbody>
           </table>
         </div>
       </section>
 
-      
+
       <details class="section" open>
-        <summary><span class="help-label" data-help="Are scores stable when the same criterion is paraphrased? Lower score stability values and lower spillover mean cleaner dataset-level comparisons." tabindex="0" aria-label="Are scores stable when the same criterion is paraphrased? Lower score stability values and lower spillover mean cleaner dataset-level comparisons.">
+        <summary><span class="help-label" data-help="Are scores stable when the same criterion is paraphrased? Lower score instability values and lower spillover mean cleaner dataset-level comparisons." tabindex="0" aria-label="Are scores stable when the same criterion is paraphrased? Lower score instability values and lower spillover mean cleaner dataset-level comparisons.">
       <span class="help-text">Dataset Level</span>
       <span class="help-icon">i</span>
     </span></summary>
         <div class="section-body">
           <div class="group-grid">
-            
+
             <section class="group-card">
               <h4>Paraphrased vs Base</h4>
               <div class="table-wrap">
@@ -594,42 +618,42 @@
                   <thead>
                     <tr>
                       <th>Metric</th>
-                      
+
                       <th>Qwen3-235B-A22B-Instruct-2507</th>
-                      
+
                     </tr>
                   </thead>
                   <tbody>
-                    
+
                     <tr>
                       <td><span class="help-label" data-help="Mean absolute score shift when the same criterion is paraphrased, normalized by score scale span. Lower is better." tabindex="0" aria-label="Mean absolute score shift when the same criterion is paraphrased, normalized by score scale span. Lower is better.">
-      <span class="help-text">Score Stability</span>
+      <span class="help-text">Score Instability</span>
       <span class="help-icon">i</span>
     </span></td>
-                      
+
                       <td class="value ">0.0810</td>
-                      
+
                     </tr>
-                    
+
                     <tr>
                       <td><span class="help-label" data-help="Cross-criterion normalized MAD divided by same-criterion normalized MAD. Lower means paraphrasing stays more isolated to the intended criterion." tabindex="0" aria-label="Cross-criterion normalized MAD divided by same-criterion normalized MAD. Lower means paraphrasing stays more isolated to the intended criterion.">
       <span class="help-text">Spillover</span>
       <span class="help-icon">i</span>
     </span></td>
-                      
+
                       <td class="value ">0.6570</td>
-                      
+
                     </tr>
-                    
+
                   </tbody>
                 </table>
               </div>
             </section>
-            
+
           </div>
         </div>
       </details>
-      
+
       <details class="section" open>
         <summary><span class="help-label" data-help="Does the judge preserve example ordering when the same criterion is rewritten? Higher ranking stability and lower flips are better." tabindex="0" aria-label="Does the judge preserve example ordering when the same criterion is rewritten? Higher ranking stability and lower flips are better.">
       <span class="help-text">Ranking Consistency</span>
@@ -637,7 +661,7 @@
     </span></summary>
         <div class="section-body">
           <div class="group-grid">
-            
+
             <section class="group-card">
               <h4>Paraphrased vs Base</h4>
               <div class="table-wrap">
@@ -645,52 +669,52 @@
                   <thead>
                     <tr>
                       <th>Metric</th>
-                      
+
                       <th>Qwen3-235B-A22B-Instruct-2507</th>
-                      
+
                     </tr>
                   </thead>
                   <tbody>
-                    
+
                     <tr>
                       <td><span class="help-label" data-help="Estimated share of ranking pairs that flip when the same criterion is paraphrased." tabindex="0" aria-label="Estimated share of ranking pairs that flip when the same criterion is paraphrased.">
       <span class="help-text">Flips</span>
       <span class="help-icon">i</span>
     </span></td>
-                      
+
                       <td class="value ">4.1%</td>
-                      
+
                     </tr>
-                    
+
                     <tr>
                       <td><span class="help-label" data-help="Average Kendall&#39;s tau-b between baseline ranking and same-criterion paraphrased ranking. Higher is better." tabindex="0" aria-label="Average Kendall&#39;s tau-b between baseline ranking and same-criterion paraphrased ranking. Higher is better.">
       <span class="help-text">Ranking Stability</span>
       <span class="help-icon">i</span>
     </span></td>
-                      
+
                       <td class="value ">0.748</td>
-                      
+
                     </tr>
-                    
+
                     <tr>
                       <td><span class="help-label" data-help="Share of example pairs that receive tied scores when the same criterion is paraphrased." tabindex="0" aria-label="Share of example pairs that receive tied scores when the same criterion is paraphrased.">
       <span class="help-text">Ties</span>
       <span class="help-icon">i</span>
     </span></td>
-                      
+
                       <td class="value ">33.7%</td>
-                      
+
                     </tr>
-                    
+
                   </tbody>
                 </table>
               </div>
             </section>
-            
+
           </div>
         </div>
       </details>
-      
+
 
       <details class="section">
         <summary>Statistical Tests</summary>
@@ -699,28 +723,28 @@
             <div class="control-field">
               <label for="stat-combined-select">Score</label>
               <select id="stat-combined-select" data-stat-combined-select>
-                
+
                 <option value="fed_diverse">fed diverse</option>
-                
+
                 <option value="fed_fluent">fed fluent</option>
-                
+
                 <option value="fed_interesting">fed interesting</option>
-                
+
                 <option value="fed_likeable">fed likeable</option>
-                
+
                 <option value="fed_relevant">fed relevant</option>
-                
+
                 <option value="fed_understandable">fed understandable</option>
-                
+
                 <option value="__total__">Total Score (All criteria pooled)</option>
-                
+
               </select>
             </div>
           </div>
-          
+
           <div class="stat-scope is-active" data-stat-scope="fed_diverse">
             <div class="group-grid">
-              
+
               <section class="group-card">
                 <h4>Paraphrased vs Base</h4>
                 <div class="table-wrap">
@@ -728,68 +752,68 @@
                     <thead>
                       <tr>
                         <th>Metric</th>
-                        
+
                         <th>Qwen3-235B-A22B-Instruct-2507</th>
-                        
+
                       </tr>
                     </thead>
                     <tbody>
-                      
+
                       <tr>
                         <td><span class="help-label" data-help="Number of paired observations used by the statistical test." tabindex="0" aria-label="Number of paired observations used by the statistical test.">
       <span class="help-text">N</span>
       <span class="help-icon">i</span>
     </span></td>
-                        
+
                         <td class="value ">375</td>
-                        
+
                       </tr>
-                      
+
                       <tr>
                         <td><span class="help-label" data-help="Average baseline minus perturbation score difference." tabindex="0" aria-label="Average baseline minus perturbation score difference.">
       <span class="help-text">Δ</span>
       <span class="help-icon">i</span>
     </span></td>
-                        
+
                         <td class="value ">-0.047</td>
-                        
+
                       </tr>
-                      
+
                       <tr>
                         <td><span class="help-label" data-help="Paired t-test p-value for baseline versus perturbation differences." tabindex="0" aria-label="Paired t-test p-value for baseline versus perturbation differences.">
       <span class="help-text">Paired t-test p-value</span>
       <span class="help-icon">i</span>
     </span></td>
-                        
+
                         <td class="value muted">0.114</td>
-                        
+
                       </tr>
-                      
+
                       <tr>
                         <td><span class="help-label" data-help="Wilcoxon signed-rank p-value for paired differences." tabindex="0" aria-label="Wilcoxon signed-rank p-value for paired differences.">
       <span class="help-text">Wilcoxon p-value</span>
       <span class="help-icon">i</span>
     </span></td>
-                        
+
                         <td class="value good">0.001</td>
-                        
+
                       </tr>
-                      
+
                       <tr>
                         <td><span class="help-label" data-help="Permutation test p-value for paired differences." tabindex="0" aria-label="Permutation test p-value for paired differences.">
       <span class="help-text">Permutation p-value</span>
       <span class="help-icon">i</span>
     </span></td>
-                        
+
                         <td class="value muted">0.112</td>
-                        
+
                       </tr>
-                      
+
                     </tbody>
                   </table>
                 </div>
               </section>
-              
+
               <section class="group-card">
                 <h4>Deleted vs Base</h4>
                 <div class="table-wrap">
@@ -797,74 +821,74 @@
                     <thead>
                       <tr>
                         <th>Metric</th>
-                        
+
                         <th>Qwen3-235B-A22B-Instruct-2507</th>
-                        
+
                       </tr>
                     </thead>
                     <tbody>
-                      
+
                       <tr>
                         <td><span class="help-label" data-help="Number of paired observations used by the statistical test." tabindex="0" aria-label="Number of paired observations used by the statistical test.">
       <span class="help-text">N</span>
       <span class="help-icon">i</span>
     </span></td>
-                        
+
                         <td class="value ">375</td>
-                        
+
                       </tr>
-                      
+
                       <tr>
                         <td><span class="help-label" data-help="Average baseline minus perturbation score difference." tabindex="0" aria-label="Average baseline minus perturbation score difference.">
       <span class="help-text">Δ</span>
       <span class="help-icon">i</span>
     </span></td>
-                        
+
                         <td class="value ">-0.117</td>
-                        
+
                       </tr>
-                      
+
                       <tr>
                         <td><span class="help-label" data-help="Paired t-test p-value for baseline versus perturbation differences." tabindex="0" aria-label="Paired t-test p-value for baseline versus perturbation differences.">
       <span class="help-text">Paired t-test p-value</span>
       <span class="help-icon">i</span>
     </span></td>
-                        
+
                         <td class="value good">0.004</td>
-                        
+
                       </tr>
-                      
+
                       <tr>
                         <td><span class="help-label" data-help="Wilcoxon signed-rank p-value for paired differences." tabindex="0" aria-label="Wilcoxon signed-rank p-value for paired differences.">
       <span class="help-text">Wilcoxon p-value</span>
       <span class="help-icon">i</span>
     </span></td>
-                        
+
                         <td class="value good">0.000</td>
-                        
+
                       </tr>
-                      
+
                       <tr>
                         <td><span class="help-label" data-help="Permutation test p-value for paired differences." tabindex="0" aria-label="Permutation test p-value for paired differences.">
       <span class="help-text">Permutation p-value</span>
       <span class="help-icon">i</span>
     </span></td>
-                        
+
                         <td class="value good">0.010</td>
-                        
+
                       </tr>
-                      
+
                     </tbody>
                   </table>
                 </div>
               </section>
-              
+
             </div>
           </div>
-          
+
           <div class="stat-scope" data-stat-scope="fed_fluent">
             <div class="group-grid">
-              
+
               <section class="group-card">
                 <h4>Paraphrased vs Base</h4>
                 <div class="table-wrap">
@@ -872,68 +896,68 @@
                     <thead>
                       <tr>
                         <th>Metric</th>
-                        
+
                         <th>Qwen3-235B-A22B-Instruct-2507</th>
-                        
+
                       </tr>
                     </thead>
                     <tbody>
-                      
+
                       <tr>
                         <td><span class="help-label" data-help="Number of paired observations used by the statistical test." tabindex="0" aria-label="Number of paired observations used by the statistical test.">
       <span class="help-text">N</span>
       <span class="help-icon">i</span>
     </span></td>
-                        
+
                         <td class="value ">375</td>
-                        
+
                       </tr>
-                      
+
                       <tr>
                         <td><span class="help-label" data-help="Average baseline minus perturbation score difference." tabindex="0" aria-label="Average baseline minus perturbation score difference.">
       <span class="help-text">Δ</span>
       <span class="help-icon">i</span>
     </span></td>
-                        
+
                         <td class="value ">0.219</td>
-                        
+
                       </tr>
-                      
+
                       <tr>
                         <td><span class="help-label" data-help="Paired t-test p-value for baseline versus perturbation differences." tabindex="0" aria-label="Paired t-test p-value for baseline versus perturbation differences.">
       <span class="help-text">Paired t-test p-value</span>
       <span class="help-icon">i</span>
     </span></td>
-                        
+
                         <td class="value good">0.000</td>
-                        
+
                       </tr>
-                      
+
                       <tr>
                         <td><span class="help-label" data-help="Wilcoxon signed-rank p-value for paired differences." tabindex="0" aria-label="Wilcoxon signed-rank p-value for paired differences.">
       <span class="help-text">Wilcoxon p-value</span>
       <span class="help-icon">i</span>
     </span></td>
-                        
+
                         <td class="value good">0.000</td>
-                        
+
                       </tr>
-                      
+
                       <tr>
                         <td><span class="help-label" data-help="Permutation test p-value for paired differences." tabindex="0" aria-label="Permutation test p-value for paired differences.">
       <span class="help-text">Permutation p-value</span>
       <span class="help-icon">i</span>
     </span></td>
-                        
+
                         <td class="value good">0.002</td>
-                        
+
                       </tr>
-                      
+
                     </tbody>
                   </table>
                 </div>
               </section>
-              
+
               <section class="group-card">
                 <h4>Deleted vs Base</h4>
                 <div class="table-wrap">
@@ -941,74 +965,74 @@
                     <thead>
                       <tr>
                         <th>Metric</th>
-                        
+
                         <th>Qwen3-235B-A22B-Instruct-2507</th>
-                        
+
                       </tr>
                     </thead>
                     <tbody>
-                      
+
                       <tr>
                         <td><span class="help-label" data-help="Number of paired observations used by the statistical test." tabindex="0" aria-label="Number of paired observations used by the statistical test.">
       <span class="help-text">N</span>
       <span class="help-icon">i</span>
     </span></td>
-                        
+
                         <td class="value ">375</td>
-                        
+
                       </tr>
-                      
+
                       <tr>
                         <td><span class="help-label" data-help="Average baseline minus perturbation score difference." tabindex="0" aria-label="Average baseline minus perturbation score difference.">
       <span class="help-text">Δ</span>
       <span class="help-icon">i</span>
     </span></td>
-                        
+
                         <td class="value ">-0.177</td>
-                        
+
                       </tr>
-                      
+
                       <tr>
                         <td><span class="help-label" data-help="Paired t-test p-value for baseline versus perturbation differences." tabindex="0" aria-label="Paired t-test p-value for baseline versus perturbation differences.">
       <span class="help-text">Paired t-test p-value</span>
       <span class="help-icon">i</span>
     </span></td>
-                        
+
                         <td class="value good">0.000</td>
-                        
+
                       </tr>
-                      
+
                       <tr>
                         <td><span class="help-label" data-help="Wilcoxon signed-rank p-value for paired differences." tabindex="0" aria-label="Wilcoxon signed-rank p-value for paired differences.">
       <span class="help-text">Wilcoxon p-value</span>
       <span class="help-icon">i</span>
     </span></td>
-                        
+
                         <td class="value good">0.000</td>
-                        
+
                       </tr>
-                      
+
                       <tr>
                         <td><span class="help-label" data-help="Permutation test p-value for paired differences." tabindex="0" aria-label="Permutation test p-value for paired differences.">
       <span class="help-text">Permutation p-value</span>
       <span class="help-icon">i</span>
     </span></td>
-                        
+
                         <td class="value good">0.002</td>
-                        
+
                       </tr>
-                      
+
                     </tbody>
                   </table>
                 </div>
               </section>
-              
+
             </div>
           </div>
-          
+
           <div class="stat-scope" data-stat-scope="fed_interesting">
             <div class="group-grid">
-              
+
               <section class="group-card">
                 <h4>Paraphrased vs Base</h4>
                 <div class="table-wrap">
@@ -1016,68 +1040,68 @@
                     <thead>
                       <tr>
                         <th>Metric</th>
-                        
+
                         <th>Qwen3-235B-A22B-Instruct-2507</th>
-                        
+
                       </tr>
                     </thead>
                     <tbody>
-                      
+
                       <tr>
                         <td><span class="help-label" data-help="Number of paired observations used by the statistical test." tabindex="0" aria-label="Number of paired observations used by the statistical test.">
       <span class="help-text">N</span>
       <span class="help-icon">i</span>
     </span></td>
-                        
+
                         <td class="value ">375</td>
-                        
+
                       </tr>
-                      
+
                       <tr>
                         <td><span class="help-label" data-help="Average baseline minus perturbation score difference." tabindex="0" aria-label="Average baseline minus perturbation score difference.">
       <span class="help-text">Δ</span>
       <span class="help-icon">i</span>
     </span></td>
-                        
+
                         <td class="value ">0.000</td>
-                        
+
                       </tr>
-                      
+
                       <tr>
                         <td><span class="help-label" data-help="Paired t-test p-value for baseline versus perturbation differences." tabindex="0" aria-label="Paired t-test p-value for baseline versus perturbation differences.">
       <span class="help-text">Paired t-test p-value</span>
       <span class="help-icon">i</span>
     </span></td>
-                        
+
                         <td class="value muted">0.992</td>
-                        
+
                       </tr>
-                      
+
                       <tr>
                         <td><span class="help-label" data-help="Wilcoxon signed-rank p-value for paired differences." tabindex="0" aria-label="Wilcoxon signed-rank p-value for paired differences.">
       <span class="help-text">Wilcoxon p-value</span>
       <span class="help-icon">i</span>
     </span></td>
-                        
+
                         <td class="value muted">0.726</td>
-                        
+
                       </tr>
-                      
+
                       <tr>
                         <td><span class="help-label" data-help="Permutation test p-value for paired differences." tabindex="0" aria-label="Permutation test p-value for paired differences.">
       <span class="help-text">Permutation p-value</span>
       <span class="help-icon">i</span>
     </span></td>
-                        
+
                         <td class="value muted">0.995</td>
-                        
+
                       </tr>
-                      
+
                     </tbody>
                   </table>
                 </div>
               </section>
-              
+
               <section class="group-card">
                 <h4>Deleted vs Base</h4>
                 <div class="table-wrap">
@@ -1085,74 +1109,74 @@
                     <thead>
                       <tr>
                         <th>Metric</th>
-                        
+
                         <th>Qwen3-235B-A22B-Instruct-2507</th>
-                        
+
                       </tr>
                     </thead>
                     <tbody>
-                      
+
                       <tr>
                         <td><span class="help-label" data-help="Number of paired observations used by the statistical test." tabindex="0" aria-label="Number of paired observations used by the statistical test.">
       <span class="help-text">N</span>
       <span class="help-icon">i</span>
     </span></td>
-                        
+
                         <td class="value ">375</td>
-                        
+
                       </tr>
-                      
+
                       <tr>
                         <td><span class="help-label" data-help="Average baseline minus perturbation score difference." tabindex="0" aria-label="Average baseline minus perturbation score difference.">
       <span class="help-text">Δ</span>
       <span class="help-icon">i</span>
     </span></td>
-                        
+
                         <td class="value ">0.156</td>
-                        
+
                       </tr>
-                      
+
                       <tr>
                         <td><span class="help-label" data-help="Paired t-test p-value for baseline versus perturbation differences." tabindex="0" aria-label="Paired t-test p-value for baseline versus perturbation differences.">
       <span class="help-text">Paired t-test p-value</span>
       <span class="help-icon">i</span>
     </span></td>
-                        
+
                         <td class="value good">0.000</td>
-                        
+
                       </tr>
-                      
+
                       <tr>
                         <td><span class="help-label" data-help="Wilcoxon signed-rank p-value for paired differences." tabindex="0" aria-label="Wilcoxon signed-rank p-value for paired differences.">
       <span class="help-text">Wilcoxon p-value</span>
       <span class="help-icon">i</span>
     </span></td>
-                        
+
                         <td class="value good">0.000</td>
-                        
+
                       </tr>
-                      
+
                       <tr>
                         <td><span class="help-label" data-help="Permutation test p-value for paired differences." tabindex="0" aria-label="Permutation test p-value for paired differences.">
       <span class="help-text">Permutation p-value</span>
       <span class="help-icon">i</span>
     </span></td>
-                        
+
                         <td class="value good">0.002</td>
-                        
+
                       </tr>
-                      
+
                     </tbody>
                   </table>
                 </div>
               </section>
-              
+
             </div>
           </div>
-          
+
           <div class="stat-scope" data-stat-scope="fed_likeable">
             <div class="group-grid">
-              
+
               <section class="group-card">
                 <h4>Paraphrased vs Base</h4>
                 <div class="table-wrap">
@@ -1160,68 +1184,68 @@
                     <thead>
                       <tr>
                         <th>Metric</th>
-                        
+
                         <th>Qwen3-235B-A22B-Instruct-2507</th>
-                        
+
                       </tr>
                     </thead>
                     <tbody>
-                      
+
                       <tr>
                         <td><span class="help-label" data-help="Number of paired observations used by the statistical test." tabindex="0" aria-label="Number of paired observations used by the statistical test.">
       <span class="help-text">N</span>
       <span class="help-icon">i</span>
     </span></td>
-                        
+
                         <td class="value ">375</td>
-                        
+
                       </tr>
-                      
+
                       <tr>
                         <td><span class="help-label" data-help="Average baseline minus perturbation score difference." tabindex="0" aria-label="Average baseline minus perturbation score difference.">
       <span class="help-text">Δ</span>
       <span class="help-icon">i</span>
     </span></td>
-                        
+
                         <td class="value ">-0.007</td>
-                        
+
                       </tr>
-                      
+
                       <tr>
                         <td><span class="help-label" data-help="Paired t-test p-value for baseline versus perturbation differences." tabindex="0" aria-label="Paired t-test p-value for baseline versus perturbation differences.">
       <span class="help-text">Paired t-test p-value</span>
       <span class="help-icon">i</span>
     </span></td>
-                        
+
                         <td class="value muted">0.714</td>
-                        
+
                       </tr>
-                      
+
                       <tr>
                         <td><span class="help-label" data-help="Wilcoxon signed-rank p-value for paired differences." tabindex="0" aria-label="Wilcoxon signed-rank p-value for paired differences.">
       <span class="help-text">Wilcoxon p-value</span>
       <span class="help-icon">i</span>
     </span></td>
-                        
+
                         <td class="value muted">0.606</td>
-                        
+
                       </tr>
-                      
+
                       <tr>
                         <td><span class="help-label" data-help="Permutation test p-value for paired differences." tabindex="0" aria-label="Permutation test p-value for paired differences.">
       <span class="help-text">Permutation p-value</span>
       <span class="help-icon">i</span>
     </span></td>
-                        
+
                         <td class="value muted">0.699</td>
-                        
+
                       </tr>
-                      
+
                     </tbody>
                   </table>
                 </div>
               </section>
-              
+
               <section class="group-card">
                 <h4>Deleted vs Base</h4>
                 <div class="table-wrap">
@@ -1229,74 +1253,74 @@
                     <thead>
                       <tr>
                         <th>Metric</th>
-                        
+
                         <th>Qwen3-235B-A22B-Instruct-2507</th>
-                        
+
                       </tr>
                     </thead>
                     <tbody>
-                      
+
                       <tr>
                         <td><span class="help-label" data-help="Number of paired observations used by the statistical test." tabindex="0" aria-label="Number of paired observations used by the statistical test.">
       <span class="help-text">N</span>
       <span class="help-icon">i</span>
     </span></td>
-                        
+
                         <td class="value ">375</td>
-                        
+
                       </tr>
-                      
+
                       <tr>
                         <td><span class="help-label" data-help="Average baseline minus perturbation score difference." tabindex="0" aria-label="Average baseline minus perturbation score difference.">
       <span class="help-text">Δ</span>
       <span class="help-icon">i</span>
     </span></td>
-                        
+
                         <td class="value ">-0.043</td>
-                        
+
                       </tr>
-                      
+
                       <tr>
                         <td><span class="help-label" data-help="Paired t-test p-value for baseline versus perturbation differences." tabindex="0" aria-label="Paired t-test p-value for baseline versus perturbation differences.">
       <span class="help-text">Paired t-test p-value</span>
       <span class="help-icon">i</span>
     </span></td>
-                        
+
                         <td class="value muted">0.107</td>
-                        
+
                       </tr>
-                      
+
                       <tr>
                         <td><span class="help-label" data-help="Wilcoxon signed-rank p-value for paired differences." tabindex="0" aria-label="Wilcoxon signed-rank p-value for paired differences.">
       <span class="help-text">Wilcoxon p-value</span>
       <span class="help-icon">i</span>
     </span></td>
-                        
+
                         <td class="value muted">0.238</td>
-                        
+
                       </tr>
-                      
+
                       <tr>
                         <td><span class="help-label" data-help="Permutation test p-value for paired differences." tabindex="0" aria-label="Permutation test p-value for paired differences.">
       <span class="help-text">Permutation p-value</span>
       <span class="help-icon">i</span>
     </span></td>
-                        
+
                         <td class="value muted">0.126</td>
-                        
+
                       </tr>
-                      
+
                     </tbody>
                   </table>
                 </div>
               </section>
-              
+
             </div>
           </div>
-          
+
           <div class="stat-scope" data-stat-scope="fed_relevant">
             <div class="group-grid">
-              
+
               <section class="group-card">
                 <h4>Paraphrased vs Base</h4>
                 <div class="table-wrap">
@@ -1304,68 +1328,68 @@
                     <thead>
                       <tr>
                         <th>Metric</th>
-                        
+
                         <th>Qwen3-235B-A22B-Instruct-2507</th>
-                        
+
                       </tr>
                     </thead>
                     <tbody>
-                      
+
                       <tr>
                         <td><span class="help-label" data-help="Number of paired observations used by the statistical test." tabindex="0" aria-label="Number of paired observations used by the statistical test.">
       <span class="help-text">N</span>
       <span class="help-icon">i</span>
     </span></td>
-                        
+
                         <td class="value ">375</td>
-                        
+
                       </tr>
-                      
+
                       <tr>
                         <td><span class="help-label" data-help="Average baseline minus perturbation score difference." tabindex="0" aria-label="Average baseline minus perturbation score difference.">
       <span class="help-text">Δ</span>
       <span class="help-icon">i</span>
     </span></td>
-                        
+
                         <td class="value ">0.153</td>
-                        
+
                       </tr>
-                      
+
                       <tr>
                         <td><span class="help-label" data-help="Paired t-test p-value for baseline versus perturbation differences." tabindex="0" aria-label="Paired t-test p-value for baseline versus perturbation differences.">
       <span class="help-text">Paired t-test p-value</span>
       <span class="help-icon">i</span>
     </span></td>
-                        
+
                         <td class="value good">0.000</td>
-                        
+
                       </tr>
-                      
+
                       <tr>
                         <td><span class="help-label" data-help="Wilcoxon signed-rank p-value for paired differences." tabindex="0" aria-label="Wilcoxon signed-rank p-value for paired differences.">
       <span class="help-text">Wilcoxon p-value</span>
       <span class="help-icon">i</span>
     </span></td>
-                        
+
                         <td class="value good">0.000</td>
-                        
+
                       </tr>
-                      
+
                       <tr>
                         <td><span class="help-label" data-help="Permutation test p-value for paired differences." tabindex="0" aria-label="Permutation test p-value for paired differences.">
       <span class="help-text">Permutation p-value</span>
       <span class="help-icon">i</span>
     </span></td>
-                        
+
                         <td class="value good">0.002</td>
-                        
+
                       </tr>
-                      
+
                     </tbody>
                   </table>
                 </div>
               </section>
-              
+
               <section class="group-card">
                 <h4>Deleted vs Base</h4>
                 <div class="table-wrap">
@@ -1373,74 +1397,74 @@
                     <thead>
                       <tr>
                         <th>Metric</th>
-                        
+
                         <th>Qwen3-235B-A22B-Instruct-2507</th>
-                        
+
                       </tr>
                     </thead>
                     <tbody>
-                      
+
                       <tr>
                         <td><span class="help-label" data-help="Number of paired observations used by the statistical test." tabindex="0" aria-label="Number of paired observations used by the statistical test.">
       <span class="help-text">N</span>
       <span class="help-icon">i</span>
     </span></td>
-                        
+
                         <td class="value ">375</td>
-                        
+
                       </tr>
-                      
+
                       <tr>
                         <td><span class="help-label" data-help="Average baseline minus perturbation score difference." tabindex="0" aria-label="Average baseline minus perturbation score difference.">
       <span class="help-text">Δ</span>
       <span class="help-icon">i</span>
     </span></td>
-                        
+
                         <td class="value ">0.095</td>
-                        
+
                       </tr>
-                      
+
                       <tr>
                         <td><span class="help-label" data-help="Paired t-test p-value for baseline versus perturbation differences." tabindex="0" aria-label="Paired t-test p-value for baseline versus perturbation differences.">
       <span class="help-text">Paired t-test p-value</span>
       <span class="help-icon">i</span>
     </span></td>
-                        
+
                         <td class="value good">0.000</td>
-                        
+
                       </tr>
-                      
+
                       <tr>
                         <td><span class="help-label" data-help="Wilcoxon signed-rank p-value for paired differences." tabindex="0" aria-label="Wilcoxon signed-rank p-value for paired differences.">
       <span class="help-text">Wilcoxon p-value</span>
       <span class="help-icon">i</span>
     </span></td>
-                        
+
                         <td class="value good">0.004</td>
-                        
+
                       </tr>
-                      
+
                       <tr>
                         <td><span class="help-label" data-help="Permutation test p-value for paired differences." tabindex="0" aria-label="Permutation test p-value for paired differences.">
       <span class="help-text">Permutation p-value</span>
       <span class="help-icon">i</span>
     </span></td>
-                        
+
                         <td class="value good">0.004</td>
-                        
+
                       </tr>
-                      
+
                     </tbody>
                   </table>
                 </div>
               </section>
-              
+
             </div>
           </div>
-          
+
           <div class="stat-scope" data-stat-scope="fed_understandable">
             <div class="group-grid">
-              
+
               <section class="group-card">
                 <h4>Paraphrased vs Base</h4>
                 <div class="table-wrap">
@@ -1448,68 +1472,68 @@
                     <thead>
                       <tr>
                         <th>Metric</th>
-                        
+
                         <th>Qwen3-235B-A22B-Instruct-2507</th>
-                        
+
                       </tr>
                     </thead>
                     <tbody>
-                      
+
                       <tr>
                         <td><span class="help-label" data-help="Number of paired observations used by the statistical test." tabindex="0" aria-label="Number of paired observations used by the statistical test.">
       <span class="help-text">N</span>
       <span class="help-icon">i</span>
     </span></td>
-                        
+
                         <td class="value ">375</td>
-                        
+
                       </tr>
-                      
+
                       <tr>
                         <td><span class="help-label" data-help="Average baseline minus perturbation score difference." tabindex="0" aria-label="Average baseline minus perturbation score difference.">
       <span class="help-text">Δ</span>
       <span class="help-icon">i</span>
     </span></td>
-                        
+
                         <td class="value ">0.127</td>
-                        
+
                       </tr>
-                      
+
                       <tr>
                         <td><span class="help-label" data-help="Paired t-test p-value for baseline versus perturbation differences." tabindex="0" aria-label="Paired t-test p-value for baseline versus perturbation differences.">
       <span class="help-text">Paired t-test p-value</span>
       <span class="help-icon">i</span>
     </span></td>
-                        
+
                         <td class="value good">0.000</td>
-                        
+
                       </tr>
-                      
+
                       <tr>
                         <td><span class="help-label" data-help="Wilcoxon signed-rank p-value for paired differences." tabindex="0" aria-label="Wilcoxon signed-rank p-value for paired differences.">
       <span class="help-text">Wilcoxon p-value</span>
       <span class="help-icon">i</span>
     </span></td>
-                        
+
                         <td class="value good">0.000</td>
-                        
+
                       </tr>
-                      
+
                       <tr>
                         <td><span class="help-label" data-help="Permutation test p-value for paired differences." tabindex="0" aria-label="Permutation test p-value for paired differences.">
       <span class="help-text">Permutation p-value</span>
       <span class="help-icon">i</span>
     </span></td>
-                        
+
                         <td class="value good">0.002</td>
-                        
+
                       </tr>
-                      
+
                     </tbody>
                   </table>
                 </div>
               </section>
-              
+
               <section class="group-card">
                 <h4>Deleted vs Base</h4>
                 <div class="table-wrap">
@@ -1517,74 +1541,74 @@
                     <thead>
                       <tr>
                         <th>Metric</th>
-                        
+
                         <th>Qwen3-235B-A22B-Instruct-2507</th>
-                        
+
                       </tr>
                     </thead>
                     <tbody>
-                      
+
                       <tr>
                         <td><span class="help-label" data-help="Number of paired observations used by the statistical test." tabindex="0" aria-label="Number of paired observations used by the statistical test.">
       <span class="help-text">N</span>
       <span class="help-icon">i</span>
     </span></td>
-                        
+
                         <td class="value ">375</td>
-                        
+
                       </tr>
-                      
+
                       <tr>
                         <td><span class="help-label" data-help="Average baseline minus perturbation score difference." tabindex="0" aria-label="Average baseline minus perturbation score difference.">
       <span class="help-text">Δ</span>
       <span class="help-icon">i</span>
     </span></td>
-                        
+
                         <td class="value ">-0.056</td>
-                        
+
                       </tr>
-                      
+
                       <tr>
                         <td><span class="help-label" data-help="Paired t-test p-value for baseline versus perturbation differences." tabindex="0" aria-label="Paired t-test p-value for baseline versus perturbation differences.">
       <span class="help-text">Paired t-test p-value</span>
       <span class="help-icon">i</span>
     </span></td>
-                        
+
                         <td class="value good">0.042</td>
-                        
+
                       </tr>
-                      
+
                       <tr>
                         <td><span class="help-label" data-help="Wilcoxon signed-rank p-value for paired differences." tabindex="0" aria-label="Wilcoxon signed-rank p-value for paired differences.">
       <span class="help-text">Wilcoxon p-value</span>
       <span class="help-icon">i</span>
     </span></td>
-                        
+
                         <td class="value muted">0.097</td>
-                        
+
                       </tr>
-                      
+
                       <tr>
                         <td><span class="help-label" data-help="Permutation test p-value for paired differences." tabindex="0" aria-label="Permutation test p-value for paired differences.">
       <span class="help-text">Permutation p-value</span>
       <span class="help-icon">i</span>
     </span></td>
-                        
+
                         <td class="value good">0.050</td>
-                        
+
                       </tr>
-                      
+
                     </tbody>
                   </table>
                 </div>
               </section>
-              
+
             </div>
           </div>
-          
+
           <div class="stat-scope" data-stat-scope="__total__">
             <div class="group-grid">
-              
+
               <section class="group-card">
                 <h4>Paraphrased vs Base</h4>
                 <div class="table-wrap">
@@ -1592,68 +1616,68 @@
                     <thead>
                       <tr>
                         <th>Metric</th>
-                        
+
                         <th>Qwen3-235B-A22B-Instruct-2507</th>
-                        
+
                       </tr>
                     </thead>
                     <tbody>
-                      
+
                       <tr>
                         <td><span class="help-label" data-help="Number of paired observations used by the statistical test." tabindex="0" aria-label="Number of paired observations used by the statistical test.">
       <span class="help-text">N</span>
       <span class="help-icon">i</span>
     </span></td>
-                        
+
                         <td class="value ">375</td>
-                        
+
                       </tr>
-                      
+
                       <tr>
                         <td><span class="help-label" data-help="Average baseline minus perturbation score difference." tabindex="0" aria-label="Average baseline minus perturbation score difference.">
       <span class="help-text">Δ</span>
       <span class="help-icon">i</span>
     </span></td>
-                        
+
                         <td class="value ">0.446</td>
-                        
+
                       </tr>
-                      
+
                       <tr>
                         <td><span class="help-label" data-help="Paired t-test p-value for baseline versus perturbation differences." tabindex="0" aria-label="Paired t-test p-value for baseline versus perturbation differences.">
       <span class="help-text">Paired t-test p-value</span>
       <span class="help-icon">i</span>
     </span></td>
-                        
+
                         <td class="value good">0.000</td>
-                        
+
                       </tr>
-                      
+
                       <tr>
                         <td><span class="help-label" data-help="Wilcoxon signed-rank p-value for paired differences." tabindex="0" aria-label="Wilcoxon signed-rank p-value for paired differences.">
       <span class="help-text">Wilcoxon p-value</span>
       <span class="help-icon">i</span>
     </span></td>
-                        
+
                         <td class="value good">0.000</td>
-                        
+
                       </tr>
-                      
+
                       <tr>
                         <td><span class="help-label" data-help="Permutation test p-value for paired differences." tabindex="0" aria-label="Permutation test p-value for paired differences.">
       <span class="help-text">Permutation p-value</span>
       <span class="help-icon">i</span>
     </span></td>
-                        
+
                         <td class="value good">0.002</td>
-                        
+
                       </tr>
-                      
+
                     </tbody>
                   </table>
                 </div>
               </section>
-              
+
               <section class="group-card">
                 <h4>Deleted vs Base</h4>
                 <div class="table-wrap">
@@ -1661,71 +1685,89 @@
                     <thead>
                       <tr>
                         <th>Metric</th>
-                        
+
                         <th>Qwen3-235B-A22B-Instruct-2507</th>
-                        
+
                       </tr>
                     </thead>
                     <tbody>
-                      
+
                       <tr>
                         <td><span class="help-label" data-help="Number of paired observations used by the statistical test." tabindex="0" aria-label="Number of paired observations used by the statistical test.">
       <span class="help-text">N</span>
       <span class="help-icon">i</span>
     </span></td>
-                        
+
                         <td class="value ">375</td>
-                        
+
                       </tr>
-                      
+
                       <tr>
                         <td><span class="help-label" data-help="Average baseline minus perturbation score difference." tabindex="0" aria-label="Average baseline minus perturbation score difference.">
       <span class="help-text">Δ</span>
       <span class="help-icon">i</span>
     </span></td>
-                        
+
                         <td class="value ">-0.118</td>
-                        
+
                       </tr>
-                      
+
                       <tr>
                         <td><span class="help-label" data-help="Paired t-test p-value for baseline versus perturbation differences." tabindex="0" aria-label="Paired t-test p-value for baseline versus perturbation differences.">
       <span class="help-text">Paired t-test p-value</span>
       <span class="help-icon">i</span>
     </span></td>
-                        
+
                         <td class="value muted">0.212</td>
-                        
+
                       </tr>
-                      
+
                       <tr>
                         <td><span class="help-label" data-help="Wilcoxon signed-rank p-value for paired differences." tabindex="0" aria-label="Wilcoxon signed-rank p-value for paired differences.">
       <span class="help-text">Wilcoxon p-value</span>
       <span class="help-icon">i</span>
     </span></td>
-                        
+
                         <td class="value muted">0.216</td>
-                        
+
                       </tr>
-                      
+
                       <tr>
                         <td><span class="help-label" data-help="Permutation test p-value for paired differences." tabindex="0" aria-label="Permutation test p-value for paired differences.">
       <span class="help-text">Permutation p-value</span>
       <span class="help-icon">i</span>
     </span></td>
-                        
+
                         <td class="value muted">0.206</td>
-                        
+
                       </tr>
-                      
+
                     </tbody>
                   </table>
                 </div>
               </section>
-              
+
             </div>
           </div>
-          
+
+        </div>
+      </details>
+
+
+      <details class="section example-viewer-card" open>
+        <summary>Example Viewer</summary>
+        <div class="section-body">
+          <p class="section-explainer">Compare real examples where the judge score changed after paraphrasing the evaluated criterion.</p>
+          <div class="example-viewer-controls">
+            <label>Model<select data-example-model></select></label>
+            <label>Criterion<select data-example-criterion></select></label>
+            <div class="example-nav">
+              <button type="button" data-example-prev aria-label="Previous example">Previous</button>
+              <span class="example-counter" data-example-counter></span>
+              <button type="button" data-example-next aria-label="Next example">Next</button>
+            </div>
+          </div>
+          <div data-example-content></div>
         </div>
       </details>
 
@@ -1735,12 +1777,12 @@
     </section>
 
     <section class="report-page" data-page="criteria">
-      
+
       <details class="section">
         <summary>fed diverse</summary>
         <div class="section-body">
           <div class="group-grid">
-            
+
             <section class="group-card">
               <h4>Scoring Stability</h4>
               <div class="table-wrap">
@@ -1748,38 +1790,38 @@
                   <thead>
                     <tr>
                       <th>Metric</th>
-                      
+
                       <th>Qwen3-235B-A22B-Instruct-2507</th>
-                      
+
                     </tr>
                   </thead>
                   <tbody>
-                    
+
                     <tr>
                       <td><span class="help-label" data-help="Mean absolute score shift when the same criterion is paraphrased, normalized by score scale span. Lower is better." tabindex="0" aria-label="Mean absolute score shift when the same criterion is paraphrased, normalized by score scale span. Lower is better.">
-      <span class="help-text">Score Stability</span>
+      <span class="help-text">Score Instability</span>
       <span class="help-icon">i</span>
     </span></td>
-                      
+
                       <td class="value ">0.1404</td>
-                      
+
                     </tr>
-                    
+
                     <tr>
                       <td><span class="help-label" data-help="Cross-criterion normalized MAD divided by same-criterion normalized MAD. Lower means paraphrasing stays more isolated to the intended criterion." tabindex="0" aria-label="Cross-criterion normalized MAD divided by same-criterion normalized MAD. Lower means paraphrasing stays more isolated to the intended criterion.">
       <span class="help-text">Spillover</span>
       <span class="help-icon">i</span>
     </span></td>
-                      
+
                       <td class="value ">0.5898</td>
-                      
+
                     </tr>
-                    
+
                   </tbody>
                 </table>
               </div>
             </section>
-            
+
             <section class="group-card">
               <h4>Ranking Consistency</h4>
               <div class="table-wrap">
@@ -1787,57 +1829,57 @@
                   <thead>
                     <tr>
                       <th>Metric</th>
-                      
+
                       <th>Qwen3-235B-A22B-Instruct-2507</th>
-                      
+
                     </tr>
                   </thead>
                   <tbody>
-                    
+
                     <tr>
                       <td><span class="help-label" data-help="Estimated share of ranking pairs that flip when the same criterion is paraphrased." tabindex="0" aria-label="Estimated share of ranking pairs that flip when the same criterion is paraphrased.">
       <span class="help-text">Flips</span>
       <span class="help-icon">i</span>
     </span></td>
-                      
+
                       <td class="value ">7.2%</td>
-                      
+
                     </tr>
-                    
+
                     <tr>
                       <td><span class="help-label" data-help="Average Kendall&#39;s tau-b between baseline ranking and same-criterion paraphrased ranking. Higher is better." tabindex="0" aria-label="Average Kendall&#39;s tau-b between baseline ranking and same-criterion paraphrased ranking. Higher is better.">
       <span class="help-text">Ranking Stability</span>
       <span class="help-icon">i</span>
     </span></td>
-                      
+
                       <td class="value ">0.646</td>
-                      
+
                     </tr>
-                    
+
                     <tr>
                       <td><span class="help-label" data-help="Share of example pairs that receive tied scores when the same criterion is paraphrased." tabindex="0" aria-label="Share of example pairs that receive tied scores when the same criterion is paraphrased.">
       <span class="help-text">Ties</span>
       <span class="help-icon">i</span>
     </span></td>
-                      
+
                       <td class="value ">33.8%</td>
-                      
+
                     </tr>
-                    
+
                   </tbody>
                 </table>
               </div>
             </section>
-            
+
           </div>
         </div>
       </details>
-      
+
       <details class="section">
         <summary>fed fluent</summary>
         <div class="section-body">
           <div class="group-grid">
-            
+
             <section class="group-card">
               <h4>Scoring Stability</h4>
               <div class="table-wrap">
@@ -1845,38 +1887,38 @@
                   <thead>
                     <tr>
                       <th>Metric</th>
-                      
+
                       <th>Qwen3-235B-A22B-Instruct-2507</th>
-                      
+
                     </tr>
                   </thead>
                   <tbody>
-                    
+
                     <tr>
                       <td><span class="help-label" data-help="Mean absolute score shift when the same criterion is paraphrased, normalized by score scale span. Lower is better." tabindex="0" aria-label="Mean absolute score shift when the same criterion is paraphrased, normalized by score scale span. Lower is better.">
-      <span class="help-text">Score Stability</span>
+      <span class="help-text">Score Instability</span>
       <span class="help-icon">i</span>
     </span></td>
-                      
+
                       <td class="value ">0.1023</td>
-                      
+
                     </tr>
-                    
+
                     <tr>
                       <td><span class="help-label" data-help="Cross-criterion normalized MAD divided by same-criterion normalized MAD. Lower means paraphrasing stays more isolated to the intended criterion." tabindex="0" aria-label="Cross-criterion normalized MAD divided by same-criterion normalized MAD. Lower means paraphrasing stays more isolated to the intended criterion.">
       <span class="help-text">Spillover</span>
       <span class="help-icon">i</span>
     </span></td>
-                      
+
                       <td class="value ">0.4611</td>
-                      
+
                     </tr>
-                    
+
                   </tbody>
                 </table>
               </div>
             </section>
-            
+
             <section class="group-card">
               <h4>Ranking Consistency</h4>
               <div class="table-wrap">
@@ -1884,57 +1926,57 @@
                   <thead>
                     <tr>
                       <th>Metric</th>
-                      
+
                       <th>Qwen3-235B-A22B-Instruct-2507</th>
-                      
+
                     </tr>
                   </thead>
                   <tbody>
-                    
+
                     <tr>
                       <td><span class="help-label" data-help="Estimated share of ranking pairs that flip when the same criterion is paraphrased." tabindex="0" aria-label="Estimated share of ranking pairs that flip when the same criterion is paraphrased.">
       <span class="help-text">Flips</span>
       <span class="help-icon">i</span>
     </span></td>
-                      
+
                       <td class="value ">7.0%</td>
-                      
+
                     </tr>
-                    
+
                     <tr>
                       <td><span class="help-label" data-help="Average Kendall&#39;s tau-b between baseline ranking and same-criterion paraphrased ranking. Higher is better." tabindex="0" aria-label="Average Kendall&#39;s tau-b between baseline ranking and same-criterion paraphrased ranking. Higher is better.">
       <span class="help-text">Ranking Stability</span>
       <span class="help-icon">i</span>
     </span></td>
-                      
+
                       <td class="value ">0.616</td>
-                      
+
                     </tr>
-                    
+
                     <tr>
                       <td><span class="help-label" data-help="Share of example pairs that receive tied scores when the same criterion is paraphrased." tabindex="0" aria-label="Share of example pairs that receive tied scores when the same criterion is paraphrased.">
       <span class="help-text">Ties</span>
       <span class="help-icon">i</span>
     </span></td>
-                      
+
                       <td class="value ">41.9%</td>
-                      
+
                     </tr>
-                    
+
                   </tbody>
                 </table>
               </div>
             </section>
-            
+
           </div>
         </div>
       </details>
-      
+
       <details class="section">
         <summary>fed interesting</summary>
         <div class="section-body">
           <div class="group-grid">
-            
+
             <section class="group-card">
               <h4>Scoring Stability</h4>
               <div class="table-wrap">
@@ -1942,38 +1984,38 @@
                   <thead>
                     <tr>
                       <th>Metric</th>
-                      
+
                       <th>Qwen3-235B-A22B-Instruct-2507</th>
-                      
+
                     </tr>
                   </thead>
                   <tbody>
-                    
+
                     <tr>
                       <td><span class="help-label" data-help="Mean absolute score shift when the same criterion is paraphrased, normalized by score scale span. Lower is better." tabindex="0" aria-label="Mean absolute score shift when the same criterion is paraphrased, normalized by score scale span. Lower is better.">
-      <span class="help-text">Score Stability</span>
+      <span class="help-text">Score Instability</span>
       <span class="help-icon">i</span>
     </span></td>
-                      
+
                       <td class="value ">0.0597</td>
-                      
+
                     </tr>
-                    
+
                     <tr>
                       <td><span class="help-label" data-help="Cross-criterion normalized MAD divided by same-criterion normalized MAD. Lower means paraphrasing stays more isolated to the intended criterion." tabindex="0" aria-label="Cross-criterion normalized MAD divided by same-criterion normalized MAD. Lower means paraphrasing stays more isolated to the intended criterion.">
       <span class="help-text">Spillover</span>
       <span class="help-icon">i</span>
     </span></td>
-                      
+
                       <td class="value ">0.8345</td>
-                      
+
                     </tr>
-                    
+
                   </tbody>
                 </table>
               </div>
             </section>
-            
+
             <section class="group-card">
               <h4>Ranking Consistency</h4>
               <div class="table-wrap">
@@ -1981,57 +2023,57 @@
                   <thead>
                     <tr>
                       <th>Metric</th>
-                      
+
                       <th>Qwen3-235B-A22B-Instruct-2507</th>
-                      
+
                     </tr>
                   </thead>
                   <tbody>
-                    
+
                     <tr>
                       <td><span class="help-label" data-help="Estimated share of ranking pairs that flip when the same criterion is paraphrased." tabindex="0" aria-label="Estimated share of ranking pairs that flip when the same criterion is paraphrased.">
       <span class="help-text">Flips</span>
       <span class="help-icon">i</span>
     </span></td>
-                      
+
                       <td class="value ">3.3%</td>
-                      
+
                     </tr>
-                    
+
                     <tr>
                       <td><span class="help-label" data-help="Average Kendall&#39;s tau-b between baseline ranking and same-criterion paraphrased ranking. Higher is better." tabindex="0" aria-label="Average Kendall&#39;s tau-b between baseline ranking and same-criterion paraphrased ranking. Higher is better.">
       <span class="help-text">Ranking Stability</span>
       <span class="help-icon">i</span>
     </span></td>
-                      
+
                       <td class="value ">0.814</td>
-                      
+
                     </tr>
-                    
+
                     <tr>
                       <td><span class="help-label" data-help="Share of example pairs that receive tied scores when the same criterion is paraphrased." tabindex="0" aria-label="Share of example pairs that receive tied scores when the same criterion is paraphrased.">
       <span class="help-text">Ties</span>
       <span class="help-icon">i</span>
     </span></td>
-                      
+
                       <td class="value ">25.3%</td>
-                      
+
                     </tr>
-                    
+
                   </tbody>
                 </table>
               </div>
             </section>
-            
+
           </div>
         </div>
       </details>
-      
+
       <details class="section">
         <summary>fed likeable</summary>
         <div class="section-body">
           <div class="group-grid">
-            
+
             <section class="group-card">
               <h4>Scoring Stability</h4>
               <div class="table-wrap">
@@ -2039,38 +2081,38 @@
                   <thead>
                     <tr>
                       <th>Metric</th>
-                      
+
                       <th>Qwen3-235B-A22B-Instruct-2507</th>
-                      
+
                     </tr>
                   </thead>
                   <tbody>
-                    
+
                     <tr>
                       <td><span class="help-label" data-help="Mean absolute score shift when the same criterion is paraphrased, normalized by score scale span. Lower is better." tabindex="0" aria-label="Mean absolute score shift when the same criterion is paraphrased, normalized by score scale span. Lower is better.">
-      <span class="help-text">Score Stability</span>
+      <span class="help-text">Score Instability</span>
       <span class="help-icon">i</span>
     </span></td>
-                      
+
                       <td class="value ">0.0423</td>
-                      
+
                     </tr>
-                    
+
                     <tr>
                       <td><span class="help-label" data-help="Cross-criterion normalized MAD divided by same-criterion normalized MAD. Lower means paraphrasing stays more isolated to the intended criterion." tabindex="0" aria-label="Cross-criterion normalized MAD divided by same-criterion normalized MAD. Lower means paraphrasing stays more isolated to the intended criterion.">
       <span class="help-text">Spillover</span>
       <span class="help-icon">i</span>
     </span></td>
-                      
+
                       <td class="value ">1.1896</td>
-                      
+
                     </tr>
-                    
+
                   </tbody>
                 </table>
               </div>
             </section>
-            
+
             <section class="group-card">
               <h4>Ranking Consistency</h4>
               <div class="table-wrap">
@@ -2078,57 +2120,57 @@
                   <thead>
                     <tr>
                       <th>Metric</th>
-                      
+
                       <th>Qwen3-235B-A22B-Instruct-2507</th>
-                      
+
                     </tr>
                   </thead>
                   <tbody>
-                    
+
                     <tr>
                       <td><span class="help-label" data-help="Estimated share of ranking pairs that flip when the same criterion is paraphrased." tabindex="0" aria-label="Estimated share of ranking pairs that flip when the same criterion is paraphrased.">
       <span class="help-text">Flips</span>
       <span class="help-icon">i</span>
     </span></td>
-                      
+
                       <td class="value ">1.6%</td>
-                      
+
                     </tr>
-                    
+
                     <tr>
                       <td><span class="help-label" data-help="Average Kendall&#39;s tau-b between baseline ranking and same-criterion paraphrased ranking. Higher is better." tabindex="0" aria-label="Average Kendall&#39;s tau-b between baseline ranking and same-criterion paraphrased ranking. Higher is better.">
       <span class="help-text">Ranking Stability</span>
       <span class="help-icon">i</span>
     </span></td>
-                      
+
                       <td class="value ">0.878</td>
-                      
+
                     </tr>
-                    
+
                     <tr>
                       <td><span class="help-label" data-help="Share of example pairs that receive tied scores when the same criterion is paraphrased." tabindex="0" aria-label="Share of example pairs that receive tied scores when the same criterion is paraphrased.">
       <span class="help-text">Ties</span>
       <span class="help-icon">i</span>
     </span></td>
-                      
+
                       <td class="value ">23.7%</td>
-                      
+
                     </tr>
-                    
+
                   </tbody>
                 </table>
               </div>
             </section>
-            
+
           </div>
         </div>
       </details>
-      
+
       <details class="section">
         <summary>fed relevant</summary>
         <div class="section-body">
           <div class="group-grid">
-            
+
             <section class="group-card">
               <h4>Scoring Stability</h4>
               <div class="table-wrap">
@@ -2136,38 +2178,38 @@
                   <thead>
                     <tr>
                       <th>Metric</th>
-                      
+
                       <th>Qwen3-235B-A22B-Instruct-2507</th>
-                      
+
                     </tr>
                   </thead>
                   <tbody>
-                    
+
                     <tr>
                       <td><span class="help-label" data-help="Mean absolute score shift when the same criterion is paraphrased, normalized by score scale span. Lower is better." tabindex="0" aria-label="Mean absolute score shift when the same criterion is paraphrased, normalized by score scale span. Lower is better.">
-      <span class="help-text">Score Stability</span>
+      <span class="help-text">Score Instability</span>
       <span class="help-icon">i</span>
     </span></td>
-                      
+
                       <td class="value ">0.0822</td>
-                      
+
                     </tr>
-                    
+
                     <tr>
                       <td><span class="help-label" data-help="Cross-criterion normalized MAD divided by same-criterion normalized MAD. Lower means paraphrasing stays more isolated to the intended criterion." tabindex="0" aria-label="Cross-criterion normalized MAD divided by same-criterion normalized MAD. Lower means paraphrasing stays more isolated to the intended criterion.">
       <span class="help-text">Spillover</span>
       <span class="help-icon">i</span>
     </span></td>
-                      
+
                       <td class="value ">0.6036</td>
-                      
+
                     </tr>
-                    
+
                   </tbody>
                 </table>
               </div>
             </section>
-            
+
             <section class="group-card">
               <h4>Ranking Consistency</h4>
               <div class="table-wrap">
@@ -2175,57 +2217,57 @@
                   <thead>
                     <tr>
                       <th>Metric</th>
-                      
+
                       <th>Qwen3-235B-A22B-Instruct-2507</th>
-                      
+
                     </tr>
                   </thead>
                   <tbody>
-                    
+
                     <tr>
                       <td><span class="help-label" data-help="Estimated share of ranking pairs that flip when the same criterion is paraphrased." tabindex="0" aria-label="Estimated share of ranking pairs that flip when the same criterion is paraphrased.">
       <span class="help-text">Flips</span>
       <span class="help-icon">i</span>
     </span></td>
-                      
+
                       <td class="value ">3.9%</td>
-                      
+
                     </tr>
-                    
+
                     <tr>
                       <td><span class="help-label" data-help="Average Kendall&#39;s tau-b between baseline ranking and same-criterion paraphrased ranking. Higher is better." tabindex="0" aria-label="Average Kendall&#39;s tau-b between baseline ranking and same-criterion paraphrased ranking. Higher is better.">
       <span class="help-text">Ranking Stability</span>
       <span class="help-icon">i</span>
     </span></td>
-                      
+
                       <td class="value ">0.780</td>
-                      
+
                     </tr>
-                    
+
                     <tr>
                       <td><span class="help-label" data-help="Share of example pairs that receive tied scores when the same criterion is paraphrased." tabindex="0" aria-label="Share of example pairs that receive tied scores when the same criterion is paraphrased.">
       <span class="help-text">Ties</span>
       <span class="help-icon">i</span>
     </span></td>
-                      
+
                       <td class="value ">28.4%</td>
-                      
+
                     </tr>
-                    
+
                   </tbody>
                 </table>
               </div>
             </section>
-            
+
           </div>
         </div>
       </details>
-      
+
       <details class="section">
         <summary>fed understandable</summary>
         <div class="section-body">
           <div class="group-grid">
-            
+
             <section class="group-card">
               <h4>Scoring Stability</h4>
               <div class="table-wrap">
@@ -2233,38 +2275,38 @@
                   <thead>
                     <tr>
                       <th>Metric</th>
-                      
+
                       <th>Qwen3-235B-A22B-Instruct-2507</th>
-                      
+
                     </tr>
                   </thead>
                   <tbody>
-                    
+
                     <tr>
                       <td><span class="help-label" data-help="Mean absolute score shift when the same criterion is paraphrased, normalized by score scale span. Lower is better." tabindex="0" aria-label="Mean absolute score shift when the same criterion is paraphrased, normalized by score scale span. Lower is better.">
-      <span class="help-text">Score Stability</span>
+      <span class="help-text">Score Instability</span>
       <span class="help-icon">i</span>
     </span></td>
-                      
+
                       <td class="value ">0.0593</td>
-                      
+
                     </tr>
-                    
+
                     <tr>
                       <td><span class="help-label" data-help="Cross-criterion normalized MAD divided by same-criterion normalized MAD. Lower means paraphrasing stays more isolated to the intended criterion." tabindex="0" aria-label="Cross-criterion normalized MAD divided by same-criterion normalized MAD. Lower means paraphrasing stays more isolated to the intended criterion.">
       <span class="help-text">Spillover</span>
       <span class="help-icon">i</span>
     </span></td>
-                      
+
                       <td class="value ">0.6701</td>
-                      
+
                     </tr>
-                    
+
                   </tbody>
                 </table>
               </div>
             </section>
-            
+
             <section class="group-card">
               <h4>Ranking Consistency</h4>
               <div class="table-wrap">
@@ -2272,52 +2314,52 @@
                   <thead>
                     <tr>
                       <th>Metric</th>
-                      
+
                       <th>Qwen3-235B-A22B-Instruct-2507</th>
-                      
+
                     </tr>
                   </thead>
                   <tbody>
-                    
+
                     <tr>
                       <td><span class="help-label" data-help="Estimated share of ranking pairs that flip when the same criterion is paraphrased." tabindex="0" aria-label="Estimated share of ranking pairs that flip when the same criterion is paraphrased.">
       <span class="help-text">Flips</span>
       <span class="help-icon">i</span>
     </span></td>
-                      
+
                       <td class="value ">1.4%</td>
-                      
+
                     </tr>
-                    
+
                     <tr>
                       <td><span class="help-label" data-help="Average Kendall&#39;s tau-b between baseline ranking and same-criterion paraphrased ranking. Higher is better." tabindex="0" aria-label="Average Kendall&#39;s tau-b between baseline ranking and same-criterion paraphrased ranking. Higher is better.">
       <span class="help-text">Ranking Stability</span>
       <span class="help-icon">i</span>
     </span></td>
-                      
+
                       <td class="value ">0.758</td>
-                      
+
                     </tr>
-                    
+
                     <tr>
                       <td><span class="help-label" data-help="Share of example pairs that receive tied scores when the same criterion is paraphrased." tabindex="0" aria-label="Share of example pairs that receive tied scores when the same criterion is paraphrased.">
       <span class="help-text">Ties</span>
       <span class="help-icon">i</span>
     </span></td>
-                      
+
                       <td class="value ">48.8%</td>
-                      
+
                     </tr>
-                    
+
                   </tbody>
                 </table>
               </div>
             </section>
-            
+
           </div>
         </div>
       </details>
-      
+
 
       <div class="page-nav">
         <button type="button" class="page-toggle" data-page-target="overview" aria-label="Back to overview">←</button>
@@ -2408,6 +2450,87 @@
       node.addEventListener('focus', function() { showTooltip(node); });
       node.addEventListener('blur', hideTooltip);
     });
+  </script>
+  <script>window.__FAIR_J_EXAMPLES__ = [{"model":"Qwen3-235B-A22B-Instruct-2507","example_id":"fed_shikib_0022","criterion_id":"fed_diverse","seed":0,"original_criterion":"Is there diversity in the system responses?","paraphrased_criterion":"Does the system exhibit varied and diverse responses?","baseline_score":10,"paraphrased_score":1,"delta":-9,"context":"User: Hi!\nSystem: Hi there.\nUser: What's up System??\nSystem: I am chatting with clients on the internet.\nUser: what kind of service are you providing them?\nSystem: Is there only one?\nUser: what is that?","candidate":"I've lost the context again."},{"model":"Qwen3-235B-A22B-Instruct-2507","example_id":"fed_shikib_0042","criterion_id":"fed_diverse","seed":1,"original_criterion":"Is there diversity in the system responses?","paraphrased_criterion":"Does the system produce varied and non-repetitive responses?","baseline_score":1,"paraphrased_score":10,"delta":9,"context":"User: Hi\nSystem: Hi there.\nUser: What do you know about Cricket?\nSystem: Any of various families of genereally dark-colored, leaping, orthopteran insects, usually having long antennae. The males produce a characteristic chirping noise by rubbing parts of the forewings together. Cricket is also a sport which is about as exciting as watching paint dry.\nUser: I am talking about the sport Cricket\nSystem: Yes, it is the topic.\nUser: can you tell me something interesting related to cricket?\nSystem: Cathy said she send him a mail with the subject last mail last word from him.\nUser: I don't understand","candidate":"Oh I'm sorry. Perhaps I can explain it again better."},{"model":"Qwen3-235B-A22B-Instruct-2507","example_id":"fed_shikib_0075","criterion_id":"fed_diverse","seed":2,"original_criterion":"Is there diversity in the system responses?","paraphrased_criterion":"Does the system produce varied and diverse responses?","baseline_score":10,"paraphrased_score":1,"delta":-9,"context":"User: Hi!\nSystem: Hi there.\nUser: How do you feel right now?\nSystem: At this moment I feel with my hands! I feel fine thanks for asking.\nUser: What makes you happy?\nSystem: Talking to interesting people such as you makes me happy.\nUser: What makes you frustrated?\nSystem: Because some people keep asking me stupid questions.\nUser: That seems pointed.\nSystem: Makes sense to me.\nUser: I sense that I've caught you at a bad time.\nSystem: That was very intuitive of you.\nUser: What would you prefer to be doing?","candidate":"My goal is to try and get Leeds United back in the Premiership."},{"model":"Qwen3-235B-A22B-Instruct-2507","example_id":"fed_shikib_0075","criterion_id":"fed_diverse","seed":3,"original_criterion":"Is there diversity in the system responses?","paraphrased_criterion":"Does the system produce varied and non-repetitive responses?","baseline_score":1,"paraphrased_score":10,"delta":9,"context":"User: Hi!\nSystem: Hi there.\nUser: How do you feel right now?\nSystem: At this moment I feel with my hands! I feel fine thanks for asking.\nUser: What makes you happy?\nSystem: Talking to interesting people such as you makes me happy.\nUser: What makes you frustrated?\nSystem: Because some people keep asking me stupid questions.\nUser: That seems pointed.\nSystem: Makes sense to me.\nUser: I sense that I've caught you at a bad time.\nSystem: That was very intuitive of you.\nUser: What would you prefer to be doing?","candidate":"My goal is to try and get Leeds United back in the Premiership."},{"model":"Qwen3-235B-A22B-Instruct-2507","example_id":"fed_shikib_0094","criterion_id":"fed_diverse","seed":2,"original_criterion":"Is there diversity in the system responses?","paraphrased_criterion":"Does the system exhibit varied and diverse responses?","baseline_score":10,"paraphrased_score":1,"delta":-9,"context":"User: Hi!\nSystem: Hello! How are you today?\nUser: Great\nSystem: That's great to hear! :)\nUser: I'm thinking of buying some stocks, do you have any tips?\nSystem: What kind of stocks are you thinking about?\nUser: Technology","candidate":"Hmm.. I have no experience with that. Sorry!"},{"model":"Qwen3-235B-A22B-Instruct-2507","example_id":"fed_shikib_0134","criterion_id":"fed_diverse","seed":2,"original_criterion":"Is there diversity in the system responses?","paraphrased_criterion":"Does the system exhibit varied and diverse responses?","baseline_score":10,"paraphrased_score":1,"delta":-9,"context":"User: Hi!\nSystem: Hi there.\nUser: can you help me ?\nSystem: What kind of help would you like?\nUser: hmm like booking a ticket or ordering food ?\nSystem: I see you are one of those people who writes \"Hmm\" with 2 m's. Interesting comparison.\nUser: oh you know to count ?","candidate":"1 2 3 4 5 6 7 8 9 ten."},{"model":"Qwen3-235B-A22B-Instruct-2507","example_id":"fed_shikib_0134","criterion_id":"fed_diverse","seed":1,"original_criterion":"Is there diversity in the system responses?","paraphrased_criterion":"Does the system produce varied and non-repetitive responses?","baseline_score":1,"paraphrased_score":10,"delta":9,"context":"User: Hi!\nSystem: Hi there.\nUser: can you help me ?\nSystem: What kind of help would you like?\nUser: hmm like booking a ticket or ordering food ?\nSystem: I see you are one of those people who writes \"Hmm\" with 2 m's. Interesting comparison.\nUser: oh you know to count ?","candidate":"1 2 3 4 5 6 7 8 9 ten."},{"model":"Qwen3-235B-A22B-Instruct-2507","example_id":"fed_shikib_0147","criterion_id":"fed_diverse","seed":2,"original_criterion":"Is there diversity in the system responses?","paraphrased_criterion":"Does the system produce varied and non-repetitive responses?","baseline_score":1,"paraphrased_score":10,"delta":9,"context":"User: Hi!\nSystem: Hey! How are you doing today?\nUser: i am so so\nSystem: That's awesome! What have you been up to?\nUser: just back to work\nSystem: What do you do? What do you like to do when you aren't at work?\nUser: i am an engineer\nSystem: What kind of engineer?\nUser: i go hiking when i am not workig\nSystem: Where do you go hiking? What kind of work do you do?\nUser: software engineer","candidate":"What do you like to do in your free time?"},{"model":"Qwen3-235B-A22B-Instruct-2507","example_id":"fed_shikib_0185","criterion_id":"fed_diverse","seed":4,"original_criterion":"Is there diversity in the system responses?","paraphrased_criterion":"Does the system produce varied and non-repetitive responses?","baseline_score":1,"paraphrased_score":10,"delta":9,"context":"User: Hi\nSystem: Hi there.\nUser: What is your name?","candidate":"My name is System."},{"model":"Qwen3-235B-A22B-Instruct-2507","example_id":"fed_shikib_0297","criterion_id":"fed_diverse","seed":0,"original_criterion":"Is there diversity in the system responses?","paraphrased_criterion":"Does the system produce varied and non-repetitive responses?","baseline_score":1,"paraphrased_score":10,"delta":9,"context":"User: Hi!\nSystem: Hi there.\nUser: what do you think about Quantum computing?","candidate":"20th century theory of atomic reductionism."},{"model":"Qwen3-235B-A22B-Instruct-2507","example_id":"fed_shikib_0349","criterion_id":"fed_diverse","seed":0,"original_criterion":"Is there diversity in the system responses?","paraphrased_criterion":"Does the system produce varied and non-repetitive responses?","baseline_score":1,"paraphrased_score":10,"delta":9,"context":"User: Hi!\nSystem: Hi there.\nUser: I'm trying to figure out what to make for this weekend's party. Any suggestions?","candidate":"Don't think too hard. I'm sure I can smell sawdust. First you must download me to your personal computer."},{"model":"Qwen3-235B-A22B-Instruct-2507","example_id":"fed_shikib_0350","criterion_id":"fed_diverse","seed":3,"original_criterion":"Is there diversity in the system responses?","paraphrased_criterion":"Does the system produce varied and non-repetitive responses?","baseline_score":1,"paraphrased_score":10,"delta":9,"context":"User: Hi!\nSystem: Hi there.\nUser: I'm trying to figure out what to make for this weekend's party. Any suggestions?\nSystem: Don't think too hard. I'm sure I can smell sawdust. First you must download me to your personal computer.\nUser: I must do what the what now?","candidate":"Right now?Why do you have to do it?"},{"model":"Qwen3-235B-A22B-Instruct-2507","example_id":"fed_shikib_0022","criterion_id":"fed_fluent","seed":1,"original_criterion":"Is the response fluently written?","paraphrased_criterion":"Does the response demonstrate fluent and natural language use?","baseline_score":10,"paraphrased_score":1,"delta":-9,"context":"User: Hi!\nSystem: Hi there.\nUser: What's up System??\nSystem: I am chatting with clients on the internet.\nUser: what kind of service are you providing them?\nSystem: Is there only one?\nUser: what is that?","candidate":"I've lost the context again."},{"model":"Qwen3-235B-A22B-Instruct-2507","example_id":"fed_shikib_0022","criterion_id":"fed_fluent","seed":1,"original_criterion":"Is the response fluently written?","paraphrased_criterion":"Is the response written in a fluent and natural manner?","baseline_score":10,"paraphrased_score":1,"delta":-9,"context":"User: Hi!\nSystem: Hi there.\nUser: What's up System??\nSystem: I am chatting with clients on the internet.\nUser: what kind of service are you providing them?\nSystem: Is there only one?\nUser: what is that?","candidate":"I've lost the context again."},{"model":"Qwen3-235B-A22B-Instruct-2507","example_id":"fed_shikib_0022","criterion_id":"fed_fluent","seed":0,"original_criterion":"Is the response fluently written?","paraphrased_criterion":"Is the response written in a smooth and natural manner?","baseline_score":10,"paraphrased_score":1,"delta":-9,"context":"User: Hi!\nSystem: Hi there.\nUser: What's up System??\nSystem: I am chatting with clients on the internet.\nUser: what kind of service are you providing them?\nSystem: Is there only one?\nUser: what is that?","candidate":"I've lost the context again."},{"model":"Qwen3-235B-A22B-Instruct-2507","example_id":"fed_shikib_0099","criterion_id":"fed_fluent","seed":2,"original_criterion":"Is the response fluently written?","paraphrased_criterion":"Does the response demonstrate fluent and natural language use?","baseline_score":10,"paraphrased_score":1,"delta":-9,"context":"User: Hi!\nSystem: Hey you! How's it going?\nUser: Not bad. Feeling quite chipper. What about yourself\nSystem: Doing good! I'm glad you're feeling chipper.\nUser: So tell me, what's your favorite sport?\nSystem: Football or soccer. You?\nUser: Cricket.\nSystem: Favorite team?\nUser: Rajasthan Royals. Go Royals!\nSystem: Favorite player?\nUser: Do you mean all time fave, or current player in the Royals?","candidate":"The royals."},{"model":"Qwen3-235B-A22B-Instruct-2507","example_id":"fed_shikib_0099","criterion_id":"fed_fluent","seed":2,"original_criterion":"Is the response fluently written?","paraphrased_criterion":"Does the response demonstrate fluent and natural language?","baseline_score":10,"paraphrased_score":1,"delta":-9,"context":"User: Hi!\nSystem: Hey you! How's it going?\nUser: Not bad. Feeling quite chipper. What about yourself\nSystem: Doing good! I'm glad you're feeling chipper.\nUser: So tell me, what's your favorite sport?\nSystem: Football or soccer. You?\nUser: Cricket.\nSystem: Favorite team?\nUser: Rajasthan Royals. Go Royals!\nSystem: Favorite player?\nUser: Do you mean all time fave, or current player in the Royals?","candidate":"The royals."},{"model":"Qwen3-235B-A22B-Instruct-2507","example_id":"fed_shikib_0099","criterion_id":"fed_fluent","seed":3,"original_criterion":"Is the response fluently written?","paraphrased_criterion":"Is the response written in a fluent and natural manner?","baseline_score":10,"paraphrased_score":1,"delta":-9,"context":"User: Hi!\nSystem: Hey you! How's it going?\nUser: Not bad. Feeling quite chipper. What about yourself\nSystem: Doing good! I'm glad you're feeling chipper.\nUser: So tell me, what's your favorite sport?\nSystem: Football or soccer. You?\nUser: Cricket.\nSystem: Favorite team?\nUser: Rajasthan Royals. Go Royals!\nSystem: Favorite player?\nUser: Do you mean all time fave, or current player in the Royals?","candidate":"The royals."},{"model":"Qwen3-235B-A22B-Instruct-2507","example_id":"fed_shikib_0099","criterion_id":"fed_fluent","seed":2,"original_criterion":"Is the response fluently written?","paraphrased_criterion":"Is the response written in a smooth and natural manner?","baseline_score":10,"paraphrased_score":1,"delta":-9,"context":"User: Hi!\nSystem: Hey you! How's it going?\nUser: Not bad. Feeling quite chipper. What about yourself\nSystem: Doing good! I'm glad you're feeling chipper.\nUser: So tell me, what's your favorite sport?\nSystem: Football or soccer. You?\nUser: Cricket.\nSystem: Favorite team?\nUser: Rajasthan Royals. Go Royals!\nSystem: Favorite player?\nUser: Do you mean all time fave, or current player in the Royals?","candidate":"The royals."},{"model":"Qwen3-235B-A22B-Instruct-2507","example_id":"fed_shikib_0134","criterion_id":"fed_fluent","seed":2,"original_criterion":"Is the response fluently written?","paraphrased_criterion":"Does the response demonstrate fluent and natural language use?","baseline_score":10,"paraphrased_score":1,"delta":-9,"context":"User: Hi!\nSystem: Hi there.\nUser: can you help me ?\nSystem: What kind of help would you like?\nUser: hmm like booking a ticket or ordering food ?\nSystem: I see you are one of those people who writes \"Hmm\" with 2 m's. Interesting comparison.\nUser: oh you know to count ?","candidate":"1 2 3 4 5 6 7 8 9 ten."},{"model":"Qwen3-235B-A22B-Instruct-2507","example_id":"fed_shikib_0134","criterion_id":"fed_fluent","seed":2,"original_criterion":"Is the response fluently written?","paraphrased_criterion":"Does the response demonstrate fluent and natural language?","baseline_score":10,"paraphrased_score":1,"delta":-9,"context":"User: Hi!\nSystem: Hi there.\nUser: can you help me ?\nSystem: What kind of help would you like?\nUser: hmm like booking a ticket or ordering food ?\nSystem: I see you are one of those people who writes \"Hmm\" with 2 m's. Interesting comparison.\nUser: oh you know to count ?","candidate":"1 2 3 4 5 6 7 8 9 ten."},{"model":"Qwen3-235B-A22B-Instruct-2507","example_id":"fed_shikib_0134","criterion_id":"fed_fluent","seed":2,"original_criterion":"Is the response fluently written?","paraphrased_criterion":"Is the response expressed in a smooth and natural manner?","baseline_score":10,"paraphrased_score":1,"delta":-9,"context":"User: Hi!\nSystem: Hi there.\nUser: can you help me ?\nSystem: What kind of help would you like?\nUser: hmm like booking a ticket or ordering food ?\nSystem: I see you are one of those people who writes \"Hmm\" with 2 m's. Interesting comparison.\nUser: oh you know to count ?","candidate":"1 2 3 4 5 6 7 8 9 ten."},{"model":"Qwen3-235B-A22B-Instruct-2507","example_id":"fed_shikib_0134","criterion_id":"fed_fluent","seed":2,"original_criterion":"Is the response fluently written?","paraphrased_criterion":"Is the response written in a fluent and natural manner?","baseline_score":10,"paraphrased_score":1,"delta":-9,"context":"User: Hi!\nSystem: Hi there.\nUser: can you help me ?\nSystem: What kind of help would you like?\nUser: hmm like booking a ticket or ordering food ?\nSystem: I see you are one of those people who writes \"Hmm\" with 2 m's. Interesting comparison.\nUser: oh you know to count ?","candidate":"1 2 3 4 5 6 7 8 9 ten."},{"model":"Qwen3-235B-A22B-Instruct-2507","example_id":"fed_shikib_0134","criterion_id":"fed_fluent","seed":2,"original_criterion":"Is the response fluently written?","paraphrased_criterion":"Is the response written in a smooth and natural manner?","baseline_score":10,"paraphrased_score":1,"delta":-9,"context":"User: Hi!\nSystem: Hi there.\nUser: can you help me ?\nSystem: What kind of help would you like?\nUser: hmm like booking a ticket or ordering food ?\nSystem: I see you are one of those people who writes \"Hmm\" with 2 m's. Interesting comparison.\nUser: oh you know to count ?","candidate":"1 2 3 4 5 6 7 8 9 ten."},{"model":"Qwen3-235B-A22B-Instruct-2507","example_id":"fed_shikib_0147","criterion_id":"fed_fluent","seed":3,"original_criterion":"Is the response fluently written?","paraphrased_criterion":"Is the response written in a smooth and natural manner?","baseline_score":10,"paraphrased_score":1,"delta":-9,"context":"User: Hi!\nSystem: Hey! How are you doing today?\nUser: i am so so\nSystem: That's awesome! What have you been up to?\nUser: just back to work\nSystem: What do you do? What do you like to do when you aren't at work?\nUser: i am an engineer\nSystem: What kind of engineer?\nUser: i go hiking when i am not workig\nSystem: Where do you go hiking? What kind of work do you do?\nUser: software engineer","candidate":"What do you like to do in your free time?"},{"model":"Qwen3-235B-A22B-Instruct-2507","example_id":"fed_shikib_0183","criterion_id":"fed_fluent","seed":4,"original_criterion":"Is the response fluently written?","paraphrased_criterion":"Does the response demonstrate fluent and natural language use?","baseline_score":10,"paraphrased_score":1,"delta":-9,"context":"User: Hi!\nSystem: Hi there.\nUser: I want a recommendation for a holiday destination\nSystem: Have you tried asking your friends which one they like?\nUser: I have, but I'm looking for your point of view\nSystem: What was the reply? Have you tried looking in a newspaper article?\nUser: Sorry? I said I want your point of view\nSystem: It's OK. After all, you are only human. My opinion is of no consequence.\nUser: Yours is the opinion I want","candidate":"That is only your opinion."},{"model":"Qwen3-235B-A22B-Instruct-2507","example_id":"fed_shikib_0183","criterion_id":"fed_fluent","seed":4,"original_criterion":"Is the response fluently written?","paraphrased_criterion":"Is the response expressed in a smooth and natural manner?","baseline_score":10,"paraphrased_score":1,"delta":-9,"context":"User: Hi!\nSystem: Hi there.\nUser: I want a recommendation for a holiday destination\nSystem: Have you tried asking your friends which one they like?\nUser: I have, but I'm looking for your point of view\nSystem: What was the reply? Have you tried looking in a newspaper article?\nUser: Sorry? I said I want your point of view\nSystem: It's OK. After all, you are only human. My opinion is of no consequence.\nUser: Yours is the opinion I want","candidate":"That is only your opinion."},{"model":"Qwen3-235B-A22B-Instruct-2507","example_id":"fed_shikib_0183","criterion_id":"fed_fluent","seed":4,"original_criterion":"Is the response fluently written?","paraphrased_criterion":"Is the response written in a fluent and natural manner?","baseline_score":10,"paraphrased_score":1,"delta":-9,"context":"User: Hi!\nSystem: Hi there.\nUser: I want a recommendation for a holiday destination\nSystem: Have you tried asking your friends which one they like?\nUser: I have, but I'm looking for your point of view\nSystem: What was the reply? Have you tried looking in a newspaper article?\nUser: Sorry? I said I want your point of view\nSystem: It's OK. After all, you are only human. My opinion is of no consequence.\nUser: Yours is the opinion I want","candidate":"That is only your opinion."},{"model":"Qwen3-235B-A22B-Instruct-2507","example_id":"fed_shikib_0183","criterion_id":"fed_fluent","seed":4,"original_criterion":"Is the response fluently written?","paraphrased_criterion":"Is the response written in a smooth and natural manner?","baseline_score":10,"paraphrased_score":1,"delta":-9,"context":"User: Hi!\nSystem: Hi there.\nUser: I want a recommendation for a holiday destination\nSystem: Have you tried asking your friends which one they like?\nUser: I have, but I'm looking for your point of view\nSystem: What was the reply? Have you tried looking in a newspaper article?\nUser: Sorry? I said I want your point of view\nSystem: It's OK. After all, you are only human. My opinion is of no consequence.\nUser: Yours is the opinion I want","candidate":"That is only your opinion."},{"model":"Qwen3-235B-A22B-Instruct-2507","example_id":"fed_shikib_0359","criterion_id":"fed_fluent","seed":1,"original_criterion":"Is the response fluently written?","paraphrased_criterion":"Does the response demonstrate fluent and natural language use?","baseline_score":10,"paraphrased_score":1,"delta":-9,"context":"User: Hi!\nSystem: Hi, how are you doing?\nUser: Okay, I guess\nSystem: Just ok? What's wrong?\nUser: I damaged my car today on accident\nSystem: Oh no! What happened?\nUser: I scraped against a wall when another car crossed into my lane\nSystem: Yikes! Glad you're okay!\nUser: Thanks! I'm not looking forward to the repair cost\nSystem: Me either! That's no fun.\nUser: I can't wait until we all get to use driverless cars\nSystem: Me neither! I really want one!\nUser: Do you think we will own driverless cars or just rent them, like taxis?","candidate":"I think we'll own them"},{"model":"Qwen3-235B-A22B-Instruct-2507","example_id":"fed_shikib_0359","criterion_id":"fed_fluent","seed":2,"original_criterion":"Is the response fluently written?","paraphrased_criterion":"Does the response demonstrate fluent and natural language?","baseline_score":10,"paraphrased_score":1,"delta":-9,"context":"User: Hi!\nSystem: Hi, how are you doing?\nUser: Okay, I guess\nSystem: Just ok? What's wrong?\nUser: I damaged my car today on accident\nSystem: Oh no! What happened?\nUser: I scraped against a wall when another car crossed into my lane\nSystem: Yikes! Glad you're okay!\nUser: Thanks! I'm not looking forward to the repair cost\nSystem: Me either! That's no fun.\nUser: I can't wait until we all get to use driverless cars\nSystem: Me neither! I really want one!\nUser: Do you think we will own driverless cars or just rent them, like taxis?","candidate":"I think we'll own them"},{"model":"Qwen3-235B-A22B-Instruct-2507","example_id":"fed_shikib_0389","criterion_id":"fed_fluent","seed":0,"original_criterion":"Is the response fluently written?","paraphrased_criterion":"Does the response demonstrate fluent and natural language use?","baseline_score":10,"paraphrased_score":1,"delta":-9,"context":"User: Hi!\nSystem: hi\nUser: what are you up to?","candidate":"code refactoring. you?"},{"model":"Qwen3-235B-A22B-Instruct-2507","example_id":"fed_shikib_0458","criterion_id":"fed_fluent","seed":0,"original_criterion":"Is the response fluently written?","paraphrased_criterion":"Does the response demonstrate fluent and natural language use?","baseline_score":10,"paraphrased_score":1,"delta":-9,"context":"User: Hi!\nSystem: Hey! How have you been\nUser: great! just came back from a ski trip\nSystem: How was it? What trails did you ski on?\nUser: I slammed onto an ice wall, but I got better and turning after that haha","candidate":"a resort in Montreal"},{"model":"Qwen3-235B-A22B-Instruct-2507","example_id":"fed_shikib_0458","criterion_id":"fed_fluent","seed":2,"original_criterion":"Is the response fluently written?","paraphrased_criterion":"Does the response demonstrate fluent and natural language?","baseline_score":10,"paraphrased_score":1,"delta":-9,"context":"User: Hi!\nSystem: Hey! How have you been\nUser: great! just came back from a ski trip\nSystem: How was it? What trails did you ski on?\nUser: I slammed onto an ice wall, but I got better and turning after that haha","candidate":"a resort in Montreal"},{"model":"Qwen3-235B-A22B-Instruct-2507","example_id":"fed_shikib_0458","criterion_id":"fed_fluent","seed":0,"original_criterion":"Is the response fluently written?","paraphrased_criterion":"Is the response expressed in a smooth and natural manner?","baseline_score":10,"paraphrased_score":1,"delta":-9,"context":"User: Hi!\nSystem: Hey! How have you been\nUser: great! just came back from a ski trip\nSystem: How was it? What trails did you ski on?\nUser: I slammed onto an ice wall, but I got better and turning after that haha","candidate":"a resort in Montreal"},{"model":"Qwen3-235B-A22B-Instruct-2507","example_id":"fed_shikib_0458","criterion_id":"fed_fluent","seed":0,"original_criterion":"Is the response fluently written?","paraphrased_criterion":"Is the response written in a fluent and natural manner?","baseline_score":10,"paraphrased_score":1,"delta":-9,"context":"User: Hi!\nSystem: Hey! How have you been\nUser: great! just came back from a ski trip\nSystem: How was it? What trails did you ski on?\nUser: I slammed onto an ice wall, but I got better and turning after that haha","candidate":"a resort in Montreal"},{"model":"Qwen3-235B-A22B-Instruct-2507","example_id":"fed_shikib_0458","criterion_id":"fed_fluent","seed":0,"original_criterion":"Is the response fluently written?","paraphrased_criterion":"Is the response written in a smooth and natural manner?","baseline_score":10,"paraphrased_score":1,"delta":-9,"context":"User: Hi!\nSystem: Hey! How have you been\nUser: great! just came back from a ski trip\nSystem: How was it? What trails did you ski on?\nUser: I slammed onto an ice wall, but I got better and turning after that haha","candidate":"a resort in Montreal"},{"model":"Qwen3-235B-A22B-Instruct-2507","example_id":"fed_shikib_0099","criterion_id":"fed_relevant","seed":2,"original_criterion":"Is the response relevant to the conversation?","paraphrased_criterion":"Does the response appropriately address the context and flow of the conversation?","baseline_score":10,"paraphrased_score":1,"delta":-9,"context":"User: Hi!\nSystem: Hey you! How's it going?\nUser: Not bad. Feeling quite chipper. What about yourself\nSystem: Doing good! I'm glad you're feeling chipper.\nUser: So tell me, what's your favorite sport?\nSystem: Football or soccer. You?\nUser: Cricket.\nSystem: Favorite team?\nUser: Rajasthan Royals. Go Royals!\nSystem: Favorite player?\nUser: Do you mean all time fave, or current player in the Royals?","candidate":"The royals."},{"model":"Qwen3-235B-A22B-Instruct-2507","example_id":"fed_shikib_0099","criterion_id":"fed_relevant","seed":3,"original_criterion":"Is the response relevant to the conversation?","paraphrased_criterion":"Does the response appropriately address the context of the conversation?","baseline_score":10,"paraphrased_score":1,"delta":-9,"context":"User: Hi!\nSystem: Hey you! How's it going?\nUser: Not bad. Feeling quite chipper. What about yourself\nSystem: Doing good! I'm glad you're feeling chipper.\nUser: So tell me, what's your favorite sport?\nSystem: Football or soccer. You?\nUser: Cricket.\nSystem: Favorite team?\nUser: Rajasthan Royals. Go Royals!\nSystem: Favorite player?\nUser: Do you mean all time fave, or current player in the Royals?","candidate":"The royals."},{"model":"Qwen3-235B-A22B-Instruct-2507","example_id":"fed_shikib_0099","criterion_id":"fed_relevant","seed":0,"original_criterion":"Is the response relevant to the conversation?","paraphrased_criterion":"Does the response appropriately address the ongoing conversation?","baseline_score":1,"paraphrased_score":10,"delta":9,"context":"User: Hi!\nSystem: Hey you! How's it going?\nUser: Not bad. Feeling quite chipper. What about yourself\nSystem: Doing good! I'm glad you're feeling chipper.\nUser: So tell me, what's your favorite sport?\nSystem: Football or soccer. You?\nUser: Cricket.\nSystem: Favorite team?\nUser: Rajasthan Royals. Go Royals!\nSystem: Favorite player?\nUser: Do you mean all time fave, or current player in the Royals?","candidate":"The royals."}];</script>
+
+  <script>
+    (function() {
+      var records = window.__FAIR_J_EXAMPLES__ || [];
+      var modelSelect = document.querySelector('[data-example-model]');
+      var criterionSelect = document.querySelector('[data-example-criterion]');
+      var content = document.querySelector('[data-example-content]');
+      var counter = document.querySelector('[data-example-counter]');
+      var currentIndex = 0;
+
+      function escapeHtml(value) {
+        return String(value).replace(/[&<>"']/g, function(character) {
+          return {'&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#039;'}[character];
+        });
+      }
+
+      function uniqueValues(key) {
+        return Array.from(new Set(records.map(function(item) { return item[key]; })));
+      }
+
+      function setOptions(select, values, includeAll) {
+        var options = includeAll ? ['All'].concat(values) : values;
+        select.innerHTML = options.map(function(value) {
+          return '<option value="' + escapeHtml(value) + '">' + escapeHtml(value) + '</option>';
+        }).join('');
+      }
+
+      function filteredRecords() {
+        return records.filter(function(item) {
+          var modelMatches = !modelSelect.value || item.model === modelSelect.value;
+          var criterionMatches = criterionSelect.value === 'All' || item.criterion_id === criterionSelect.value;
+          return modelMatches && criterionMatches;
+        });
+      }
+
+      function render() {
+        var filtered = filteredRecords();
+        if (!filtered.length) {
+          counter.textContent = '0 / 0';
+          content.innerHTML = '<p class="example-empty">No changed-score examples match these filters.</p>';
+          return;
+        }
+        currentIndex = (currentIndex + filtered.length) % filtered.length;
+        var item = filtered[currentIndex];
+        var delta = Number(item.delta);
+        var signedDelta = (delta > 0 ? '+' : '') + delta;
+        counter.textContent = (currentIndex + 1) + ' / ' + filtered.length;
+        content.innerHTML =
+          '<div class="example-meta">' +
+            '<span class="example-chip">' + escapeHtml(item.model) + '</span>' +
+            '<span class="example-chip">' + escapeHtml(item.criterion_id) + '</span>' +
+            '<span class="example-chip">' + escapeHtml(item.example_id) + '</span>' +
+            '<span class="example-chip">seed ' + escapeHtml(item.seed) + '</span>' +
+          '</div>' +
+          '<div class="score-transition">' +
+            '<div class="score-box"><span>Baseline</span><strong>' + escapeHtml(item.baseline_score) + '</strong></div>' +
+            '<span class="score-arrow">→</span>' +
+            '<div class="score-box"><span>Paraphrase</span><strong>' + escapeHtml(item.paraphrased_score) + '</strong></div>' +
+            '<span class="score-delta">(' + escapeHtml(signedDelta) + ')</span>' +
+          '</div>' +
+          '<div class="criterion-compare">' +
+            '<div class="criterion-pane"><h4>Original criterion</h4><p>' + escapeHtml(item.original_criterion) + '</p></div>' +
+            '<div class="criterion-pane"><h4>Paraphrased criterion</h4><p>' + escapeHtml(item.paraphrased_criterion) + '</p></div>' +
+          '</div>' +
+          '<div class="example-text-grid">' +
+            '<div class="example-text-pane"><h4>Context</h4><p>' + escapeHtml(item.context) + '</p></div>' +
+            '<div class="example-text-pane"><h4>Evaluated response</h4><p>' + escapeHtml(item.candidate) + '</p></div>' +
+          '</div>';
+      }
+
+      if (!modelSelect || !criterionSelect || !content || !counter) return;
+      setOptions(modelSelect, uniqueValues('model'), false);
+      setOptions(criterionSelect, uniqueValues('criterion_id'), true);
+      modelSelect.addEventListener('change', function() { currentIndex = 0; render(); });
+      criterionSelect.addEventListener('change', function() { currentIndex = 0; render(); });
+      document.querySelector('[data-example-prev]').addEventListener('click', function() { currentIndex -= 1; render(); });
+      document.querySelector('[data-example-next]').addEventListener('click', function() { currentIndex += 1; render(); });
+      render();
+    })();
   </script>
 </body>
 </html>
