@@ -54,7 +54,7 @@ const renderReports = () => {
 }
 
 const loadReports = async () => {
-  const response = await fetch('reports/manifest.json')
+  const response = await fetch('reports/manifest.json', { cache: 'no-store' })
   if (!response.ok) {
     throw new Error(`Failed to load report manifest: ${response.status}`)
   }
