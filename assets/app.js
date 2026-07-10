@@ -7,7 +7,7 @@ const byId = (id) => document.getElementById(id)
 
 const selectedFromHash = () => window.location.hash.replace(/^#/, '')
 
-const setSelectedReport = (report) => {
+const setSelectedReport = (report, { scrollToViewer = false } = {}) => {
   state.selectedSlug = report.slug
   window.location.hash = report.slug
 
@@ -24,6 +24,10 @@ const setSelectedReport = (report) => {
   document.querySelectorAll('.report-button').forEach((button) => {
     button.classList.toggle('is-active', button.dataset.slug === report.slug)
   })
+
+  if (scrollToViewer && window.matchMedia('(max-width: 1100px)').matches) {
+    document.querySelector('.viewer-panel')?.scrollIntoView({ behavior: 'smooth', block: 'start' })
+  }
 }
 
 const renderReportButton = (report) => {
@@ -35,7 +39,7 @@ const renderReportButton = (report) => {
     <h3>${report.title}</h3>
     <p class="model">${report.subtitle}</p>
   `
-  button.addEventListener('click', () => setSelectedReport(report))
+  button.addEventListener('click', () => setSelectedReport(report, { scrollToViewer: true }))
   return button
 }
 
