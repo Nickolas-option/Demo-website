@@ -456,11 +456,6 @@
     </section>
 
     <section class="report-page is-active" data-page="overview">
-      <section class="controls">
-        <button type="button" data-open-all="section">Expand All Sections</button>
-        <button type="button" data-close-all="section">Collapse All Sections</button>
-      </section>
-
       <section>
         <div class="context-grid">
 
@@ -4420,11 +4415,7 @@
   </main>
 
   <script>
-    window.__FAIR_J_CALC__ = {"Claude Haiku 4.5": 0.0429037037037037, "Claude Sonnet 4.6": 0.0396641975308642, "Claude Opus 4.5": 0.030982716049382717, "Claude Opus 4.7": 0.03668148148148148, "Claude Opus 4.8": 0.04475061728395061, "GPT OSS 120B": 0.07076543209876543, "Qwen3 Coder 30B A3B": 0.07320493827160494};
-    function setOpen(selector, openState) { document.querySelectorAll(selector).forEach(function(el) { el.open = openState; }); }
-    document.querySelector('[data-open-all="section"]').addEventListener('click', function() { setOpen('details.section', true); });
-    document.querySelector('[data-close-all="section"]').addEventListener('click', function() { setOpen('details.section', false); });
-    function showPage(pageName) {
+    window.__FAIR_J_CALC__ = {"Claude Haiku 4.5": 0.0429037037037037, "Claude Sonnet 4.6": 0.0396641975308642, "Claude Opus 4.5": 0.030982716049382717, "Claude Opus 4.7": 0.03668148148148148, "Claude Opus 4.8": 0.04475061728395061, "GPT OSS 120B": 0.07076543209876543, "Qwen3 Coder 30B A3B": 0.07320493827160494};    function showPage(pageName) {
       document.querySelectorAll('[data-page]').forEach(function(node) {
         node.classList.toggle('is-active', node.dataset.page === pageName);
       });

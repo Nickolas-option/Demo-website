@@ -456,11 +456,6 @@
     </section>
 
     <section class="report-page is-active" data-page="overview">
-      <section class="controls">
-        <button type="button" data-open-all="section">Expand All Sections</button>
-        <button type="button" data-close-all="section">Collapse All Sections</button>
-      </section>
-
       <section>
         <div class="context-grid">
 
@@ -1882,11 +1877,7 @@
   </main>
 
   <script>
-    window.__FAIR_J_CALC__ = {"Qwen3-235B-A22B-Instruct-2507": 0.06595034788108792};
-    function setOpen(selector, openState) { document.querySelectorAll(selector).forEach(function(el) { el.open = openState; }); }
-    document.querySelector('[data-open-all="section"]').addEventListener('click', function() { setOpen('details.section', true); });
-    document.querySelector('[data-close-all="section"]').addEventListener('click', function() { setOpen('details.section', false); });
-    function showPage(pageName) {
+    window.__FAIR_J_CALC__ = {"Qwen3-235B-A22B-Instruct-2507": 0.06595034788108792};    function showPage(pageName) {
       document.querySelectorAll('[data-page]').forEach(function(node) {
         node.classList.toggle('is-active', node.dataset.page === pageName);
       });
